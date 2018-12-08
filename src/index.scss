@@ -1,8 +1,10 @@
+@import './assets/styles/conf/configs';
 @import '~normalize.css';
 
 html {
 	height: 100%;
 }
 body {
+	background-color: $catskill-white;
 	height: 100%;
 }
