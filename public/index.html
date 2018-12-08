@@ -2,7 +2,16 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
+		<link rel="apple-touch-icon" sizes="60x60" href="%PUBLIC_URL%/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
+		<link rel="manifest" href="%PUBLIC_URL%/site.webmanifest">
+		<link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#0f416a">
 		<link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+		<meta name="msapplication-TileColor" content="#0f416a">
+		<meta name="msapplication-config" content="%PUBLIC_URL%/browserconfig.xml">
+		<meta name="theme-color" content="#0f416a">
+
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="theme-color" content="#000000">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
@@ -20,13 +29,84 @@
 			work correctly both with client-side routing and a non-root public URL.
 			Learn how to configure a non-root public URL by running `npm run build`.
 		-->
-		<title>React App</title>
+		<title>Loading...</title>
 	</head>
 	<body>
 		<noscript>
 			You need to enable JavaScript to run this app.
 		</noscript>
-		<div id="root"></div>
+		<div id="root" class="root">
+			<style type="text/css" scoped>
+				@keyframes dots {
+					0%,
+					20% {
+						color: rgba(255, 255, 255, 0);
+						text-shadow:
+							.25em 0 0 rgba(255, 255, 255, 0),
+							.5em 0 0 rgba(255, 255, 255, 0);
+					}
+					40% {
+						color: #000;
+						text-shadow:
+							.25em 0 0 rgba(255, 255, 255, 0),
+							.5em 0 0 rgba(255, 255, 255, 0);
+					}
+					60% {
+						text-shadow:
+							.25em 0 0 #000,
+							.5em 0 0 rgba(255, 255, 255, 0);
+					}
+					80%,
+					100% {
+						text-shadow:
+							.25em 0 0 #000,
+							.5em 0 0 #000;
+					}
+				}
+				html {
+					font-size: 16px;
+					height: 100%;
+					line-height: 1.15;
+				}
+				body {
+					color: #333;
+					font-family: monospace;
+					height: 100%;
+					margin: 0;
+					padding: 0;
+				}
+				* {
+					box-sizing: border-box;
+				}
+				.root {
+					height: 100%;
+				}
+				.loader {
+					align-items: center;
+					display: flex;
+					font-size: 1.125rem;
+					height: 100%;
+					justify-content: center;
+					padding: 16px;
+				}
+				.loader__text {
+					margin: 0 auto;
+					position: relative;
+				}
+				.loader__text::after {
+					animation: dots 1s steps(5, end) infinite;
+					content: ' .';
+					left: 100%;
+					position: absolute;
+					top: 0;
+				}
+			</style>
+			<div class="loader">
+				<div class="loader__text">
+					Loading
+				</div>
+			</div>
+		</div>
 		<!--
 			This HTML file is a template.
 			If you open it directly in the browser, you will see an empty page.

@@ -1,0 +1,20 @@
+{
+    "name": "Aviasales test",
+    "short_name": "Aviasales test",
+    "icons": [
+        {
+            "src": "android-chrome-36x36.png",
+            "sizes": "36x36",
+            "type": "image/png"
+        },
+        {
+            "src": "android-chrome-48x48.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#0f416a",
+    "background_color": "#0f416a",
+    "start_url": "http://aviasales-test.tech",
+    "display": "standalone"
+}
