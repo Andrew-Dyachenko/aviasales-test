@@ -1,16 +1,23 @@
-import React, { Component } from 'react'
+/*eslint no-console: 0*/
+import React, { PureComponent } from 'react'
 import { Helmet } from 'react-helmet'
 import './App.scss'
+import Header from './components/Header'
+import logo from './logo.png'
+import Tickets from './components/Tickets'
 
-class App extends Component {
+class App extends PureComponent {
 	render() {
 		return (
-			<div className="App">
+			<div className='App root__App'>
 				<Helmet>
-					<html lang='en' />
+					<html lang='ru' />
 					<title>Aviasales</title>
 				</Helmet>
-				App
+				<div className="container App__container">
+					<Header logo={logo} />
+					<Tickets />
+				</div>
 			</div>
 		)
 	}
