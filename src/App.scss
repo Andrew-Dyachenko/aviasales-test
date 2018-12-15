@@ -13,6 +13,10 @@
 		grid-row-gap: $gutter-width;
 		max-width: 853px;
 	}
+
+	&__header {
+		padding-bottom: 30px;
+	}
 }
 
 .container {
