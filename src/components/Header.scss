@@ -1,0 +1,14 @@
+.header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	&__logo {
+		display: block;
+		margin: 0 auto;
+
+		&-img {
+			display: block;
+		}
+	}
+}
