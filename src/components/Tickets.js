@@ -13,10 +13,10 @@ const Tickets = () =>
 		<aside className='tickets__aside'>
 			<h1>Tickets aside</h1>
 		</aside>
-		<aside className='tickets__main'>
+		<main className='tickets__main'>
 			<h1>Tickets aside</h1>
 			<FilledTicketsList />
-		</aside>
+		</main>
 	</div>
 
 export default Tickets
