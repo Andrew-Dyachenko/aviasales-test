@@ -1,10 +1,30 @@
 @import './assets/styles/conf/configs';
+@import './assets/styles/anim/animations';
 @import '~normalize.css';
 
 html {
+	font-size: $font-size;
 	height: 100%;
+	line-height: $line-height;
 }
 body {
-	background-color: $catskill-white;
-	height: 100%;
+	animation-duration: 1s;
+	animation-fill-mode: backwards;
+	animation-name: bgLaunch;
+	animation-timing-function: ease-out;
+	background-color: $body-bg;
+	font-family: $font-family;
+	height: inherit;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.root {
+	height: inherit;
+
+	&__App {
+		height: inherit;
+	}
 }
