@@ -43,3 +43,4 @@ rules:
   number-leading-zero: never
   rule-empty-line-before: null
   scss/dollar-variable-colon-space-after: at-least-one-space
+  max-nesting-depth: null
