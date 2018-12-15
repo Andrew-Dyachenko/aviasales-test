@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Loader.css'
+import './Loader.scss'
 
 const Loader = ({children}) =>
 	<div className="loader">

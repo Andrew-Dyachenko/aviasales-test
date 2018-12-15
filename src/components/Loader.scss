@@ -26,19 +26,19 @@
 }
 
 .loader {
-	display: flex;
-	justify-content: center;
 	align-items: center;
+	display: flex;
 	height: 100%;
+	justify-content: center;
 }
 .loader__text {
-	position: relative;
 	margin: 0 auto;
+	position: relative;
 }
 .loader__text::after {
+	animation: dots 1s steps(5, end) infinite;
 	content: ' .';
+	left: 100%;
 	position: absolute;
 	top: 0;
-	left: 100%;
-	animation: dots 1s steps(5, end) infinite;
 }
