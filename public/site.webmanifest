@@ -15,6 +15,6 @@
     ],
     "theme_color": "#0f416a",
     "background_color": "#0f416a",
-    "start_url": "http://aviasales-test.tech",
+    "start_url": "http://localhost:3000/",
     "display": "standalone"
 }
