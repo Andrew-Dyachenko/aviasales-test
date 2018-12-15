@@ -4,6 +4,8 @@
 	justify-content: center;
 
 	&__logo {
+		border-radius: 50%;
+		box-shadow: 0 1px 11px rgba(55, 104, 142, .3);
 		margin: 0 auto;
 
 		&-img {
