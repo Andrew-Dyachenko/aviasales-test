@@ -1,0 +1,44 @@
+@keyframes dots {
+	0%,
+	20% {
+		color: rgba(0, 0, 0, 0);
+		text-shadow:
+			.25em 0 0 rgba(0, 0, 0, 0),
+			.5em 0 0 rgba(0, 0, 0, 0);
+	}
+	40% {
+		color: #fff;
+		text-shadow:
+			.25em 0 0 rgba(0, 0, 0, 0),
+			.5em 0 0 rgba(0, 0, 0, 0);
+	}
+	60% {
+		text-shadow:
+			.25em 0 0 #fff,
+			.5em 0 0 rgba(0, 0, 0, 0);
+	}
+	80%,
+	100% {
+		text-shadow:
+			.25em 0 0 #fff,
+			.5em 0 0 #fff;
+	}
+}
+
+.loader {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.loader__text {
+	position: relative;
+	margin: 0 auto;
+}
+.loader__text::after {
+	content: ' .';
+	position: absolute;
+	top: 0;
+	left: 100%;
+	animation: dots 1s steps(5, end) infinite;
+}
