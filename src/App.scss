@@ -8,7 +8,9 @@
 	padding: $global-padding;
 
 	&__container {
+		display: grid;
 		flex-grow: 1;
+		grid-row-gap: $gutter-width;
 		max-width: 853px;
 	}
 }
