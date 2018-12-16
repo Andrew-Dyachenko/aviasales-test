@@ -10,12 +10,21 @@
 	&__container {
 		display: grid;
 		flex-grow: 1;
-		grid-row-gap: $gutter-width;
+		// grid-template-areas: 
+		// 	'header header header header'
+		// 	'main main . sidebar'
+		// 	'footer footer footer footer';
+		// grid-template-columns: [aside] auto [main] 1fr;
+		grid-template-rows: [header] auto [header-gap] 50px [body] auto;
 		max-width: 853px;
 	}
 
 	&__header {
-		padding-bottom: 30px;
+		grid-row: 1 / 2;
+	}
+
+	&__tickets {
+		grid-row: 3 / 4;
 	}
 }
 

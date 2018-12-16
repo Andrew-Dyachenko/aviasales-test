@@ -16,7 +16,7 @@ class App extends PureComponent {
 				</Helmet>
 				<div className="container App__container">
 					<Header logo={logo} mixin='App__header' />
-					<Tickets />
+					<Tickets mixin='App__tickets' />
 				</div>
 			</div>
 		)

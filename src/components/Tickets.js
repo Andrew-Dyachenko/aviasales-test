@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './Tickets.scss'
 import TicketsList from './TicketsList'
 import DataComponent from './DataComponent'
@@ -8,15 +9,29 @@ const FilledTicketsList = DataComponent(
 		'../data/tickets.json'
 	)
 
-const Tickets = () =>
-	<div className='tickets'>
-		<aside className='tickets__aside'>
-			<h1>Tickets aside</h1>
-		</aside>
-		<main className='tickets__main'>
-			<h1>Tickets aside</h1>
-			<FilledTicketsList />
-		</main>
-	</div>
+const Tickets = ({ mixin }) => {
+	const className = mixin ?
+		`tickets ${mixin}` :
+		'tickets'
+	return (
+		<div className={className}>
+			<aside className='tickets__aside'>
+				Aside
+			</aside>
+			<main className='tickets__main'>
+				Main
+				<FilledTicketsList />
+			</main>
+		</div>
+	)
+}
+
+Tickets.defaultProps = {
+	mixin: ''
+}
+
+Tickets.propTypes = {
+	mixin: PropTypes.string
+}
 
 export default Tickets
