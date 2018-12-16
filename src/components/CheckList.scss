@@ -1,0 +1,16 @@
+@import '../assets/styles/conf/configs';
+
+.check-list {
+	$check-list: &;
+	display: grid;
+	grid-row-gap: $gutter-width / 2;
+
+	&__title {
+		color: $tundora;
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: .5px;
+		line-height: 1.583333333;
+		margin: 0;
+	}
+}

@@ -5,6 +5,7 @@ import TicketsList from './TicketsList'
 import DataComponent from './DataComponent'
 import Filter from './Filter'
 import ButtonsGroup from './ButtonsGroup'
+import CheckList from './CheckList'
 
 const buttons = [
 	{
@@ -37,6 +38,8 @@ const Tickets = ({ mixin }) => {
 							buttons={buttons}
 							name='valuta-radio-group'
 							title='ВАЛЮТА' />
+						<CheckList
+							title='КОЛИЧЕСТВО ПЕРЕСАДОК' />
 					</Filter>
 				</div>
 			</aside>
