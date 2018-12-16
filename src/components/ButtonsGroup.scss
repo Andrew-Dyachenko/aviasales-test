@@ -1,0 +1,99 @@
+@import '../assets/styles/conf/configs';
+
+.buttons-group {
+	$buttons-group: &;
+	display: grid;
+	grid-row-gap: $gutter-width / 2;
+
+	&__title {
+		color: $tundora;
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: .5px;
+		line-height: 1.583333333;
+		margin: 0;
+	}
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__item {
+		display: flex;
+		flex-grow: 1;
+		flex-wrap: wrap;
+		min-height: 40px;
+
+		&:first-child {
+			#{$buttons-group} {
+				&__label {
+					border-radius: 5px 0 0 5px;
+				}
+			}
+		}
+
+		&:last-child {
+			#{$buttons-group} {
+				&__label {
+					border-radius: 0 5px 5px 0;
+				}
+			}
+		}
+
+		& ~ & {
+			margin-left: -1px;
+		}
+	}
+
+	&__input {
+		display: none;
+
+		&:checked {
+			+ #{$buttons-group} {
+				&__label {
+					background-color: $dodger-blue;
+					border-color: $dodger-blue;
+					z-index: 2;
+
+					#{$buttons-group} {
+						&__text {
+							color: $white;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&__label {
+		align-items: center;
+		background-color: $white;
+		border: 1px solid $iron;
+		display: flex;
+		flex-grow: 1;
+		justify-content: center;
+		padding: $global-padding / 4;
+		position: relative;
+		text-transform: uppercase;
+
+		&:hover,
+		&:focus {
+			background-color: $twilight-blue;
+			border-color: $malibu;
+			z-index: 1;
+		}
+	}
+
+	&__text {
+		color: $dodger-blue;
+		display: block;
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: .5px;
+		margin: 0 auto;
+		max-height: calc(2em * #{$line-height});
+		overflow: hidden;
+		text-align: center;
+	}
+}
