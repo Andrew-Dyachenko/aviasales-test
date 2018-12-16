@@ -10,7 +10,7 @@
 	&__container {
 		display: grid;
 		flex-grow: 1;
-		grid-template-rows: [header] auto [header-gap] 50px [body] auto;
+		grid-template-rows: auto [header-gap-start] 50px [header-gap-end] auto;
 		max-width: 853px;
 	}
 
