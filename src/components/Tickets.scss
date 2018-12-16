@@ -3,5 +3,5 @@
 .tickets {
 	display: grid;
 	grid-column-gap: $gutter-width;
-	grid-template-columns: max-content 1fr;
+	grid-template-columns: min-content 1fr;
 }
