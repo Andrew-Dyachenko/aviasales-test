@@ -16,7 +16,7 @@ const Tickets = ({ mixin }) => {
 	return (
 		<div className={className}>
 			<aside className='tickets__aside'>
-				Aside
+				<div className='tile'>Aside</div>
 			</aside>
 			<main className='tickets__main'>
 				Main

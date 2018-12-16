@@ -26,3 +26,10 @@
 .container {
 	margin: 0 auto;
 }
+
+.tile {
+	background-color: $white;
+	border-radius: 5px;
+	box-shadow: 0 1px 4px rgba(91, 137, 164, .25);
+	padding: 15px;
+}
