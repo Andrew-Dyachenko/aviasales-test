@@ -29,7 +29,11 @@ Header.defaultProps = {
 }
 
 Header.propTypes = {
-	children: PropTypes.string || PropTypes.element,
+	children: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.node),
+		PropTypes.node,
+		PropTypes.string
+	]),
 	logo: PropTypes.string,
 	mixin: PropTypes.string
 }

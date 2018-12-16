@@ -1,5 +1,5 @@
 import React from 'react'
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import './Filter.scss'
 
 const Filter = ({ children, onFilter }) =>
@@ -13,12 +13,12 @@ Filter.defaultProps = {
 }
 
 Filter.propTypes = {
-	children: propTypes.oneOfType([
-		propTypes.arrayOf(propTypes.node),
-		propTypes.node,
-		propTypes.string
+	children: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.node),
+		PropTypes.node,
+		PropTypes.string
 	]),
-	onFilter: propTypes.func
+	onFilter: PropTypes.func
 }
 
 export default Filter

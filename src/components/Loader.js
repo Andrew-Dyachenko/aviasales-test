@@ -14,7 +14,11 @@ Loader.defaultProps = {
 }
 
 Loader.propTypes = {
-	children: PropTypes.string || PropTypes.element
+	children: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.node),
+		PropTypes.node,
+		PropTypes.string
+	])
 }
 
 export default Loader
