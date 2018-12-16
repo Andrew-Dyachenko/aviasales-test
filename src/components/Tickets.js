@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import './Tickets.scss'
 import TicketsList from './TicketsList'
 import DataComponent from './DataComponent'
+import Filter from './Filter'
+import ButtonsGroup from './ButtonsGroup'
 
 const FilledTicketsList = DataComponent(
 		TicketsList,
@@ -16,7 +18,11 @@ const Tickets = ({ mixin }) => {
 	return (
 		<div className={className}>
 			<aside className='tickets__aside'>
-				<div className='tile'>Aside</div>
+				<div className='tile'>
+					<Filter>
+						<ButtonsGroup />
+					</Filter>
+				</div>
 			</aside>
 			<main className='tickets__main'>
 				Main
