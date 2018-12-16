@@ -6,6 +6,19 @@ import DataComponent from './DataComponent'
 import Filter from './Filter'
 import ButtonsGroup from './ButtonsGroup'
 
+const buttons = [
+	{
+		text: 'RUB',
+		defaultChecked: true
+	},
+	{
+		text: 'USD'
+	},
+	{
+		text: 'EUR'
+	}
+]
+
 const FilledTicketsList = DataComponent(
 		TicketsList,
 		'../data/tickets.json'
@@ -20,7 +33,10 @@ const Tickets = ({ mixin }) => {
 			<aside className='tickets__aside'>
 				<div className='tile'>
 					<Filter>
-						<ButtonsGroup />
+						<ButtonsGroup
+							buttons={buttons}
+							name='valuta-radio-group'
+							title='ВАЛЮТА' />
 					</Filter>
 				</div>
 			</aside>
