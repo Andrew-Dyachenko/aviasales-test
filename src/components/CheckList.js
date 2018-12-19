@@ -24,14 +24,16 @@ const CheckList = ({ list, title, onChoose }) => {
 										<input
 											className='check-list__input'
 											type='checkbox'
-											id={`buttons-group__input_${index}`}
+											id={`check-list__input_${index}`}
 											onChange={onChoose} />
+										<label
+											htmlFor={`check-list__input_${index}`}
+											className='check-list__label check-list__label--fake' />
 										<label
 											htmlFor={`check-list__input_${index}`}
 											className='check-list__label'>
 											{text}
 										</label>
-										in
 									</div>
 								)
 							})

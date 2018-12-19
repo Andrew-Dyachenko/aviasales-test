@@ -20,6 +20,14 @@ const buttons = [
 	}
 ]
 
+const list = [
+	{text: 'Все'},
+	{text: 'Без пересадок'},
+	{text: '1 пересадка'},
+	{text: '2 пересадки '},
+	{text: '3 пересадки'}
+]
+
 const FilledTicketsList = DataComponent(
 		TicketsList,
 		'../data/tickets.json'
@@ -39,6 +47,7 @@ const Tickets = ({ mixin }) => {
 							name='valuta-radio-group'
 							title='ВАЛЮТА' />
 						<CheckList
+							list={list}
 							title='КОЛИЧЕСТВО ПЕРЕСАДОК' />
 					</Filter>
 				</div>
