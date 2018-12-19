@@ -13,4 +13,17 @@
 		line-height: 1.583333333;
 		margin: 0;
 	}
+
+	&__input {
+		@extend %visibility-hidden;
+		background-color: $white;
+		border: 1px solid $iron;
+		border-radius: 3px;
+		height: 19px;
+		width: 19px;
+	}
+
+	&__item {
+		display: flex;
+	}
 }
