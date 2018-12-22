@@ -4,7 +4,14 @@ import { Helmet } from 'react-helmet'
 import './App.scss'
 import Header from './components/Header'
 import logo from './logo.png'
+import DataComponent from './components/DataComponent'
 import Tickets from './components/Tickets'
+
+const TicketsWithData =
+	DataComponent(
+		Tickets,
+		'./data/tickets.json'
+	)
 
 class App extends PureComponent {
 	render() {
@@ -16,7 +23,7 @@ class App extends PureComponent {
 				</Helmet>
 				<div className="container App__container">
 					<Header logo={logo} mixin='App__header' />
-					<Tickets mixin='App__tickets' />
+					<TicketsWithData mixin='App__tickets' />
 				</div>
 			</div>
 		)

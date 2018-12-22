@@ -5,7 +5,7 @@
 html {
 	font-size: $font-size;
 	height: 100%;
-	line-height: $line-height;
+	line-height: $global-line-height;
 }
 body {
 	animation-duration: 1s;
@@ -22,6 +22,7 @@ body {
 }
 
 .root {
+	display: block;
 	height: inherit;
 
 	&__App {

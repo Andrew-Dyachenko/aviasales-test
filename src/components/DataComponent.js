@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Loader from './Loader'
 
@@ -24,15 +24,16 @@ const DataComponent = (ComposedComponent, url) =>
 						data
 					})
 				})
-				.catch(error => {throw Error(error)})
+				.catch(error => console.error(error)) /* eslint-disable-line no-console */
 		}
 		render() {
 			return (
-				<div className='data-component'>
+				<Fragment>
 					{(this.state.loading) ?
-					<Loader>Loading</Loader> :
-					<ComposedComponent {...this.state} />}
-				</div>
+						<Loader>Loading</Loader> :
+						<ComposedComponent {...this.state} {...this.props}/>
+					}
+				</Fragment>
 			)
 		}
 	}

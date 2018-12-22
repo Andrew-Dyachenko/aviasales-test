@@ -15,7 +15,10 @@
 	}
 
 	&__header {
+		font-size: 1rem;
 		grid-row: 1 / 2;
+		letter-spacing: normal;
+		line-height: $global-line-height;
 	}
 
 	&__tickets {

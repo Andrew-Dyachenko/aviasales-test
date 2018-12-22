@@ -34,6 +34,7 @@ const FilledTicketsList = DataComponent(
 	)
 
 const Tickets = ({ mixin }) => {
+	console.log('mixin: ', mixin) // eslint-disable-line no-console
 	const className = mixin ?
 		`tickets ${mixin}` :
 		'tickets'
@@ -53,7 +54,6 @@ const Tickets = ({ mixin }) => {
 				</div>
 			</aside>
 			<main className='tickets__main'>
-				Main
 				<FilledTicketsList />
 			</main>
 		</div>

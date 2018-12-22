@@ -1,17 +1,19 @@
 .loader {
 	align-items: center;
-	display: flex;
-	height: 100%;
+	display: inline-flex;
 	justify-content: center;
 }
 .loader__text {
-	margin: 0 auto;
+	font-family: monospace;
+	font-size: 1.125rem;
+	padding-right: 1.15em;
 	position: relative;
 }
 .loader__text::after {
 	animation: dots 1s steps(5, end) infinite;
 	content: ' .';
-	left: 100%;
 	position: absolute;
+	right: 0;
 	top: 0;
+	width: 1.15em;
 }

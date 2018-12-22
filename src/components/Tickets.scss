@@ -4,4 +4,8 @@
 	display: grid;
 	grid-column-gap: $gutter-width;
 	grid-template-columns: min-content 1fr;
+
+	&__main {
+		display: flex;
+	}
 }
