@@ -2,14 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Filter.scss'
 
-const Filter = ({ children, onFilter }) =>
-	<form className='filter' onSubmit={onFilter}>
+const Filter = ({ children }) =>
+	<div className='filter'>
 		{ children }
-	</form>
+	</div>
 
 Filter.defaultProps = {
-	children: null,
-	onFilter: f => f
+	children: null
 }
 
 Filter.propTypes = {
@@ -17,8 +16,7 @@ Filter.propTypes = {
 		PropTypes.arrayOf(PropTypes.node),
 		PropTypes.node,
 		PropTypes.string
-	]),
-	onFilter: PropTypes.func
+	])
 }
 
 export default Filter

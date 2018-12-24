@@ -34,24 +34,26 @@ const FilledTicketsList = DataComponent(
 	)
 
 const Tickets = ({ mixin }) => {
-	console.log('mixin: ', mixin) // eslint-disable-line no-console
 	const className = mixin ?
 		`tickets ${mixin}` :
 		'tickets'
 	return (
 		<div className={className}>
 			<aside className='tickets__aside'>
-				<div className='tile'>
-					<Filter>
+				<Filter>
+					<div className='filter__tile'>
 						<ButtonsGroup
 							buttons={buttons}
 							name='valuta-radio-group'
 							title='ВАЛЮТА' />
+					</div>
+					<div className='filter__tile filter__tile--nopadding'>
 						<CheckList
+							mixin='filter__check-list'
 							list={list}
 							title='КОЛИЧЕСТВО ПЕРЕСАДОК' />
-					</Filter>
-				</div>
+					</div>
+				</Filter>
 			</aside>
 			<main className='tickets__main'>
 				<FilledTicketsList />

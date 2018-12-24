@@ -2,10 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './CheckList.scss'
 
-const CheckList = ({ list, title, onChoose }) => {
+const CheckList = ({ list, title, mixin, onAllStops, onStop, onOnly }) => {
 	const { length } = list
+	const className =  mixin ?
+		`check-list ${mixin}` :
+		'check-list'
 	return (
-		<div className='check-list'>
+		<form className={className}>
 			{
 				title ?
 					<h4 className='check-list__title'>
@@ -21,18 +24,30 @@ const CheckList = ({ list, title, onChoose }) => {
 								const { text } = item
 								return (
 									<div key={index} className='check-list__item'>
-										<input
-											className='check-list__input'
-											type='checkbox'
-											id={`check-list__input_${index}`}
-											onChange={onChoose} />
+										{
+											index ?
+											<button type='reset' className='check-list__only' onClick={onOnly}>
+												Только
+											</button> :
+											null
+										}
 										<label
 											htmlFor={`check-list__input_${index}`}
-											className='check-list__label check-list__label--fake' />
-										<label
-											htmlFor={`check-list__input_${index}`}
+											key={index}
 											className='check-list__label'>
-											{text}
+											<div className='check-list__wrapper'>
+												<input
+													className='check-list__input'
+													type='checkbox'
+													id={`check-list__input_${index}`}
+													onChange={index ? onStop : onAllStops} />
+												<div className='check-list__face-wrapper'>
+													<div className='check-list__face' />
+												</div>
+												<div className='check-list__text'>
+													{text}
+												</div>
+											</div>
 										</label>
 									</div>
 								)
@@ -41,20 +56,26 @@ const CheckList = ({ list, title, onChoose }) => {
 					</div> :
 					null
 			}
-		</div>
+		</form>
 	)
 }
 
 CheckList.defaultProps = {
 	list: [],
 	title: '',
-	onChoose: f => f
+	mixin: '',
+	onStop: f => f,
+	onOnly: f => f,
+	onAllStops: f => f
 }
 
 CheckList.propTypes = {
 	list: PropTypes.array,
 	title: PropTypes.string,
-	onChoose: PropTypes.func
+	mixin: PropTypes.string,
+	onStop: PropTypes.func,
+	onOnly: PropTypes.func,
+	onAllStops: PropTypes.func
 }
 
 export default CheckList

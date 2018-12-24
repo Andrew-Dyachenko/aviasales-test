@@ -1,9 +1,14 @@
 @import '../assets/styles/conf/configs';
+@import '../assets/styles/util/utils';
 
 .check-list {
 	$check-list: &;
 	display: grid;
 	grid-row-gap: $gutter-width / 2;
+
+	&__container {
+		display: grid;
+	}
 
 	&__title {
 		color: $tundora;
@@ -20,10 +25,104 @@
 		border: 1px solid $iron;
 		border-radius: 3px;
 		height: 19px;
+		opacity: 0;
+		pointer-events: none;
+		transform: translate(1px, 1px);
+		visibility: hidden;
 		width: 19px;
+
+		&:checked {
+			~ #{$check-list}__face-wrapper {
+				#{$check-list}__face {
+					background-image: url(../../src/assets/images/check.png);
+					background-position: center;
+					background-repeat: no-repeat;
+					border-color: $dodger-blue;
+				}
+			}
+		}
 	}
 
 	&__item {
+		position: relative;
+
+		&:hover,
+		&:focus {
+			background-color: $twilight-blue;
+		}
+
+		&:not(:hover) {
+			#{$check-list} {
+				&__only {
+					@extend %visibility-hidden;
+				}
+			}
+		}
+	}
+
+	&__label {
+		display: block;
+		padding-bottom: 8px;
+		padding-top: 8px;
+	}
+
+	&__wrapper {
+		align-items: stretch;
 		display: flex;
+
+		&:not(:empty) {
+			margin: 0 -5px;
+		}
+		> {
+			* {
+				&:not(input) {
+					padding: 0 5px;
+				}
+			}
+
+			input {
+				transform: translate(6px, 1px);
+			}
+		}
+	}
+
+	&__face {
+		background-color: transparent;
+		border: 1px solid $iron;
+		border-radius: 3px;
+		display: block;
+		height: 19px;
+		width: 19px;
+	}
+
+	&__text {
+		align-items: center;
+		color: $tundora;
+		display: flex;
+		flex-grow: 1;
+		font-size: 13 / strip-unit($font-size-root) + rem;
+	}
+
+	&__only {
+		background: none;
+		border: 0;
+		bottom: 0;
+		color: $dodger-blue;
+		cursor: pointer;
+		font-family: $font-family;
+		font-size: .6875rem;
+		font-weight: 600;
+		letter-spacing: .5px;
+		line-height: 35px;
+		padding: 0;
+		position: absolute;
+		right: 15px;
+		text-transform: uppercase;
+		top: 0;
+
+		&:hover,
+		&:focus {
+			color: $tree-poppy;
+		}
 	}
 }
