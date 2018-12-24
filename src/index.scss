@@ -3,15 +3,16 @@
 @import '~normalize.css';
 
 html {
-	font-size: $font-size;
+	font-size: $font-size-root;
 	height: 100%;
 	line-height: $global-line-height;
 }
 body {
+	animation-delay: 1s;
 	animation-duration: 1s;
 	animation-fill-mode: backwards;
 	animation-name: bgLaunch;
-	animation-timing-function: ease-out;
+	animation-timing-function: ease-in;
 	background-color: $body-bg;
 	font-family: $font-family;
 	height: inherit;
