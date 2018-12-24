@@ -3,17 +3,29 @@ import React, { PureComponent } from 'react'
 import { Helmet } from 'react-helmet'
 import './App.scss'
 import Header from './components/Header'
-import logo from './logo.png'
+import logo from './assets/images/logo.png'
 import DataComponent from './components/DataComponent'
 import Tickets from './components/Tickets'
 
 const TicketsWithData =
 	DataComponent(
 		Tickets,
-		'./data/tickets.json'
+		'./tickets.json'
 	)
 
 class App extends PureComponent {
+	constructor() {
+		super()
+		this.state = {
+			fetching: false
+		}
+		this.onOnly = this.onOnly.bind(this)
+		this.onStop = this.onStop.bind(this)
+		this.onAllStops = this.onAllStops.bind(this)
+	}
+	onOnly() {}
+	onStop() {}
+	onAllStops() {}
 	render() {
 		return (
 			<div className='App root__App'>
