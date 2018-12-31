@@ -1,7 +1,6 @@
 /*eslint no-console: 0*/
-
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-// import { colors, sort } from './reducers'
+import { filters } from './reducers'
 
 const logger = store => next => action => {
 	let result
@@ -22,7 +21,7 @@ const saver = store => next => action => {
 
 const storeFactory = (initialState = {}) =>
 	applyMiddleware(logger, saver)(createStore)(
-		combineReducers(/*{colors, sort}*/),
+		combineReducers({filters}),
 		(localStorage['aviasales-store']) ?
 			JSON.parse(localStorage['aviasales-store']) :
 			initialState
