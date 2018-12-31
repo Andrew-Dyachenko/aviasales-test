@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './ButtonsGroup.scss'
+import '../../assets/styles/ButtonsGroup.scss'
 
 const ButtonsGroup = ({ buttons, name, title, onChoose }) => {
 	const { length } = buttons

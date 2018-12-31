@@ -1,11 +1,11 @@
 /*eslint no-console: 0*/
 import React, { PureComponent } from 'react'
 import { Helmet } from 'react-helmet'
-import './App.scss'
-import Header from './components/Header'
-import logo from './assets/images/logo.png'
-import DataComponent from './components/DataComponent'
-import Tickets from './components/Tickets'
+import '../assets/styles/App.scss'
+import Header from './UI/Header'
+import logo from '../assets/images/logo.png'
+import DataComponent from './DataComponent'
+import Tickets from './UI/Tickets'
 
 const TicketsWithData =
 	DataComponent(

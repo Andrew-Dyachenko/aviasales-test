@@ -1,8 +1,9 @@
+/*eslint no-console: 0*/
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import './index.scss'
-import App from './App'
+import './assets/styles/index.scss'
+import App from './components/App'
 import storeFactory from './store'
 import * as serviceWorker from './serviceWorker'
 

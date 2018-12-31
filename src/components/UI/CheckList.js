@@ -1,8 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './CheckList.scss'
+import '../../assets/styles/CheckList.scss'
 
-const CheckList = ({ list, title, mixin, onAllStops, onStop, onOnly }) => {
+const CheckList = ({
+	list,
+	title,
+	mixin,
+	onAllStops,
+	onStop,
+	onOnly
+}) => {
 	const { length } = list
 	const className =  mixin ?
 		`check-list ${mixin}` :

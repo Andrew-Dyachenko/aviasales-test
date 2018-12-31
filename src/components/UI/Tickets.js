@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Tickets.scss'
+import '../../assets/styles/Tickets.scss'
 import TicketsList from './TicketsList'
-import DataComponent from './DataComponent'
-import Filter from './Filter'
+import DataComponent from '../DataComponent'
+import { FilterTickets } from './containers'
 import ButtonsGroup from './ButtonsGroup'
 import CheckList from './CheckList'
 
@@ -40,7 +40,7 @@ const Tickets = ({ mixin }) => {
 	return (
 		<div className={className}>
 			<aside className='tickets__aside'>
-				<Filter>
+				<FilterTickets>
 					<div className='filter__tile'>
 						<ButtonsGroup
 							buttons={buttons}
@@ -53,7 +53,7 @@ const Tickets = ({ mixin }) => {
 							list={list}
 							title='КОЛИЧЕСТВО ПЕРЕСАДОК' />
 					</div>
-				</Filter>
+				</FilterTickets>
 			</aside>
 			<main className='tickets__main'>
 				<FilledTicketsList />

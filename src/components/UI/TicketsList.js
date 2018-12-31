@@ -1,5 +1,5 @@
 import React from 'react'
-import './TicketsList.scss'
+import '../../assets/styles/TicketsList.scss'
 
 const TicketsList = () =>
 	<div className='tickets-list'>

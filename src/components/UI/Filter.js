@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Filter.scss'
+import '../../assets/styles/Filter.scss'
 
 const Filter = ({ children }) =>
 	<div className='filter'>
