@@ -1,0 +1,7 @@
+const constants = {
+	CHANGE_VALUTA: 'CHANGE_VALUTA',
+	FILTER_BY_DEFAULT_STOPS: 'FILTER_BY_DEFAULT_STOPS',
+	FILTER_BY_STOPS: 'FILTER_BY_STOPS'
+}
+
+export default constants
