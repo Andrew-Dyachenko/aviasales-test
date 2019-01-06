@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import '../../assets/styles/Tickets.scss'
 import TicketsList from './TicketsList'
 import DataComponent from '../DataComponent'
-import { FilterTickets } from './containers'
+import Filter from './Filter'
+import { Stops } from '../containers'
 import ButtonsGroup from './ButtonsGroup'
-import CheckList from './CheckList'
 
 const buttons = [
 	{
@@ -21,11 +21,11 @@ const buttons = [
 ]
 
 const list = [
-	{text: 'Все'},
-	{text: 'Без пересадок'},
-	{text: '1 пересадка'},
-	{text: '2 пересадки '},
-	{text: '3 пересадки'}
+	{text: 'Все', stops: Infinity},
+	{text: 'Без пересадок', stops: 0},
+	{text: '1 пересадка', stops: 1},
+	{text: '2 пересадки', stops: 2},
+	{text: '3 пересадки', stops: 3}
 ]
 
 const FilledTicketsList = DataComponent(
@@ -40,7 +40,7 @@ const Tickets = ({ mixin }) => {
 	return (
 		<div className={className}>
 			<aside className='tickets__aside'>
-				<FilterTickets>
+				<Filter>
 					<div className='filter__tile'>
 						<ButtonsGroup
 							buttons={buttons}
@@ -48,12 +48,12 @@ const Tickets = ({ mixin }) => {
 							title='ВАЛЮТА' />
 					</div>
 					<div className='filter__tile filter__tile--nopadding'>
-						<CheckList
-							mixin='filter__check-list'
+						<Stops
+							mixin='filter__stop-list'
 							list={list}
 							title='КОЛИЧЕСТВО ПЕРЕСАДОК' />
 					</div>
-				</FilterTickets>
+				</Filter>
 			</aside>
 			<main className='tickets__main'>
 				<FilledTicketsList />
