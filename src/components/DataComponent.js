@@ -44,8 +44,7 @@ DataComponent.propTypes = {
 }
 
 DataComponent.defaultProps = {
-	ComposedComponent: () =>
-		React.createElement('div', {displayName: 'ComposedComponent'}, 'Composed component'),
+	ComposedComponent: () => React.createElement('div', {displayName: 'ComposedComponent'}, 'Composed component'),
 	url: ''
 }
 
