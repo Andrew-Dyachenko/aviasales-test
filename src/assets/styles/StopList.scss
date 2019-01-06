@@ -1,12 +1,12 @@
 @import './conf/configs';
 @import './util/utils';
 
-.check-list {
-	$check-list: &;
+.stop-list {
+	$stop-list: &;
 	display: grid;
 	grid-row-gap: $gutter-width / 2;
 
-	&__container {
+	__container {
 		display: grid;
 	}
 
@@ -32,8 +32,8 @@
 		width: 19px;
 
 		&:checked {
-			~ #{$check-list}__face-wrapper {
-				#{$check-list}__face {
+			~ #{$stop-list}__face-wrapper {
+				#{$stop-list}__face {
 					background-image: url(../images/check.png);
 					background-position: center;
 					background-repeat: no-repeat;
@@ -52,7 +52,7 @@
 		}
 
 		&:not(:hover) {
-			#{$check-list} {
+			#{$stop-list} {
 				&__only {
 					@extend %visibility-hidden;
 				}
