@@ -1,11 +1,14 @@
 /*eslint no-console: 0*/
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import '../assets/styles/App.scss'
 import Header from './UI/Header'
 import logo from '../assets/images/logo.png'
 import DataComponent from './DataComponent'
 import Tickets from './UI/Tickets'
+import { fetchTickets } from '../store/actions'
 
 const TicketsWithData =
 	DataComponent(
@@ -14,18 +17,9 @@ const TicketsWithData =
 	)
 
 class App extends PureComponent {
-	constructor() {
-		super()
-		this.state = {
-			fetching: false
-		}
-		this.onOnly = this.onOnly.bind(this)
-		this.onStop = this.onStop.bind(this)
-		this.onAllStops = this.onAllStops.bind(this)
+	componentDidMount() {
+		this.props.fetchTickets('./tickets.json');
 	}
-	onOnly() {}
-	onStop() {}
-	onAllStops() {}
 	render() {
 		return (
 			<div className='App root__App'>
@@ -33,7 +27,7 @@ class App extends PureComponent {
 					<html lang='ru' />
 					<title>Aviasales</title>
 				</Helmet>
-				<div className="container App__container">
+				<div className='container App__container'>
 					<Header logo={logo} mixin='App__header' />
 					<TicketsWithData mixin='App__tickets' />
 				</div>
@@ -42,4 +36,20 @@ class App extends PureComponent {
 	}
 }
 
-export default App
+App.defaultProps = {
+	fetchTickets: f => f
+}
+
+App.propTypes = {
+	fetchTickets: PropTypes.func
+}
+
+// const mapStateToProps = ({ data = {} }) => ({
+// 	data
+// })
+export default connect(
+	null,
+	{
+		fetchTickets
+	}
+)(App)
