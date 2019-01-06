@@ -1,6 +1,8 @@
 /*eslint no-console: 0*/
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { filters } from './reducers'
+import thunk from 'redux-thunk';
+import { tickets, filters } from './reducers'
+import stateData from '../data/initialState'
 
 const logger = store => next => action => {
 	let result
@@ -19,9 +21,9 @@ const saver = store => next => action => {
 	return result
 }
 
-const storeFactory = (initialState = {}) =>
-	applyMiddleware(logger, saver)(createStore)(
-		combineReducers({filters}),
+const storeFactory = (initialState = stateData) =>
+	applyMiddleware(logger, saver, thunk)(createStore)(
+		combineReducers({ tickets, filters }),
 		(localStorage['aviasales-store']) ?
 			JSON.parse(localStorage['aviasales-store']) :
 			initialState

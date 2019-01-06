@@ -9,6 +9,9 @@ import * as serviceWorker from './serviceWorker'
 
 const store = storeFactory()
 
+window.React = React
+window.store = store
+
 render(
 	<Provider store={store}>
 		<App />
