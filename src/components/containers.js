@@ -2,35 +2,31 @@
 import { connect } from 'react-redux'
 import StopList from '../components/UI/StopList'
 import { filterByStops, filterByOnlyStops, filterByAllStops } from '../store/actions'
-import getStops from '../helpers/getStops'
 
 export const Stops = connect(
-	null,
+	state =>
+		({
+			filters: state.filters.stops,
+			stops: state.tickets.stops
+		}),
 	dispatch =>
 		({
 			onStop(event) {
 				const { target } = event
-				const { value } = target
+				const value = Number(target.value)
 				const { checked } = target
-				// console.log('value: ', value)
 				dispatch(filterByStops(value, checked))
 			},
 			onOnly(event) {
 				const { target } = event
 				const { dataset } = target
-				const { stops } = dataset
-				console.log('onOnly target dataset index: ', stops)
+				const stops = Number(dataset.stops)
 				dispatch(filterByOnlyStops(stops))
 			},
 			onAllStops(event) {
-				// console.log('window.store: ', window.store)
 				const { target } = event
 				const { checked } = target
-				const stops = getStops(window.store)
-				// const { dataset } = target
-				// const { array } = dataset
-				console.log('onAllStops stops: ', stops)
-				// dispatch(filterByAllStops())
+				const { stops } = window.store.getState().tickets
 				dispatch(filterByAllStops(stops, checked))
 			}
 		})

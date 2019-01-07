@@ -2,16 +2,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import '../../assets/styles/StopList.scss'
+import pluralize from 'pluralize-ru'
 
 const StopsList = ({
-	list,
+	filters,
+	stops,
 	title,
 	mixin,
 	onAllStops,
 	onStop,
 	onOnly
 }) => {
-	const { length } = list
+	// console.log('New filters: ', filters)
+	// console.log('New stops: ', stops)
+	const _stops = [Infinity, ...stops]
+	const { length } = stops
 	const className =  mixin ?
 		`stop-list ${mixin}` :
 		'stop-list'
@@ -28,13 +33,16 @@ const StopsList = ({
 				length ?
 					<div className='stop-list__container'>
 						{
-							list.map((item, index) => {
-								const { text, stops } = item
+							_stops.map((stop, index) => {
+								const text = isFinite(stop)
+									? pluralize(stop, 'Без пересадок', '%d пересадка', '%d пересадки', '%d пересадок')
+									: 'Все'
+
 								return (
 									<div key={index} className='stop-list__item'>
 										{
 											index ?
-												<button type='reset' className='stop-list__only' data-stops={index - 1} onClick={onOnly}>
+												<button type='button' className='stop-list__only' data-stops={index - 1} onClick={onOnly}>
 													Только
 												</button> :
 												null
@@ -49,7 +57,11 @@ const StopsList = ({
 													type='checkbox'
 													id={`stop-list__input_${index}`}
 													onChange={index ? onStop : onAllStops}
-													value={stops} />
+													value={stop}
+													checked={
+														index
+															? filters.indexOf(stop) !== -1
+															: filters.length === stops.length } />
 												<div className='stop-list__face-wrapper'>
 													<div className='stop-list__face' />
 												</div>
@@ -70,7 +82,8 @@ const StopsList = ({
 }
 
 StopsList.defaultProps = {
-	list: [],
+	filters: [],
+	stops: [],
 	title: '',
 	mixin: '',
 	onStop: f => f,
@@ -79,7 +92,8 @@ StopsList.defaultProps = {
 }
 
 StopsList.propTypes = {
-	list: PropTypes.array,
+	filters: PropTypes.array,
+	stops: PropTypes.array,
 	title: PropTypes.string,
 	mixin: PropTypes.string,
 	onStop: PropTypes.func,

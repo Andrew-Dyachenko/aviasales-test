@@ -20,13 +20,13 @@ const buttons = [
 	}
 ]
 
-const list = [
-	{text: 'Все', stops: Infinity},
-	{text: 'Без пересадок', stops: 0},
-	{text: '1 пересадка', stops: 1},
-	{text: '2 пересадки', stops: 2},
-	{text: '3 пересадки', stops: 3}
-]
+// const list = [
+// 	{text: 'Все', stops: Infinity},
+// 	{text: 'Без пересадок', stops: 0},
+// 	{text: '1 пересадка', stops: 1},
+// 	{text: '2 пересадки', stops: 2},
+// 	{text: '3 пересадки', stops: 3}
+// ]
 
 const FilledTicketsList = DataComponent(
 		TicketsList,
@@ -50,7 +50,6 @@ const Tickets = ({ mixin }) => {
 					<div className='filter__tile filter__tile--nopadding'>
 						<Stops
 							mixin='filter__stop-list'
-							list={list}
 							title='КОЛИЧЕСТВО ПЕРЕСАДОК' />
 					</div>
 				</Filter>

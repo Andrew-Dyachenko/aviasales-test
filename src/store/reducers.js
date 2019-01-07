@@ -2,6 +2,7 @@
 import C from './constants'
 import { compose } from 'redux'
 import { sortArrayByNumeric } from '../helpers/sort'
+import getStopsFromTickets from '../helpers/getStops'
 
 const fetchingTickets = (state = { fetching: false, fetched: false, error: false }, action = {}) => {
 	switch (action.type) {
@@ -42,7 +43,8 @@ export const tickets = (state = { list: [], fetch: fetchingTickets() }, action) 
 		case C.FETCH_TICKETS_SUCCESS:
 			return {
 				list: action.tickets,
-				fetch: fetchingTickets({}, action)
+				fetch: fetchingTickets({}, action),
+				stops: getStopsFromTickets(action.tickets)
 			}
 
 		case C.FETCH_TICKETS_ERROR:
@@ -56,7 +58,7 @@ export const tickets = (state = { list: [], fetch: fetchingTickets() }, action) 
 	}
 }
 
-export const stops = (state = [], action) => {
+export const stopsFilter = (state = [], action) => {
 	let { stops } = action
 	stops = Array.isArray(stops)
 		? stops
@@ -91,9 +93,9 @@ export const stops = (state = [], action) => {
 	}
 }
 
-const stopsWithSort = compose(
+const stopsFilterWithSort = compose(
 	sortArrayByNumeric,
-	stops
+	stopsFilter
 )
 
 export const filters = (state = {}, action) => {
@@ -101,22 +103,22 @@ export const filters = (state = {}, action) => {
 		case C.FILTER_BY_STOPS:
 			return {
 				...state,
-				stops: stopsWithSort(state.stops, action)
+				stops: stopsFilterWithSort(state.stops, action)
 			}
 		case C.FILTER_BY_DEFAULT_STOPS:
 			return {
 				...state,
-				stops: stops([], action)
+				stops: stopsFilter([], action)
 			}
 		case C.FILTER_BY_ONLY_STOPS:
 			return {
 				...state,
-				stops: stops(state.stops, action)
+				stops: stopsFilter(state.stops, action)
 			}
 		case C.FILTER_BY_ALL_STOPS:
 			return {
 				...state,
-				stops: stopsWithSort([], action)
+				stops: stopsFilterWithSort([], action)
 			}
 		default:
 			return state
