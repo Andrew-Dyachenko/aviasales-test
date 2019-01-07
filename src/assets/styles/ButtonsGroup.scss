@@ -28,7 +28,8 @@
 		&:first-child {
 			#{$buttons-group} {
 				&__label {
-					border-radius: 5px 0 0 5px;
+					border-bottom-left-radius: 5px;
+					border-top-left-radius: 5px;
 				}
 			}
 		}
@@ -36,7 +37,8 @@
 		&:last-child {
 			#{$buttons-group} {
 				&__label {
-					border-radius: 0 5px 5px 0;
+					border-bottom-right-radius: 5px;
+					border-top-right-radius: 5px;
 				}
 			}
 		}
