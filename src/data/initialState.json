@@ -5,9 +5,10 @@
 			"fetching": false,
 			"fetched": false,
 			"error": false
-		}
+		},
+		"stops": []
 	},
 	"filters": {
-		"stops": ["0","1","2"]
+		"stops": [0,1,2]
 	}
 }
