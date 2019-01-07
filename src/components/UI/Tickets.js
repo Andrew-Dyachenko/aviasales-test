@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Tickets.scss'
+import '../../assets/styles/Tickets.scss'
 import TicketsList from './TicketsList'
-import DataComponent from './DataComponent'
+import DataComponent from '../DataComponent'
 import Filter from './Filter'
+import { Stops } from '../containers'
 import ButtonsGroup from './ButtonsGroup'
-import CheckList from './CheckList'
 
 const buttons = [
 	{
@@ -20,13 +20,13 @@ const buttons = [
 	}
 ]
 
-const list = [
-	{text: 'Все'},
-	{text: 'Без пересадок'},
-	{text: '1 пересадка'},
-	{text: '2 пересадки '},
-	{text: '3 пересадки'}
-]
+// const list = [
+// 	{text: 'Все', stops: Infinity},
+// 	{text: 'Без пересадок', stops: 0},
+// 	{text: '1 пересадка', stops: 1},
+// 	{text: '2 пересадки', stops: 2},
+// 	{text: '3 пересадки', stops: 3}
+// ]
 
 const FilledTicketsList = DataComponent(
 		TicketsList,
@@ -48,9 +48,8 @@ const Tickets = ({ mixin }) => {
 							title='ВАЛЮТА' />
 					</div>
 					<div className='filter__tile filter__tile--nopadding'>
-						<CheckList
-							mixin='filter__check-list'
-							list={list}
+						<Stops
+							mixin='filter__stop-list'
 							title='КОЛИЧЕСТВО ПЕРЕСАДОК' />
 					</div>
 				</Filter>

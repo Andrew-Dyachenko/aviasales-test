@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import Loader from './Loader'
+import Loader from './UI/Loader'
 
 const DataComponent = (ComposedComponent, url) =>
 	class DataComponent extends Component {
@@ -44,8 +44,7 @@ DataComponent.propTypes = {
 }
 
 DataComponent.defaultProps = {
-	ComposedComponent: () =>
-		React.createElement('div', {displayName: 'ComposedComponent'}, 'Composed component'),
+	ComposedComponent: () => React.createElement('div', {displayName: 'ComposedComponent'}, 'Composed component'),
 	url: ''
 }
 
