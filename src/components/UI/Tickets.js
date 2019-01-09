@@ -2,10 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import '../../assets/styles/Tickets.scss'
 import TicketsList from './TicketsList'
-import DataComponent from '../DataComponent'
 import Filter from './Filter'
-import { Stops } from '../containers'
-import ButtonsGroup from './ButtonsGroup'
+import { Stops, Valutas } from '../containers'
 
 const buttons = [
 	{
@@ -20,19 +18,6 @@ const buttons = [
 	}
 ]
 
-// const list = [
-// 	{text: 'Все', stops: Infinity},
-// 	{text: 'Без пересадок', stops: 0},
-// 	{text: '1 пересадка', stops: 1},
-// 	{text: '2 пересадки', stops: 2},
-// 	{text: '3 пересадки', stops: 3}
-// ]
-
-const FilledTicketsList = DataComponent(
-		TicketsList,
-		'../data/tickets.json'
-	)
-
 const Tickets = ({ mixin }) => {
 	const className = mixin ?
 		`tickets ${mixin}` :
@@ -42,7 +27,7 @@ const Tickets = ({ mixin }) => {
 			<aside className='tickets__aside'>
 				<Filter>
 					<div className='filter__tile'>
-						<ButtonsGroup
+						<Valutas
 							buttons={buttons}
 							name='valuta-radio-group'
 							title='ВАЛЮТА' />
@@ -55,7 +40,7 @@ const Tickets = ({ mixin }) => {
 				</Filter>
 			</aside>
 			<main className='tickets__main'>
-				<FilledTicketsList />
+				<TicketsList />
 			</main>
 		</div>
 	)

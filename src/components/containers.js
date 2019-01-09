@@ -1,7 +1,12 @@
 /*eslint no-console: 0*/
 import { connect } from 'react-redux'
 import StopList from '../components/UI/StopList'
-import { filterByStops, filterByOnlyStops, filterByAllStops } from '../store/actions'
+import ButtonsGroup from './UI/ButtonsGroup'
+import {
+	filterByStops,
+	filterByOnlyStops,
+	filterByAllStops,
+	setBaseValuta } from '../store/actions'
 
 export const Stops = connect(
 	state =>
@@ -31,3 +36,14 @@ export const Stops = connect(
 			}
 		})
 )(StopList)
+
+export const Valutas = connect(
+	null,
+	dispatch => ({
+		onCheck(event) {
+			const { target } = event
+			const { value } = target
+			dispatch(setBaseValuta(value))
+		}
+	})
+)(ButtonsGroup)
