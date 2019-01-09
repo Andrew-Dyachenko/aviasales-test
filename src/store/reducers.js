@@ -4,61 +4,85 @@ import { compose } from 'redux'
 import { sortArrayByNumeric } from '../helpers/sort'
 import getStopsFromTickets from '../helpers/getStops'
 
-const fetchingTickets = (state = { fetching: false, fetched: false, error: false }, action = {}) => {
+const dafaultFetchState = () => ({
+	fetching: false,
+	fetched: false,
+	error: false
+})
+const startFetchState = () => ({
+	fetching: true,
+	fetched: false,
+	error: false
+})
+const successFetchState = () => ({
+	fetching: false,
+	fetched: true,
+	error: false
+})
+const errorFetchState = () => ({
+	fetching: false,
+	fetched: false,
+	error: true
+})
+
+const fetch = (action = {}, state = dafaultFetchState()) => {
 	switch (action.type) {
 		case C.FETCH_TICKETS_START:
-			return {
-				fetching: true,
-				fetched: false,
-				error: false
-			}
+			return startFetchState()
 
 		case C.FETCH_TICKETS_SUCCESS:
-			return {
-				fetching: false,
-				fetched: true,
-				error: false
-			}
+			return successFetchState()
 
 		case C.FETCH_TICKETS_ERROR:
-			return {
-				fetching: false,
-				fetched: false,
-				error: true
-			}
+			return errorFetchState()
+
+		case C.FETCH_VALUTA_START:
+			return startFetchState()
+
+		case C.FETCH_VALUTA_SUCCESS:
+			return successFetchState()
+
+		case C.FETCH_VALUTA_ERROR:
+			return errorFetchState()
 
 		default:
 			return state
 	}
 }
 
-export const tickets = (state = { list: [], fetch: fetchingTickets() }, action) => {
+export const tickets = (state = { list: [], stops: [], fetch: fetch() }, action) => {
 	switch (action.type) {
 		case C.FETCH_TICKETS_START:
 			return {
 				...state,
-				fetch: fetchingTickets({}, action)
+				fetch: fetch(action)
 			}
 
 		case C.FETCH_TICKETS_SUCCESS:
 			return {
+				...state,
+				fetch: fetch(action)
+			}
+
+		case C.FETCH_TICKETS_ERROR:
+			return {
+				...state,
+				fetch: fetch(action)
+			}
+
+		case C.SET_TICKETS:
+			return {
+				...state,
 				list: action.tickets,
-				fetch: fetchingTickets({}, action),
 				stops: getStopsFromTickets(action.tickets)
 			}
 
-		case C.FETCH_TICKETS_ERROR:
-			return {
-				...state,
-				fetch: fetchingTickets({}, action)
-			}
-
 		default:
 			return state
 	}
 }
 
-export const stopsFilter = (state = [], action) => {
+export const stopsFilter = (action, state = []) => {
 	let { stops } = action
 	stops = Array.isArray(stops)
 		? stops
@@ -103,23 +127,93 @@ export const filters = (state = {}, action) => {
 		case C.FILTER_BY_STOPS:
 			return {
 				...state,
-				stops: stopsFilterWithSort(state.stops, action)
+				stops: stopsFilterWithSort(action, state.stops)
 			}
+
 		case C.FILTER_BY_DEFAULT_STOPS:
 			return {
 				...state,
-				stops: stopsFilter([], action)
+				stops: stopsFilter(action)
 			}
+
 		case C.FILTER_BY_ONLY_STOPS:
 			return {
 				...state,
-				stops: stopsFilter(state.stops, action)
+				stops: stopsFilter(action, state.stops)
 			}
+
 		case C.FILTER_BY_ALL_STOPS:
 			return {
 				...state,
-				stops: stopsFilterWithSort([], action)
+				stops: stopsFilterWithSort(action)
 			}
+
+		default:
+			return state
+	}
+}
+
+const baseValuta = (action = {}, state = 'RUB') => {
+	switch (action.type) {
+		case C.SET_DEFAULT_VALUTA:
+			return 'RUB'
+
+		case C.SET_BASE_VALUTA:
+			return action.base
+
+		default:
+			return state
+	}
+}
+
+const valutaRates = (action = {}, state = {}) => {
+	switch (action.type) {
+		case C.SET_VALUTA_RATES:
+			return action.rates
+
+		default:
+			return state
+	}
+}
+
+export const valuta = (state = { rates: valutaRates(), base: baseValuta(), fetch: fetch() }, action) => {
+	switch (action.type) {
+		case C.FETCH_VALUTA_START:
+			return {
+				...state,
+				fetch: fetch(action)
+			}
+
+		case C.FETCH_VALUTA_SUCCESS:
+			return {
+				...state,
+				fetch: fetch(action)
+			}
+
+		case C.FETCH_VALUTA_ERROR:
+			return {
+				...state,
+				fetch: fetch(action)
+			}
+
+		case C.SET_DEFAULT_VALUTA:
+			return {
+				...state,
+				base: baseValuta(action)
+			}
+
+		case C.SET_BASE_VALUTA:
+			return {
+				...state,
+				base: baseValuta(action)
+			}
+
+		case C.SET_VALUTA_RATES:
+			return {
+				...state,
+				rates: valutaRates(action)
+			}
+
 		default:
 			return state
 	}
