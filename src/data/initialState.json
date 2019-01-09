@@ -11,7 +11,10 @@
 	"filters": {
 		"stops": [0,1,2]
 	},
-	"valuta": {
+	"modificators": {
+		"currencies": ["RUB", "USD", "EUR"]
+	},
+	"currencies": {
 		"rates": [],
 		"base": "RUB",
 		"fetch": {
