@@ -1,14 +1,23 @@
 {
 	"tickets": {
 		"list": [],
+		"stops": [],
 		"fetch": {
 			"fetching": false,
 			"fetched": false,
 			"error": false
-		},
-		"stops": []
+		}
 	},
 	"filters": {
 		"stops": [0,1,2]
+	},
+	"valuta": {
+		"rates": [],
+		"base": "RUB",
+		"fetch": {
+			"fetching": false,
+			"fetched": false,
+			"error": false
+		}
 	}
 }
