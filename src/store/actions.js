@@ -3,9 +3,9 @@ import C from './constants'
 
 // Tickets
 
-const fetchTicketsStart = () => ({ type: C.FETCH_TICKETS_START })
+const fetchTicketsStart = () =>   ({ type: C.FETCH_TICKETS_START })
 const fetchTicketsSuccess = () => ({ type: C.FETCH_TICKETS_SUCCESS })
-const fetchTicketsError = () => ({ type: C.FETCH_TICKETS_ERROR })
+const fetchTicketsError = () =>   ({ type: C.FETCH_TICKETS_ERROR })
 
 const setTickets = tickets => ({
 	type: C.SET_TICKETS,
@@ -46,19 +46,19 @@ export const filterByAllStops = (stops, checked) => ({
 	checked
 })
 
-// Valuta
+// Currencies
 
-const fetchValutaStart = () => ({ type: C.FETCH_VALUTA_START })
-const fetchValutaSuccess = () => ({ type: C.FETCH_VALUTA_SUCCESS })
-const fetchValutaError = () => ({ type: C.FETCH_VALUTA_ERROR })
+const fetchCurrencyStart = () =>   ({ type: C.FETCH_CURRENCY_START })
+const fetchCurrencySuccess = () => ({ type: C.FETCH_CURRENCY_SUCCESS })
+const fetchCurrencyError = () =>   ({ type: C.FETCH_CURRENCY_ERROR })
 
-const setValutaRates = rates => ({
-	type: C.SET_VALUTA_RATES,
+const setCurrencyRates = rates => ({
+	type: C.SET_CURRENCY_RATES,
 	rates
 })
 
-export const fetchValuta = url => dispatch => {
-	dispatch(fetchValutaStart())
+export const fetchCurrency = url => dispatch => {
+	dispatch(fetchCurrencyStart())
 	fetch(url)
 		.then(response => response.json())
 		.then(response => {
@@ -67,17 +67,27 @@ export const fetchValuta = url => dispatch => {
 		})
 		.then(response => {
 			const { rates } = response
-			dispatch(fetchValutaSuccess())
-			dispatch(setValutaRates(rates))
+			dispatch(fetchCurrencySuccess())
+			dispatch(setCurrencyRates(rates))
 		})
-		.catch(() => dispatch(fetchValutaError()))
+		.catch(() => dispatch(fetchCurrencyError()))
 }
 
-export const setDefaultValuta = () => ({
-	type: C.SET_DEFAULT_VALUTA
+export const setDefaultCurrency = () => ({
+	type: C.SET_DEFAULT_CURRENCY
 })
 
-export const setBaseValuta = base => ({
-	type: C.SET_BASE_VALUTA,
+export const setbaseCurrency = base => ({
+	type: C.SET_BASE_CURRENCY,
 	base
+})
+
+export const addCurrencyModifier = currency => ({
+	type: C.ADD_CURRENCY_MODIFIER,
+	currency
+})
+
+export const removeCurrencyModifiers = currency => ({
+	type: C.REMOVE_CURRENCY_MODIFIER,
+	currency
 })
