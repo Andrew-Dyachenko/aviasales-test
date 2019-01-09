@@ -6,7 +6,7 @@ import {
 	filterByStops,
 	filterByOnlyStops,
 	filterByAllStops,
-	setBaseValuta } from '../store/actions'
+	setbaseCurrency } from '../store/actions'
 
 export const Stops = connect(
 	state =>
@@ -37,13 +37,15 @@ export const Stops = connect(
 		})
 )(StopList)
 
-export const Valutas = connect(
-	null,
+export const Currencies = connect(
+	state => ({
+		buttons: state.modificators.currencies
+	}),
 	dispatch => ({
 		onCheck(event) {
 			const { target } = event
 			const { value } = target
-			dispatch(setBaseValuta(value))
+			dispatch(setbaseCurrency(value))
 		}
 	})
 )(ButtonsGroup)

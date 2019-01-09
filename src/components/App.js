@@ -7,7 +7,9 @@ import '../assets/styles/App.scss'
 import Header from './UI/Header'
 import logo from '../assets/images/logo.png'
 import Tickets from './UI/Tickets'
-import { fetchTickets, fetchValuta, setDefaultValuta } from '../store/actions'
+import {
+	fetchTickets,
+	fetchCurrency } from '../store/actions'
 
 class App extends PureComponent {
 	componentDidMount() {
@@ -16,8 +18,8 @@ class App extends PureComponent {
 		if (!storage || !JSON.parse(storage).tickets.fetch.fetched)
 			this.props.fetchTickets('./tickets.json')
 
-		if (!storage || !JSON.parse(storage).valuta.fetch.fetched)
-			this.props.fetchValuta('https://api.exchangeratesapi.io/latest?base=RUB&symbols=USD,EUR')
+		if (!storage || !JSON.parse(storage).currencies.fetch.fetched)
+			this.props.fetchCurrency('https://api.exchangeratesapi.io/latest?base=RUB&symbols=USD,EUR')
 
 	}
 	render() {
@@ -37,22 +39,19 @@ class App extends PureComponent {
 }
 
 App.defaultProps = {
-	fetchValuta: f => f,
-	fetchTickets: f => f,
-	setDefaultValuta: f => f
+	fetchCurrency: f => f,
+	fetchTickets: f => f
 }
 
 App.propTypes = {
-	fetchValuta: PropTypes.func,
-	fetchTickets: PropTypes.func,
-	setDefaultValuta: PropTypes.func
+	fetchCurrency: PropTypes.func,
+	fetchTickets: PropTypes.func
 }
 
 export default connect(
 	null,
 	{
-		fetchValuta,
-		fetchTickets,
-		setDefaultValuta
+		fetchCurrency,
+		fetchTickets
 	}
 )(App)

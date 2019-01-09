@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import '../../assets/styles/Tickets.scss'
 import TicketsList from './TicketsList'
 import Filter from './Filter'
-import { Stops, Valutas } from '../containers'
+import { Stops, Currencies } from '../containers'
 
 const buttons = [
 	{
@@ -27,9 +27,9 @@ const Tickets = ({ mixin }) => {
 			<aside className='tickets__aside'>
 				<Filter>
 					<div className='filter__tile'>
-						<Valutas
+						<Currencies
 							buttons={buttons}
-							name='valuta-radio-group'
+							name='currency-radio-group'
 							title='ВАЛЮТА' />
 					</div>
 					<div className='filter__tile filter__tile--nopadding'>
