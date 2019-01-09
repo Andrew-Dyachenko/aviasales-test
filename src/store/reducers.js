@@ -27,23 +27,13 @@ const errorFetchState = () => ({
 
 const fetch = (action = {}, state = dafaultFetchState()) => {
 	switch (action.type) {
-		case C.FETCH_TICKETS_START:
-			return startFetchState()
+		case C.FETCH_TICKETS_START:    return startFetchState()
+		case C.FETCH_TICKETS_SUCCESS:  return successFetchState()
+		case C.FETCH_TICKETS_ERROR:    return errorFetchState()
 
-		case C.FETCH_TICKETS_SUCCESS:
-			return successFetchState()
-
-		case C.FETCH_TICKETS_ERROR:
-			return errorFetchState()
-
-		case C.FETCH_VALUTA_START:
-			return startFetchState()
-
-		case C.FETCH_VALUTA_SUCCESS:
-			return successFetchState()
-
-		case C.FETCH_VALUTA_ERROR:
-			return errorFetchState()
+		case C.FETCH_CURRENCY_START:   return startFetchState()
+		case C.FETCH_CURRENCY_SUCCESS: return successFetchState()
+		case C.FETCH_CURRENCY_ERROR:   return errorFetchState()
 
 		default:
 			return state
@@ -153,12 +143,12 @@ export const filters = (state = {}, action) => {
 	}
 }
 
-const baseValuta = (action = {}, state = 'RUB') => {
+const baseСurrency = (action = {}, state = 'RUB') => {
 	switch (action.type) {
-		case C.SET_DEFAULT_VALUTA:
+		case C.SET_DEFAULT_CURRENCY:
 			return 'RUB'
 
-		case C.SET_BASE_VALUTA:
+		case C.SET_BASE_CURRENCY:
 			return action.base
 
 		default:
@@ -166,9 +156,9 @@ const baseValuta = (action = {}, state = 'RUB') => {
 	}
 }
 
-const valutaRates = (action = {}, state = {}) => {
+const currencyRates = (action = {}, state = {}) => {
 	switch (action.type) {
-		case C.SET_VALUTA_RATES:
+		case C.SET_CURRENCY_CURRENCY:
 			return action.rates
 
 		default:
@@ -176,42 +166,83 @@ const valutaRates = (action = {}, state = {}) => {
 	}
 }
 
-export const valuta = (state = { rates: valutaRates(), base: baseValuta(), fetch: fetch() }, action) => {
+export const currencies = (state = { rates: currencyRates(), base: baseСurrency(), fetch: fetch() }, action) => {
 	switch (action.type) {
-		case C.FETCH_VALUTA_START:
+		case C.FETCH_CURRENCY_START:
 			return {
 				...state,
 				fetch: fetch(action)
 			}
 
-		case C.FETCH_VALUTA_SUCCESS:
+		case C.FETCH_CURRENCY_SUCCESS:
 			return {
 				...state,
 				fetch: fetch(action)
 			}
 
-		case C.FETCH_VALUTA_ERROR:
+		case C.FETCH_CURRENCY_ERROR:
 			return {
 				...state,
 				fetch: fetch(action)
 			}
 
-		case C.SET_DEFAULT_VALUTA:
+		case C.SET_DEFAULT_CURRENCY:
 			return {
 				...state,
-				base: baseValuta(action)
+				base: baseСurrency(action)
 			}
 
-		case C.SET_BASE_VALUTA:
+		case C.SET_BASE_CURRENCY:
 			return {
 				...state,
-				base: baseValuta(action)
+				base: baseСurrency(action)
 			}
 
-		case C.SET_VALUTA_RATES:
+		case C.SET_CURRENCY_CURRENCY:
 			return {
 				...state,
-				rates: valutaRates(action)
+				rates: currencyRates(action)
+			}
+
+		default:
+			return state
+	}
+}
+
+const currencyModifiers = (action = {}, state = [baseСurrency()]) => {
+	switch (action.type) {
+		case C.SET_CURRENCY_MODIFIERS:
+			return action.currencies
+
+		case C.ADD_CURRENCY_MODIFIER:
+			return [...state, action.currency]
+
+		case C.REMOVE_CURRENCY_MODIFIER:
+			return [...state].filter(currency => currency !== action.currency)
+
+		default:
+			return state
+	}
+}
+
+export const modificators = (state = {currencies: currencyModifiers()}, action) => {
+	switch (action.type) {
+		case C.SET_CURRENCY_MODIFIERS:
+			return {
+				...state,
+				currencies: currencyModifiers(action)
+			}
+
+		case C.ADD_CURRENCY_MODIFIER:
+			return {
+				...state,
+				currencies: currencyModifiers(action)
+			}
+
+		case C.REMOVE_CURRENCY_MODIFIER:
+			return {
+				...state,
+				currencies: currencyModifiers(action)
 			}
 
 		default:
