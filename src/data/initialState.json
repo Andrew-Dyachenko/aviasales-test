@@ -12,7 +12,10 @@
 		"stops": [0,1,2]
 	},
 	"modificators": {
-		"currencies": ["RUB", "USD", "EUR"]
+		"currencies": {
+			"list": ["RUB", "USD", "EUR"],
+			"currency": "RUB"
+		}
 	},
 	"currencies": {
 		"rates": [],
