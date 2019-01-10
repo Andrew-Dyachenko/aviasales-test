@@ -66,6 +66,28 @@
 				}
 			}
 		}
+
+		&:disabled {
+			+ #{$buttons-group} {
+				&__label {
+					cursor: not-allowed;
+					filter: grayscale($fibo-asymp-xxxl);
+				}
+			}
+		}
+		&:not(:disabled),
+		&:not(:checked) {
+			+ #{$buttons-group} {
+				&__label {
+					&:hover,
+					&:focus {
+						background-color: $twilight-blue;
+						border-color: $malibu;
+						z-index: 1;
+					}
+				}
+			}
+		}
 	}
 
 	&__label {
