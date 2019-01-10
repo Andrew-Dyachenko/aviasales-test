@@ -209,7 +209,18 @@ export const currencies = (state = { rates: currencyRates(), base: baseСurrency
 	}
 }
 
-const currencyModifiers = (action = {}, state = [baseСurrency()]) => {
+const currencyModifier = (action = {}, state = baseСurrency()) => {
+	console.log('currencyModifier: ', action)
+	switch (action.type) {
+		case C.SET_CURRENCY_MODIFIER:
+			return action.currency
+
+		default:
+			return state
+	}
+}
+
+const currencyModifiersList = (action = {}, state = [baseСurrency()]) => {
 	switch (action.type) {
 		case C.SET_CURRENCY_MODIFIERS:
 			return action.currencies
@@ -225,24 +236,61 @@ const currencyModifiers = (action = {}, state = [baseСurrency()]) => {
 	}
 }
 
-export const modificators = (state = {currencies: currencyModifiers()}, action) => {
+const currencyModifiers = (action = {}, state = {list: currencyModifiersList(), currency: currencyModifier()}) => {
 	switch (action.type) {
 		case C.SET_CURRENCY_MODIFIERS:
 			return {
 				...state,
-				currencies: currencyModifiers(action)
+				list: currencyModifiersList(action, state.list)
 			}
 
 		case C.ADD_CURRENCY_MODIFIER:
 			return {
 				...state,
-				currencies: currencyModifiers(action)
+				list: currencyModifiersList(action, state.list)
 			}
 
 		case C.REMOVE_CURRENCY_MODIFIER:
 			return {
 				...state,
-				currencies: currencyModifiers(action)
+				list: currencyModifiersList(action, state.list)
+			}
+
+		case C.SET_CURRENCY_MODIFIER:
+			return {
+				...state,
+				currency: currencyModifier(action, state.currency)
+			}
+
+		default:
+			return state
+	}
+}
+
+export const modificators = (state = {currencies: currencyModifiers()}, action) => {
+	switch (action.type) {
+		case C.SET_CURRENCY_MODIFIERS:
+			return {
+				...state,
+				currencies: currencyModifiers(action, state.currencies)
+			}
+
+		case C.ADD_CURRENCY_MODIFIER:
+			return {
+				...state,
+				currencies: currencyModifiers(action, state.currencies)
+			}
+
+		case C.REMOVE_CURRENCY_MODIFIER:
+			return {
+				...state,
+				currencies: currencyModifiers(action, state.currencies)
+			}
+
+		case C.SET_CURRENCY_MODIFIER:
+			return {
+				...state,
+				currencies: currencyModifiers(action, state.currencies)
 			}
 
 		default:
