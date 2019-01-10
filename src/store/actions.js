@@ -91,3 +91,13 @@ export const removeCurrencyModifiers = currency => ({
 	type: C.REMOVE_CURRENCY_MODIFIER,
 	currency
 })
+
+export const setCurrencyModifiers = currencies => ({
+	type: C.SET_CURRENCY_MODIFIERS,
+	currencies
+})
+
+export const setCurrencyModifier = currency => ({
+	type: C.SET_CURRENCY_MODIFIER,
+	currency
+})
