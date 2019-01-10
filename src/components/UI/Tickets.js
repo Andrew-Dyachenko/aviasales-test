@@ -3,20 +3,8 @@ import PropTypes from 'prop-types'
 import '../../assets/styles/Tickets.scss'
 import TicketsList from './TicketsList'
 import Filter from './Filter'
+import Modificator from './Modificator'
 import { Stops, Currencies } from '../containers'
-
-const buttons = [
-	{
-		text: 'RUB',
-		defaultChecked: true
-	},
-	{
-		text: 'USD'
-	},
-	{
-		text: 'EUR'
-	}
-]
 
 const Tickets = ({ mixin }) => {
 	const className = mixin ?
@@ -25,13 +13,14 @@ const Tickets = ({ mixin }) => {
 	return (
 		<div className={className}>
 			<aside className='tickets__aside'>
-				<Filter>
-					<div className='filter__tile'>
+				<Modificator>
+					<div className='modificator__tile'>
 						<Currencies
-							buttons={buttons}
 							name='currency-radio-group'
 							title='ВАЛЮТА' />
 					</div>
+				</Modificator>
+				<Filter>
 					<div className='filter__tile filter__tile--nopadding'>
 						<Stops
 							mixin='filter__stop-list'
