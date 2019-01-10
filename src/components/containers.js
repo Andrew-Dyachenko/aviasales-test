@@ -6,7 +6,7 @@ import {
 	filterByStops,
 	filterByOnlyStops,
 	filterByAllStops,
-	setbaseCurrency } from '../store/actions'
+	setCurrencyModifier } from '../store/actions'
 
 export const Stops = connect(
 	state =>
@@ -38,14 +38,32 @@ export const Stops = connect(
 )(StopList)
 
 export const Currencies = connect(
-	state => ({
-		buttons: state.modificators.currencies
-	}),
+	state => {
+		const { list } = state.modificators.currencies
+		const buttons = list.map(currency => {
+			const text = currency
+			const isBase = currency === state.currencies.base
+			const defaultChecked = currency === state.modificators.currencies.currency
+			const disabled = isBase
+				? false
+				: (state.currencies.fetch.fetching || state.currencies.fetch.error)
+					? true
+					: false
+			return ({
+				text,
+				defaultChecked,
+				disabled
+			})
+		})
+		return ({
+			buttons
+		})
+	},
 	dispatch => ({
 		onCheck(event) {
 			const { target } = event
 			const { value } = target
-			dispatch(setbaseCurrency(value))
+			dispatch(setCurrencyModifier(value))
 		}
 	})
 )(ButtonsGroup)
