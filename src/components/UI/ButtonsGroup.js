@@ -18,7 +18,7 @@ const ButtonsGroup = ({ buttons, name, title, onCheck }) => {
 					<div className='buttons-group__container'>
 						{
 							buttons.map((button, index) => {
-								const { text, defaultChecked } = button
+								const { text, defaultChecked, disabled } = button
 								return (
 									<div key={index} className='buttons-group__item'>
 										<input
@@ -28,7 +28,8 @@ const ButtonsGroup = ({ buttons, name, title, onCheck }) => {
 											name={name}
 											id={`buttons-group__input_${index}`}
 											onChange={onCheck}
-											defaultChecked={defaultChecked} />
+											defaultChecked={defaultChecked}
+											disabled={disabled} />
 										<label htmlFor={`buttons-group__input_${index}`} className='buttons-group__label'>
 											<span className='buttons-group__text'>
 												{text}
