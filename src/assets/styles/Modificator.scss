@@ -1,35 +1,23 @@
 @import './conf/configs';
 
-.modificator {
-	background-color: $white;
-	border-radius: 5px;
-	box-shadow: 0 1px 4px rgba(91, 137, 164, .25);
-	display: grid;
-	grid-row-gap: 0;
-	width: 232px;
+// .modificator {
+// 	display: grid;
+// 	grid-row-gap: 0;
 
-	&__tile {
-		padding: 15px;
-	
-		&--nopadding {
-			padding: 0;
-		}
-	}
+// 	&__stop-list {
+// 		padding-bottom: 15px;
+// 		padding-top: 15px;
 
-	&__stop-list {
-		padding-bottom: 15px;
-		padding-top: 15px;
+// 		.stop-list {
+// 			&__title {
+// 				padding-left: 15px;
+// 				padding-right: 15px;
+// 			}
 
-		.stop-list {
-			&__title {
-				padding-left: 15px;
-				padding-right: 15px;
-			}
-
-			&__label {
-				padding-left: 15px;
-				padding-right: 15px;
-			}
-		}
-	}
-}
+// 			&__label {
+// 				padding-left: 15px;
+// 				padding-right: 15px;
+// 			}
+// 		}
+// 	}
+// }
