@@ -11,11 +11,12 @@
 	}
 
 	&__title {
+		$lh: 19 / 12;
 		color: $tundora;
 		font-size: 12px;
 		font-weight: 600;
 		letter-spacing: .5px;
-		line-height: 1.583333333;
+		line-height: $lh;
 		margin: 0;
 	}
 
