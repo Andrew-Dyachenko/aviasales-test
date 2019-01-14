@@ -210,7 +210,6 @@ export const currencies = (state = { rates: currencyRates(), base: baseСurrency
 }
 
 const currencyModifier = (action = {}, state = baseСurrency()) => {
-	console.log('currencyModifier: ', action)
 	switch (action.type) {
 		case C.SET_CURRENCY_MODIFIER:
 			return action.currency
