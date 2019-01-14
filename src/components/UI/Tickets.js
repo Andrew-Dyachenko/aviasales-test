@@ -12,21 +12,21 @@ const Tickets = ({ mixin }) => {
 		'tickets'
 	return (
 		<div className={className}>
-			<aside className='tickets__aside'>
-				<Modificator>
-					<div className='modificator__tile'>
+			<aside className='aside tickets__aside'>
+				<div className='aside__item'>
+					<Modificator>
 						<Currencies
 							name='currency-radio-group'
 							title='ВАЛЮТА' />
-					</div>
-				</Modificator>
-				<Filter>
-					<div className='filter__tile filter__tile--nopadding'>
+					</Modificator>
+				</div>
+				<div className='aside__item aside__item--no-padding'>
+					<Filter>
 						<Stops
 							mixin='filter__stop-list'
 							title='КОЛИЧЕСТВО ПЕРЕСАДОК' />
-					</div>
-				</Filter>
+					</Filter>
+				</div>
 			</aside>
 			<main className='tickets__main'>
 				<TicketsList />
