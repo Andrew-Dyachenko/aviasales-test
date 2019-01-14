@@ -37,6 +37,17 @@ export const Stops = connect(
 		})
 )(StopList)
 
+const hasRateData = (rates = [], currency = 'RUB', base = 'RUB') =>
+	rates.some(rateObj =>
+		Object.keys(rateObj).some(rate =>
+			rate === base
+				? false
+				: rates.indexOf(currency) === -1
+					? false
+					: true
+		)
+	)
+
 export const Currencies = connect(
 	state => {
 		const { list } = state.modificators.currencies
@@ -46,7 +57,11 @@ export const Currencies = connect(
 			const defaultChecked = currency === state.modificators.currencies.currency
 			const disabled = isBase
 				? false
-				: (state.currencies.fetch.fetching || state.currencies.fetch.error)
+				: (
+					state.currencies.fetch.fetching ||
+					state.currencies.fetch.error ||
+					!hasRateData(state.currencies.rates, currency)
+				)
 					? true
 					: false
 			return ({
