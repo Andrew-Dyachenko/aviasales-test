@@ -34,6 +34,7 @@ const ButtonsGroup = ({ buttons, name, title, onCheck }) => {
 											<span className='buttons-group__text'>
 												{text}
 											</span>
+											<div className='buttons-group__state'></div>
 										</label>
 									</div>
 								)
@@ -50,6 +51,7 @@ ButtonsGroup.defaultProps = {
 	buttons: [],
 	name: 'radio-group',
 	title: '',
+	fetching: false,
 	onCheck: f => f
 }
 
@@ -57,6 +59,7 @@ ButtonsGroup.propTypes = {
 	buttons: PropTypes.array,
 	name: PropTypes.string,
 	title: PropTypes.string,
+	fetching: PropTypes.bool,
 	onCheck: PropTypes.func
 }
 
