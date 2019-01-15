@@ -158,7 +158,7 @@ const baseСurrency = (action = {}, state = 'RUB') => {
 
 const currencyRates = (action = {}, state = {}) => {
 	switch (action.type) {
-		case C.SET_CURRENCY_CURRENCY:
+		case C.SET_CURRENCY_RATES:
 			return action.rates
 
 		default:
@@ -198,7 +198,7 @@ export const currencies = (state = { rates: currencyRates(), base: baseСurrency
 				base: baseСurrency(action)
 			}
 
-		case C.SET_CURRENCY_CURRENCY:
+		case C.SET_CURRENCY_RATES:
 			return {
 				...state,
 				rates: currencyRates(action)
