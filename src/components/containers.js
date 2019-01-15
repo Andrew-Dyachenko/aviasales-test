@@ -12,7 +12,8 @@ export const Stops = connect(
 	state =>
 		({
 			filters: state.filters.stops,
-			stops: state.tickets.stops
+			stops: state.tickets.stops,
+			fetching: state.tickets.fetch.fetching
 		}),
 	dispatch =>
 		({
@@ -37,15 +38,11 @@ export const Stops = connect(
 		})
 )(StopList)
 
-const hasRateData = (rates = [], currency = 'RUB', base = 'RUB') =>
-	rates.some(rateObj =>
-		Object.keys(rateObj).some(rate =>
-			rate === base
-				? false
-				: rates.indexOf(currency) === -1
-					? false
-					: true
-		)
+const hasRateData = (rates = {}, currency, base = 'RUB') =>
+	Object.keys(rates).some((rate, index, array) =>
+		rate === base
+			? true
+			: array.indexOf(currency) !== -1
 	)
 
 export const Currencies = connect(
@@ -60,7 +57,7 @@ export const Currencies = connect(
 				: (
 					state.currencies.fetch.fetching ||
 					state.currencies.fetch.error ||
-					!hasRateData(state.currencies.rates, currency)
+					!hasRateData(state.currencies.rates, currency, state.currencies.base)
 				)
 					? true
 					: false
@@ -71,7 +68,8 @@ export const Currencies = connect(
 			})
 		})
 		return ({
-			buttons
+			buttons,
+			fetching: state.currencies.fetch.fetching
 		})
 	},
 	dispatch => ({
