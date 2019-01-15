@@ -19,7 +19,8 @@ class App extends PureComponent {
 			this.props.fetchTickets('./tickets.json')
 
 		if (!storage || !JSON.parse(storage).currencies.fetch.fetched)
-			this.props.fetchCurrency('https://api.exchangeratesapi.io/latest?base=RUB&symbols=USD,EUR')
+			// this.props.fetchCurrency('https://api.exchangeratesapi.io/latest?base=RUB&symbols=USD,EUR')
+			this.props.fetchCurrency('./currency.json')
 
 	}
 	render() {
