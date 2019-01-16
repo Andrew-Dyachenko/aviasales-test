@@ -50,7 +50,7 @@ export const Currencies = connect(
 			const text = currency
 			const isBase = currency === state.currencies.base
 			const defaultChecked = currency === state.modificators.currencies.currency
-			console.log(`currency: ${currency}: `, hasRateData(state.currencies.rates, currency, state.currencies.base))
+			// console.log(`currency: ${currency}: `, hasRateData(state.currencies.rates, currency, state.currencies.base))
 			const disabled = isBase
 				? false
 				: (
