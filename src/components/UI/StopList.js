@@ -15,7 +15,7 @@ const StopsList = ({
 	onStop,
 	onOnly
 }) => {
-	console.log('fetching: ', fetching)
+	// console.log('fetching: ', fetching)
 	const _stops = [Infinity, ...stops]
 	const { length } = stops
 	const className =  mixin ?
