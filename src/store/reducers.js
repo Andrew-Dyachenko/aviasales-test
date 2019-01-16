@@ -3,27 +3,11 @@ import C from './constants'
 import { compose } from 'redux'
 import { sortArrayByNumeric } from '../helpers/sort'
 import getStopsFromTickets from '../helpers/getStops'
-
-const dafaultFetchState = () => ({
-	fetching: false,
-	fetched: false,
-	error: false
-})
-const startFetchState = () => ({
-	fetching: true,
-	fetched: false,
-	error: false
-})
-const successFetchState = () => ({
-	fetching: false,
-	fetched: true,
-	error: false
-})
-const errorFetchState = () => ({
-	fetching: false,
-	fetched: false,
-	error: true
-})
+import {
+	dafaultFetchState,
+	startFetchState,
+	successFetchState,
+	errorFetchState } from '../helpers/fetchStates'
 
 const fetch = (action = {}, state = dafaultFetchState()) => {
 	switch (action.type) {
