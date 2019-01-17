@@ -14,13 +14,13 @@ export const setTickets = tickets => ({
 
 // Filters
 
-export const filterByStops = (stops = [], checked = false) => ({
+export const filterByStops = (stops, checked) => ({
 	type: C.FILTER_BY_STOPS,
 	stops,
 	checked
 })
 
-export const filterByOnlyStops = (stops = []) => ({
+export const filterByOnlyStops = (stops) => ({
 	type: C.FILTER_BY_ONLY_STOPS,
 	stops
 })
@@ -29,7 +29,7 @@ export const filterByDefaultStops = () => ({
 	type: C.FILTER_BY_DEFAULT_STOPS
 })
 
-export const filterByAllStops = (stops = [], checked = false) => ({
+export const filterByAllStops = (stops, checked) => ({
 	type: C.FILTER_BY_ALL_STOPS,
 	stops,
 	checked
@@ -41,7 +41,7 @@ export const fetchCurrencyStart = () =>   ({ type: C.FETCH_CURRENCY_START })
 export const fetchCurrencySuccess = () => ({ type: C.FETCH_CURRENCY_SUCCESS })
 export const fetchCurrencyError = () =>   ({ type: C.FETCH_CURRENCY_ERROR })
 
-export const setCurrencyRates = rates => ({
+export const setCurrencyRates = (rates) => ({
 	type: C.SET_CURRENCY_RATES,
 	rates
 })
