@@ -10,68 +10,108 @@ import {
 	filterByAllStops,
 	fetchCurrencyStart,
 	fetchCurrencySuccess,
-	fetchCurrencyError } from '../../store/actions'
+	fetchCurrencyError,
+	setCurrencyRates,
+	setDefaultCurrency,
+	setbaseCurrency,
+	addCurrencyModifier,
+	removeCurrencyModifiers,
+	setCurrencyModifier,
+	setCurrencyModifiers } from '../../store/actions'
 
 import tickets from '../../../public/tickets'
+import { rates } from '../../../public/currency'
 
 describe('Action Creators', () => {
-	describe('Fetch tickets action creators', () => {
-		describe('Start action creator', () => {
-			it('Should return start action object', () => {
-				const result = fetchTicketsStart()
-				expect(result)
-					.toEqual({
-						type: C.FETCH_TICKETS_START
-					})
-			})
-		})
-		describe('Success action creator', () => {
-			it('Should return success action object', () => {
-				const result = fetchTicketsSuccess()
-				expect(result)
-					.toEqual({
-						type: C.FETCH_TICKETS_SUCCESS
-					})
-			})
-		})
-		describe('Error action creator', () => {
-			it('Should return error action object', () => {
-				const result = fetchTicketsError()
-				expect(result)
-					.toEqual({
-						type: C.FETCH_TICKETS_ERROR
-					})
-			})
-		})
-	})
-	describe('Set tickets action', () => {
-		it('Should return plain action object', () => {
-			const setTicketsAction = setTickets(tickets)
-			expect(setTicketsAction)
-				.toEqual({
-					type: C.SET_TICKETS,
-					tickets
+
+	// Fetch
+
+	describe('Fetch', () => {
+		describe('Tickets', () => {
+			describe('Start action', () => {
+				it('Should return start action object', () => {
+					const result = fetchTicketsStart()
+					expect(result)
+						.toEqual({
+							type: C.FETCH_TICKETS_START
+						})
 				})
+			})
+			describe('Success action', () => {
+				it('Should return success action object', () => {
+					const result = fetchTicketsSuccess()
+					expect(result)
+						.toEqual({
+							type: C.FETCH_TICKETS_SUCCESS
+						})
+				})
+			})
+			describe('Error action', () => {
+				it('Should return error action object', () => {
+					const result = fetchTicketsError()
+					expect(result)
+						.toEqual({
+							type: C.FETCH_TICKETS_ERROR
+						})
+				})
+			})
+		})
+		describe('Currencies', () => {
+			describe('Start action', () => {
+				it('Should return start action object', () => {
+					const fetchCurrencyStartAction = fetchCurrencyStart()
+					expect(fetchCurrencyStartAction)
+						.toEqual({
+							type: C.FETCH_CURRENCY_START
+						})
+				})
+			})
+			describe('Success action', () => {
+				it('Should return success action object', () => {
+					const fetchCurrencySuccessAction = fetchCurrencySuccess()
+					expect(fetchCurrencySuccessAction)
+						.toEqual({
+							type: C.FETCH_CURRENCY_SUCCESS
+						})
+				})
+			})
+			describe('Error action', () => {
+				it('Should return error action object', () => {
+					const fetchCurrencyErrorAction = fetchCurrencyError()
+					expect(fetchCurrencyErrorAction)
+						.toEqual({
+							type: C.FETCH_CURRENCY_ERROR
+						})
+				})
+			})
 		})
 	})
-	describe('Filter actions', () => {
-		describe('Filter by stops action', () => {
+
+	// Tickets
+
+	describe('Tickets', () => {
+		describe('Set tickets', () => {
+			it('Should return plain object', () => {
+				const setTicketsAction = setTickets(tickets)
+				expect(setTicketsAction)
+					.toEqual({
+						type: C.SET_TICKETS,
+						tickets
+					})
+			})
+		})
+	})
+
+	// Filters
+
+	describe('Filters', () => {
+		describe('Stops', () => {
 			it('Should return action object with correct type', () => {
 				const filterByStopsAction = filterByStops()
 				expect(filterByStopsAction.type)
 					.toEqual(C.FILTER_BY_STOPS)
 			})
-			it('Should return epmty stops by default', () => {
-				const filterByStopsAction = filterByStops()
-				expect(filterByStopsAction.stops)
-					.toEqual([])
-			})
-			it('Should return checked false by default', () => {
-				const filterByStopsAction = filterByStops()
-				expect(filterByStopsAction.checked)
-					.toBeFalsy()
-			})
-			it('Should return plain action object with stops of array', () => {
+			it('Should return plain object with stops of array', () => {
 				const stops = [0,1,2,3]
 				const checked = true
 				const filterByStopsAction = filterByStops(stops, checked)
@@ -82,7 +122,7 @@ describe('Action Creators', () => {
 						checked
 					})
 			})
-			it('Should return plain action object with stop number', () => {
+			it('Should return plain object with stop number', () => {
 				const stops = 0
 				const checked = true
 				const filterByStopsAction = filterByStops(stops, checked)
@@ -94,18 +134,13 @@ describe('Action Creators', () => {
 					})
 			})
 		})
-		describe('Filter by only stops action', () => {
+		describe('Filter by only stops', () => {
 			it('Should return action object with correct type', () => {
 				const filterByOnlyStopsAction = filterByOnlyStops()
 				expect(filterByOnlyStopsAction.type)
 					.toEqual(C.FILTER_BY_ONLY_STOPS)
 			})
-			it('Should return epmty stops by default', () => {
-				const filterByOnlyStopsAction = filterByOnlyStops()
-				expect(filterByOnlyStopsAction.stops)
-					.toEqual([])
-			})
-			it('Should return plain action object with stops of array', () => {
+			it('Should return plain object with stops of array', () => {
 				const stops = [0,1,2,3]
 				const filterByOnlyStopsAction = filterByOnlyStops(stops)
 				expect(filterByOnlyStopsAction)
@@ -114,7 +149,7 @@ describe('Action Creators', () => {
 						stops
 					})
 			})
-			it('Should return plain action object with stop number', () => {
+			it('Should return plain object with stop number', () => {
 				const stops = 0
 				const filterByOnlyStopsAction = filterByOnlyStops(stops)
 				expect(filterByOnlyStopsAction)
@@ -124,28 +159,18 @@ describe('Action Creators', () => {
 					})
 			})
 		})
-		describe('Filter by default stops action', () => {
+		describe('Filter by default stops', () => {
 			it('Should return action object with correct type', () => {
 				const filterByDefaultStopsAction = filterByDefaultStops()
 				expect(filterByDefaultStopsAction)
 					.toEqual({type: C.FILTER_BY_DEFAULT_STOPS })
 			})
 		})
-		describe('Filter by all stops action', () => {
+		describe('Filter by all stops', () => {
 			it('Should return action object with correct type', () => {
 				const filterByAllStopsAction = filterByAllStops()
 				expect(filterByAllStopsAction.type)
 					.toEqual(C.FILTER_BY_ALL_STOPS)
-			})
-			it('Should return epmty stops by default', () => {
-				const filterByAllStopsAction = filterByAllStops()
-				expect(filterByAllStopsAction.stops)
-					.toEqual([])
-			})
-			it('Should return checked false by default', () => {
-				const filterByAllStopsAction = filterByAllStops()
-				expect(filterByAllStopsAction.checked)
-					.toBeFalsy()
 			})
 			it('Should return plain action object with stops of array', () => {
 				const checked = true
@@ -171,22 +196,88 @@ describe('Action Creators', () => {
 			})
 		})
 	})
-	describe('Fetch currensy actions', () => {
-		it('Should return action object with correct type', () => {
-			const fetchCurrencyStartAction = fetchCurrencyStart()
-			expect(fetchCurrencyStartAction)
-				.toEqual({type: C.FETCH_CURRENCY_START})
-		})
-		it('Should return action object with correct type', () => {
-			const fetchCurrencySuccessAction = fetchCurrencySuccess()
-			expect(fetchCurrencySuccessAction)
-				.toEqual({type: C.FETCH_CURRENCY_SUCCESS})
-		})
-		it('Should return action object with correct type', () => {
-			const fetchCurrencyErrorAction = fetchCurrencyError()
-			expect(fetchCurrencyErrorAction)
-				.toEqual({type: C.FETCH_CURRENCY_ERROR})
+
+	// Currencies
+
+	describe('Currencies', () => {
+		describe('Currency rates', () => {
+			describe('Set currency rates', () => {
+				it('Should return correct plain action object', () => {
+					const setCurrencyRatesAction = setCurrencyRates(rates)
+					expect(setCurrencyRatesAction)
+						.toEqual({
+							type: C.SET_CURRENCY_RATES,
+							rates
+						})
+				})
+			})
+			describe('Set default currency rates', () => {
+				it('Should return action object with correct type', () => {
+					const setDefaultCurrencyAction = setDefaultCurrency()
+					expect(setDefaultCurrencyAction)
+						.toEqual({type: C.SET_DEFAULT_CURRENCY})
+				})
+			})
+			describe('Set base currency', () => {
+				it('Should return action object with base currensy as string', () => {
+					const base = 'RUB'
+					const setbaseCurrencyAction = setbaseCurrency(base)
+					expect(setbaseCurrencyAction)
+						.toEqual({
+							type: C.SET_BASE_CURRENCY,
+							base
+						})
+				})
+			})
 		})
 	})
 
+	// Modifiers
+
+	describe('Modifiers', () => {
+		describe('Currencies', () => {
+			describe('Add currency', () => {
+				it('Should return action object with added curency as string', () => {
+					const currency = 'USD'
+					const addCurrencyModifierAction = addCurrencyModifier(currency)
+					expect(addCurrencyModifierAction)
+						.toEqual({
+							type: C.ADD_CURRENCY_MODIFIER,
+							currency
+						})
+				})
+			})
+			describe('Remove currency', () => {
+				it('Should return action object with removing curency as string', () => {
+					const currency = 'USD'
+					const removeCurrencyModifiersAction = removeCurrencyModifiers(currency)
+					expect(removeCurrencyModifiersAction)
+						.toEqual({
+							type: C.REMOVE_CURRENCY_MODIFIER,
+							currency
+						})
+				})
+			})
+			describe('Set currencies', () => {
+				it('Should return action object with seting curencies as string', () => {
+					const currency = 'USD'
+					const setCurrencyModifierAction = setCurrencyModifier(currency)
+					expect(setCurrencyModifierAction)
+						.toEqual({
+							type: C.SET_CURRENCY_MODIFIER,
+							currency
+						})
+				})
+				it('Should return action object with seting curencies as array', () => {
+					const currencies = ['USD', 'EUR']
+					const setCurrencyModifiersAction = setCurrencyModifiers(currencies)
+					expect(setCurrencyModifiersAction)
+						.toEqual({
+							type: C.SET_CURRENCY_MODIFIERS,
+							currencies
+						})
+				})
+			})
+		})
+	})
 })
