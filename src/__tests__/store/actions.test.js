@@ -7,7 +7,10 @@ import {
 	filterByStops,
 	filterByOnlyStops,
 	filterByDefaultStops,
-	filterByAllStops } from '../../store/actions'
+	filterByAllStops,
+	fetchCurrencyStart,
+	fetchCurrencySuccess,
+	fetchCurrencyError } from '../../store/actions'
 
 import tickets from '../../../public/tickets'
 
@@ -168,4 +171,22 @@ describe('Action Creators', () => {
 			})
 		})
 	})
+	describe('Fetch currensy actions', () => {
+		it('Should return action object with correct type', () => {
+			const fetchCurrencyStartAction = fetchCurrencyStart()
+			expect(fetchCurrencyStartAction)
+				.toEqual({type: C.FETCH_CURRENCY_START})
+		})
+		it('Should return action object with correct type', () => {
+			const fetchCurrencySuccessAction = fetchCurrencySuccess()
+			expect(fetchCurrencySuccessAction)
+				.toEqual({type: C.FETCH_CURRENCY_SUCCESS})
+		})
+		it('Should return action object with correct type', () => {
+			const fetchCurrencyErrorAction = fetchCurrencyError()
+			expect(fetchCurrencyErrorAction)
+				.toEqual({type: C.FETCH_CURRENCY_ERROR})
+		})
+	})
+
 })
