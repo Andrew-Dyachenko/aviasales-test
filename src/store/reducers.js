@@ -9,7 +9,7 @@ import {
 	successFetchState,
 	errorFetchState } from '../helpers/fetchStates'
 
-const fetch = (action = {}, state = dafaultFetchState()) => {
+export const fetch = (action = {}, state = dafaultFetchState()) => {
 	switch (action.type) {
 		case C.FETCH_TICKETS_START:    return startFetchState()
 		case C.FETCH_TICKETS_SUCCESS:  return successFetchState()
