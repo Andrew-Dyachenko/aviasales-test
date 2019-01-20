@@ -24,7 +24,7 @@ export const fetch = (action = {}, state = dafaultFetchState()) => {
 	}
 }
 
-export const tickets = (state = { list: [], stops: [], fetch: fetch() }, action) => {
+export const tickets = (state = { list: [], stops: [], fetch: fetch() }, action = {}) => {
 	switch (action.type) {
 		case C.FETCH_TICKETS_START:
 			return {
@@ -56,22 +56,22 @@ export const tickets = (state = { list: [], stops: [], fetch: fetch() }, action)
 	}
 }
 
-export const stopsFilter = (action, state = []) => {
+export const stopsFilter = (action = {}, state = []) => {
 	let { stops } = action
 	stops = Array.isArray(stops)
 		? stops
 		: [ stops ]
 
 	switch (action.type) {
-		case C.FILTER_BY_STOPS:
-			return [...state, ...stops].reduce((reduced, stop) => {
-					const { checked } = action
-					return reduced.indexOf(stop) === -1 ?
-						[...reduced, stop] :
-						checked ?
-							reduced :
-							reduced.filter(_stop => _stop !== stop)
-				}, [])
+		case C.FILTER_BY_STOPS: {
+			const { checked } = action
+			return [...stops].reduce((reduced, stop) => {
+				return (checked && (reduced.indexOf(stop) === -1))
+					? [...reduced, stop]
+					: reduced.filter(_stop => _stop !== stop)
+					
+			}, state)
+		}
 
 		case C.FILTER_BY_DEFAULT_STOPS:
 			return [0,1,2]
@@ -91,12 +91,14 @@ export const stopsFilter = (action, state = []) => {
 	}
 }
 
+const sortArrayByNumericWrapper = direction => array => sortArrayByNumeric(array, direction)
+
 const stopsFilterWithSort = compose(
-	sortArrayByNumeric,
+	sortArrayByNumericWrapper('ascending'),
 	stopsFilter
 )
 
-export const filters = (state = {}, action) => {
+export const filters = (state = {}, action = {}) => {
 	switch (action.type) {
 		case C.FILTER_BY_STOPS:
 			return {
@@ -127,7 +129,7 @@ export const filters = (state = {}, action) => {
 	}
 }
 
-const baseСurrency = (action = {}, state = 'RUB') => {
+export const baseСurrency = (action = {}, state = 'RUB') => {
 	switch (action.type) {
 		case C.SET_DEFAULT_CURRENCY:
 			return 'RUB'
@@ -140,7 +142,7 @@ const baseСurrency = (action = {}, state = 'RUB') => {
 	}
 }
 
-const currencyRates = (action = {}, state = {}) => {
+export const currencyRates = (action = {}, state = {}) => {
 	switch (action.type) {
 		case C.SET_CURRENCY_RATES:
 			return action.rates
@@ -150,7 +152,7 @@ const currencyRates = (action = {}, state = {}) => {
 	}
 }
 
-export const currencies = (state = { rates: currencyRates(), base: baseСurrency(), fetch: fetch() }, action) => {
+export const currencies = (state = { rates: currencyRates(), base: baseСurrency(), fetch: fetch() }, action = {}) => {
 	switch (action.type) {
 		case C.FETCH_CURRENCY_START:
 			return {
@@ -193,7 +195,7 @@ export const currencies = (state = { rates: currencyRates(), base: baseСurrency
 	}
 }
 
-const currencyModifier = (action = {}, state = baseСurrency()) => {
+export const currencyModifier = (action = {}, state = baseСurrency()) => {
 	switch (action.type) {
 		case C.SET_CURRENCY_MODIFIER:
 			return action.currency
@@ -203,7 +205,7 @@ const currencyModifier = (action = {}, state = baseСurrency()) => {
 	}
 }
 
-const currencyModifiersList = (action = {}, state = [baseСurrency()]) => {
+export const currencyModifiersList = (action = {}, state = [baseСurrency()]) => {
 	switch (action.type) {
 		case C.SET_CURRENCY_MODIFIERS:
 			return action.currencies
@@ -219,7 +221,7 @@ const currencyModifiersList = (action = {}, state = [baseСurrency()]) => {
 	}
 }
 
-const currencyModifiers = (action = {}, state = {list: currencyModifiersList(), currency: currencyModifier()}) => {
+export const currencyModifiers = (action = {}, state = {list: currencyModifiersList(), currency: currencyModifier()}) => {
 	switch (action.type) {
 		case C.SET_CURRENCY_MODIFIERS:
 			return {
@@ -250,7 +252,7 @@ const currencyModifiers = (action = {}, state = {list: currencyModifiersList(), 
 	}
 }
 
-export const modificators = (state = {currencies: currencyModifiers()}, action) => {
+export const modificators = (state = {currencies: currencyModifiers()}, action = {}) => {
 	switch (action.type) {
 		case C.SET_CURRENCY_MODIFIERS:
 			return {
