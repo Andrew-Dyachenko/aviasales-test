@@ -1,3 +1,4 @@
+import deepFreeze from 'deep-freeze'
 import C from '../../store/constants'
 import {
 	fetch,
@@ -8,7 +9,7 @@ import {
 	baseСurrency,
 	currencies,
 	modificators,
-	// currencyModifiers,
+	currencyModifiers,
 	currencyModifiersList,
 	currencyModifier } from '../../store/reducers'
 
@@ -84,10 +85,15 @@ describe('Reducers', () => {
 					list,
 					stops
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const startTicketsState = tickets(
 					state,
 					action
 				)
+
 				expect(startTicketsState)
 					.toEqual({
 						list,
@@ -104,10 +110,15 @@ describe('Reducers', () => {
 					list,
 					stops
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const startTicketsState = tickets(
 					state,
 					action
 				)
+
 				expect(startTicketsState)
 					.toEqual({
 						list,
@@ -124,10 +135,15 @@ describe('Reducers', () => {
 					list,
 					stops
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const startTicketsState = tickets(
 					state,
 					action
 				)
+
 				expect(startTicketsState)
 					.toEqual({
 						list,
@@ -145,6 +161,8 @@ describe('Reducers', () => {
 				const list = global.tickets
 				const stops = getStopsFromTickets(global.tickets)
 				const _fetch = successFetchState()
+
+				deepFreeze(action)
 
 				const setTicketsResult = tickets({
 					list: [],
@@ -175,6 +193,10 @@ describe('Reducers', () => {
 					stops: 3,
 					checked: true
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const stopsFilterResult = stopsFilter(action, state)
 				expect(stopsFilterResult)
 					.toEqual(expect.arrayContaining([0,1,2,3]))
@@ -186,6 +208,10 @@ describe('Reducers', () => {
 					stops: [3,4,5],
 					checked: true
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const stopsFilterResult = stopsFilter(action, state)
 				expect(stopsFilterResult)
 					.toEqual(expect.arrayContaining([0,1,2,3,4,5]))
@@ -197,6 +223,10 @@ describe('Reducers', () => {
 					stops: 3,
 					checked: false
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const stopsFilterResult = stopsFilter(action, state)
 				expect(stopsFilterResult)
 					.toEqual(expect.arrayContaining(state))
@@ -208,6 +238,10 @@ describe('Reducers', () => {
 					stops: [3,4,5],
 					checked: false
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const stopsFilterResult = stopsFilter(action, state)
 				expect(stopsFilterResult)
 					.toEqual(expect.arrayContaining(state))
@@ -219,6 +253,10 @@ describe('Reducers', () => {
 					stops: 3,
 					checked: false
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const stopsFilterResult = stopsFilter(action, state)
 				expect(stopsFilterResult)
 					.toEqual(expect.arrayContaining([0,1,2]))
@@ -230,6 +268,10 @@ describe('Reducers', () => {
 					stops: [1,3,5],
 					checked: false
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const stopsFilterResult = stopsFilter(action, state)
 				expect(stopsFilterResult)
 					.toEqual(expect.arrayContaining([0,2,4]))
@@ -240,6 +282,9 @@ describe('Reducers', () => {
 				const action = {
 					type: C.FILTER_BY_DEFAULT_STOPS
 				}
+
+				deepFreeze(action)
+
 				const defaultStopsFilterResult = stopsFilter(action)
 				expect(defaultStopsFilterResult)
 					.toEqual([0,1,2])
@@ -252,6 +297,10 @@ describe('Reducers', () => {
 					type: C.FILTER_BY_ONLY_STOPS,
 					stops: 0
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const onlyStopsResult = stopsFilter(action, state)
 				expect(onlyStopsResult)
 					.not
@@ -263,7 +312,12 @@ describe('Reducers', () => {
 					type: C.FILTER_BY_ONLY_STOPS,
 					stops: [0,1]
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const onlyStopsResult = stopsFilter(action, state)
+
 				expect(onlyStopsResult)
 					.not
 					.toEqual(expect.arrayContaining([2,3,4,5]))
@@ -276,6 +330,9 @@ describe('Reducers', () => {
 					stops: [0,1,2,3,4,5],
 					checked: true
 				}
+
+				deepFreeze(action)
+
 				const allStopsResult = stopsFilter(action)
 				expect(allStopsResult)
 					.toEqual(expect.arrayContaining([0,1,2,3,4,5]))
@@ -286,6 +343,9 @@ describe('Reducers', () => {
 					stops: [0,1,2,3,4,5],
 					checked: false
 				}
+
+				deepFreeze(action)
+
 				const allStopsResult = stopsFilter(action)
 				expect(allStopsResult)
 					.toEqual([])
@@ -300,6 +360,9 @@ describe('Reducers', () => {
 						stops: []
 					}
 				}
+
+				deepFreeze(state)
+
 				const defaultFiltersState = filters(state)
 				expect(expect.objectContaining(defaultFiltersState))
 					.toEqual(state)
@@ -314,6 +377,10 @@ describe('Reducers', () => {
 					stops: 3,
 					checked: true
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const stopsFilterResult = filters(state, action)
 				expect(expect.objectContaining(stopsFilterResult))
 					.toEqual({
@@ -331,6 +398,10 @@ describe('Reducers', () => {
 					stops: [3,4,5],
 					checked: true
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const stopsFilterResult = filters(state, action)
 				expect(expect.objectContaining(stopsFilterResult))
 					.toEqual({
@@ -348,6 +419,10 @@ describe('Reducers', () => {
 					stops: 3,
 					checked: false
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const stopsFilterResult = filters(state, action)
 				expect(expect.objectContaining(stopsFilterResult))
 					.toEqual({
@@ -365,6 +440,10 @@ describe('Reducers', () => {
 					stops: [3,4,5],
 					checked: false
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const stopsFilterResult = filters(state, action)
 				expect(expect.objectContaining(stopsFilterResult))
 					.toEqual({
@@ -382,6 +461,10 @@ describe('Reducers', () => {
 					stops: [4,5,3],
 					checked: true
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const stopsFilterResult = filters(state, action)
 				expect(stopsFilterResult.stops)
 					.toEqual([0,1,2,3,4,5])
@@ -396,6 +479,10 @@ describe('Reducers', () => {
 				const action = {
 					type: C.FILTER_BY_DEFAULT_STOPS
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const defaultStopsFilterResult = filters(state, action)
 				expect(defaultStopsFilterResult)
 					.toEqual({
@@ -414,6 +501,10 @@ describe('Reducers', () => {
 					type: C.FILTER_BY_ONLY_STOPS,
 					stops: 0
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const onlyStopsResult = filters(state, action)
 				expect(onlyStopsResult)
 					.toEqual({
@@ -430,6 +521,10 @@ describe('Reducers', () => {
 					type: C.FILTER_BY_ONLY_STOPS,
 					stops: [0,1,2]
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const onlyStopsResult = filters(state, action)
 				expect(onlyStopsResult)
 					.toEqual({
@@ -449,6 +544,10 @@ describe('Reducers', () => {
 					stops: [0,1,2,3,4,5],
 					checked: true
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const allStopsResult = filters(state, action)
 				expect(allStopsResult)
 					.toEqual({
@@ -466,6 +565,10 @@ describe('Reducers', () => {
 					stops: [0,1,2,3,4,5],
 					checked: false
 				}
+
+				deepFreeze(action)
+				deepFreeze(state)
+
 				const allStopsResult = filters(state, action)
 				expect(allStopsResult)
 					.toEqual({
@@ -480,6 +583,11 @@ describe('Reducers', () => {
 			const rates = currencyRates()
 			const base = baseСurrency()
 			const fetch = dafaultFetchState()
+
+			deepFreeze(rates)
+			deepFreeze(base)
+			deepFreeze(fetch)
+
 			const defaultCurrenciesState = currencies()
 			expect(defaultCurrenciesState)
 				.toEqual({
@@ -501,6 +609,10 @@ describe('Reducers', () => {
 					base,
 					fetch: _fetch
 				}
+
+				deepFreeze(state)
+				deepFreeze(action)
+
 				const startCurrenciesState = currencies(state, action)
 				expect(startCurrenciesState)
 					.toEqual({
@@ -520,6 +632,10 @@ describe('Reducers', () => {
 					base,
 					fetch: _fetch
 				}
+
+				deepFreeze(state)
+				deepFreeze(action)
+
 				const successCurrenciesState = currencies(state, action)
 				expect(successCurrenciesState)
 					.toEqual({
@@ -539,6 +655,10 @@ describe('Reducers', () => {
 					base,
 					fetch: _fetch
 				}
+
+				deepFreeze(state)
+				deepFreeze(action)
+
 				const errorCurrenciesState = currencies(state, action)
 				expect(errorCurrenciesState)
 					.toEqual({
@@ -556,6 +676,10 @@ describe('Reducers', () => {
 					foo: 'foo'
 				}
 				const base = baseСurrency(action)
+
+				deepFreeze(state)
+				deepFreeze(action)
+
 				const defaultCurrenciesState = currencies(state, action)
 				expect(defaultCurrenciesState)
 					.toEqual({
@@ -571,7 +695,10 @@ describe('Reducers', () => {
 				const state = {
 					foo: 'foo'
 				}
-				const base = baseСurrency(action)
+
+				deepFreeze(state)
+				deepFreeze(action)
+
 				const baseCurrenciesState = currencies(state, action)
 				expect(baseCurrenciesState)
 					.toEqual({
@@ -587,6 +714,10 @@ describe('Reducers', () => {
 					const state = {
 						foo: 'foo'
 					}
+
+					deepFreeze(state)
+					deepFreeze(action)
+
 					const currenciesWithDefaultRates = currencies(state, action)
 					expect(currenciesWithDefaultRates)
 						.toEqual({
@@ -605,6 +736,10 @@ describe('Reducers', () => {
 					const state = {
 						foo: 'foo'
 					}
+
+					deepFreeze(state)
+					deepFreeze(action)
+
 					const currenciesSetedRates = currencies(state, action)
 					expect(currenciesSetedRates)
 						.toEqual({
@@ -642,18 +777,300 @@ describe('Reducers', () => {
 					type: C.SET_CURRENCY_MODIFIER,
 					currency: 'USD'
 				}
+
+				deepFreeze(action)
+
 				const currencyModifierResult = currencyModifier(action)
 				expect(currencyModifierResult)
 					.toEqual('USD')
 			})
 		})
-		// describe('Currency modifiers list', () => {
-		// 	it('Should return currencies default list state', () => {
-		// 		currencyModifiersList
-		// 	})
-		// 	describe('Set list', () => {
-				
-		// 	})
-		// })
+		describe('Currency modifiers list', () => {
+			it('Should return currencies default list state', () => {
+				const base = baseСurrency()
+				const defaultcurrencyModifiersListResult = currencyModifiersList()
+				expect(defaultcurrencyModifiersListResult)
+					.toEqual([base])
+			})
+			describe('Set currencies', () => {
+				it('Should return passes array of currencies as state list', () => {
+					const _currencies = ['RUB', 'USD','EUR']
+					const action = {
+						type: C.SET_CURRENCY_MODIFIERS,
+						currencies: _currencies
+					}
+
+					deepFreeze(action)
+
+					const currencyModifiersSetResult = currencyModifiersList(action)
+					expect(currencyModifiersSetResult)
+						.toEqual(
+							_currencies
+						)
+				})
+			})
+			describe('Add currency', () => {
+				it('Should add new currency modifier', () => {
+					const state = ['RUB']
+					const _currency = 'USD'
+					const action = {
+						type: C.ADD_CURRENCY_MODIFIER,
+						currency: _currency
+					}
+
+					deepFreeze(state)
+					deepFreeze(action)
+
+					const currencyModifiersAddResult = currencyModifiersList(action, state)
+					expect(currencyModifiersAddResult)
+						.toEqual([...state, _currency])
+					})
+			})
+			describe('Remove currency', () => {
+				it('Should remove currency modifier from modifiers list', () => {
+					const state = ['RUB', 'USD', 'EUR']
+					const _currency = 'USD'
+					const action = {
+						type: C.REMOVE_CURRENCY_MODIFIER,
+						currency: _currency
+					}
+
+					deepFreeze(state)
+					deepFreeze(action)
+					
+					const currencyModifiersAddResult = currencyModifiersList(action, state)
+					expect(currencyModifiersAddResult)
+						.toEqual(['RUB', 'EUR'])
+				})
+			})
+		})
+		describe('Currency modifiers', () => {
+			it('Should return default currency modifiers state', () => {
+				const list = currencyModifiersList()
+				const currency = currencyModifier()
+
+				deepFreeze(list)
+				deepFreeze(currency)
+
+				const defaultCurrencyModifiersResult = currencyModifiers()
+				expect(defaultCurrencyModifiersResult)
+					.toEqual({
+						list,
+						currency
+					})
+			})
+			describe('Set currency modifiers', () => {
+				it('Should return expected state of currency modifiers', () => {
+					const state = {
+						foo: 'foo'
+					}
+					const action = {
+						type: C.SET_CURRENCY_MODIFIERS,
+						currencies: ['RUB', 'USD', 'EUR']
+					}
+
+					deepFreeze(state)
+					deepFreeze(action)
+
+					const currencyModifiersResult = currencyModifiers(action, state)
+					expect(currencyModifiersResult)
+						.toEqual({
+							foo: 'foo',
+							list: ['RUB', 'USD', 'EUR']
+						})
+				})
+			})
+			describe('Add currency modifier', () => {
+				it('Should return state of currency modifiers list with addded currency modifier', () => {
+					const state = {
+						currency: 'RUB'
+					}
+					const action = {
+						type: C.ADD_CURRENCY_MODIFIER,
+						currency: 'USD'
+					}
+
+					deepFreeze(state)
+					deepFreeze(action)
+
+					const currencyModifiersResult = currencyModifiers(action, state)
+					expect(currencyModifiersResult)
+						.toEqual({
+							currency: 'RUB',
+							list: ['RUB', 'USD']
+						})
+				})
+			})
+			describe('Remove currency modifier', () => {
+				it('Should return state of currency modifiers list with removomed currency modifier', () => {
+					const state = {
+						currency: 'RUB',
+						list: ['RUB', 'USD', 'EUR']
+					}
+					const action = {
+						type: C.REMOVE_CURRENCY_MODIFIER,
+						currency: 'USD'
+					}
+
+					deepFreeze(state)
+					deepFreeze(action)
+
+					const currencyModifiersResult = currencyModifiers(action, state)
+					expect(currencyModifiersResult)
+						.toEqual({
+							currency: 'RUB',
+							list: ['RUB', 'EUR']
+						})
+				})
+			})
+
+
+
+
+			describe('Set currency modifier', () => {
+				it('Should return expected state of currency modifiers', () => {
+					const state = {
+						currency: 'RUB',
+						list: ['RUB', 'USD', 'EUR']
+					}
+					const action = {
+						type: C.SET_CURRENCY_MODIFIER,
+						currency: 'USD'
+					}
+
+					deepFreeze(state)
+					deepFreeze(action)
+
+					const currencyModifiersResult = currencyModifiers(action, state)
+					expect(currencyModifiersResult)
+						.toEqual({
+							currency: 'USD',
+							list: ['RUB', 'USD', 'EUR']
+						})
+				})
+			})
+		})
+		describe('Currencies', () => {
+			it('Should return expected default state', () => {
+				const _currencies = currencyModifiers()
+				const defaultModificatorsResult = modificators()
+				expect(defaultModificatorsResult)
+					.toEqual({
+						currencies: _currencies
+					})
+			})
+			describe('Set modifiers', () => {
+				it('Should return expected modifiers with seted currencies', () => {
+					const state = {
+						foo: 'foo',
+						currencies: {
+							currency: 'RUB',
+							list: ['RUB']
+						}
+					}
+					const action = {
+						type: C.SET_CURRENCY_MODIFIERS,
+						currencies: ['RUB', 'USD', 'EUR']
+					}
+
+					deepFreeze(state)
+					deepFreeze(action)
+
+					const modificatorsResult = modificators(state, action)
+					expect(modificatorsResult)
+						.toEqual({
+							foo: 'foo',
+							currencies: {
+								currency: 'RUB',
+								list: ['RUB', 'USD', 'EUR']
+							}
+						})
+				})
+			})
+			describe('Add modifier', () => {
+				it('Should return expected modifiers with added currency', () => {
+					const state = {
+						foo: 'foo',
+						currencies: {
+							currency: 'RUB',
+							list: ['RUB']
+						}
+					}
+					const action = {
+						type: C.ADD_CURRENCY_MODIFIER,
+						currency: 'USD'
+					}
+
+					deepFreeze(state)
+					deepFreeze(action)
+
+					const modificatorsResult = modificators(state, action)
+					expect(modificatorsResult)
+						.toEqual({
+							foo: 'foo',
+							currencies: {
+								currency: 'RUB',
+								list: ['RUB', 'USD']
+							}
+						})
+				})
+			})
+			describe('Remove modifier', () => {
+				it('Should return expected modifiers with added currency', () => {
+					const state = {
+						foo: 'foo',
+						currencies: {
+							currency: 'RUB',
+							list: ['RUB', 'USD', 'EUR']
+						}
+					}
+					const action = {
+						type: C.REMOVE_CURRENCY_MODIFIER,
+						currency: 'USD'
+					}
+
+					deepFreeze(state)
+					deepFreeze(action)
+
+					const modificatorsResult = modificators(state, action)
+					expect(modificatorsResult)
+						.toEqual({
+							foo: 'foo',
+							currencies: {
+								currency: 'RUB',
+								list: ['RUB', 'EUR']
+							}
+						})
+				})
+			})
+			describe('Set modifier', () => {
+				it('Should return expected modifiers with added currency', () => {
+					const state = {
+						foo: 'foo',
+						currencies: {
+							currency: 'RUB',
+							list: ['RUB', 'USD', 'EUR']
+						}
+					}
+					const action = {
+						type: C.SET_CURRENCY_MODIFIER,
+						currency: 'USD'
+					}
+
+					deepFreeze(state)
+					deepFreeze(action)
+
+					const modificatorsResult = modificators(state, action)
+					expect(modificatorsResult)
+						.toEqual({
+							foo: 'foo',
+							currencies: {
+								currency: 'USD',
+								list: ['RUB', 'USD', 'EUR']
+							}
+						})
+				})
+			})
+		})
 	})
 })
