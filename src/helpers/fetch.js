@@ -24,10 +24,6 @@ export const fetchCurrency = url => dispatch => {
 	fetch(url)
 		.then(response => response.json())
 		.then(response => {
-			// console.log(response)
-			return response
-		})
-		.then(response => {
 			const { rates } = response
 			dispatch(fetchCurrencySuccess())
 			dispatch(setCurrencyRates(rates))
