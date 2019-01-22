@@ -22,11 +22,15 @@ body {
 	box-sizing: border-box;
 }
 
+:root {
+	--scroll-width: 0;
+}
+
 .root {
 	display: block;
 	height: inherit;
 
 	&__App {
-		height: inherit;
+		height: auto;
 	}
 }
