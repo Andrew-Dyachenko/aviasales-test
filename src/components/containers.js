@@ -2,6 +2,7 @@
 import { connect } from 'react-redux'
 import StopList from '../components/UI/StopList'
 import ButtonsGroup from './UI/ButtonsGroup'
+import TicketsList from './UI/TicketsList'
 import {
 	filterByStops,
 	filterByOnlyStops,
@@ -50,7 +51,6 @@ export const Currencies = connect(
 			const text = currency
 			const isBase = currency === state.currencies.base
 			const defaultChecked = currency === state.modificators.currencies.currency
-			// console.log(`currency: ${currency}: `, hasRateData(state.currencies.rates, currency, state.currencies.base))
 			const disabled = isBase
 				? false
 				: (
@@ -79,3 +79,13 @@ export const Currencies = connect(
 		}
 	})
 )(ButtonsGroup)
+
+export const TicketsListContainer = connect(
+	state => ({
+		currencies: state.currencies,
+		filters: state.filters,
+		modificators: state.modificators,
+		tickets: state.tickets
+	}),
+	null
+)(TicketsList)
