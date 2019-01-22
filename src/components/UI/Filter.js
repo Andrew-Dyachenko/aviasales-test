@@ -3,15 +3,19 @@ import PropTypes from 'prop-types'
 import '../../assets/styles/Filter.scss'
 
 const Filter = ({ children }) =>
-	Array.isArray(children) ?
-		children.map((child, index) =>
-			<div key={index} className='filter__child'>
-				{ child }
-			</div>
-		) :
-		<div className='filter__child'>
-			{ children }
-		</div>
+	<div className='filter'>
+		{
+			Array.isArray(children) ?
+				children.map((child, index) =>
+					<div key={index} className='filter__child'>
+						{ child }
+					</div>
+				) :
+				<div className='filter__child'>
+					{ children }
+				</div>
+		}
+	</div>
 
 Filter.defaultProps = {
 	children: null
