@@ -25,5 +25,9 @@
 			"fetched": false,
 			"error": false
 		}
+	},
+	"measurements": {
+		"scrollbarHeight": 0,
+		"scrollbarWidth": 0
 	}
 }
