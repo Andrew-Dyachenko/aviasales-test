@@ -2,36 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import '../../assets/styles/Tickets.scss'
 import TicketsList from './TicketsList'
-import DataComponent from '../DataComponent'
 import Filter from './Filter'
-import { Stops } from '../containers'
-import ButtonsGroup from './ButtonsGroup'
-
-const buttons = [
-	{
-		text: 'RUB',
-		defaultChecked: true
-	},
-	{
-		text: 'USD'
-	},
-	{
-		text: 'EUR'
-	}
-]
-
-// const list = [
-// 	{text: 'Все', stops: Infinity},
-// 	{text: 'Без пересадок', stops: 0},
-// 	{text: '1 пересадка', stops: 1},
-// 	{text: '2 пересадки', stops: 2},
-// 	{text: '3 пересадки', stops: 3}
-// ]
-
-const FilledTicketsList = DataComponent(
-		TicketsList,
-		'../data/tickets.json'
-	)
+import Modificator from './Modificator'
+import { Stops, Currencies } from '../containers'
 
 const Tickets = ({ mixin }) => {
 	const className = mixin ?
@@ -39,23 +12,24 @@ const Tickets = ({ mixin }) => {
 		'tickets'
 	return (
 		<div className={className}>
-			<aside className='tickets__aside'>
-				<Filter>
-					<div className='filter__tile'>
-						<ButtonsGroup
-							buttons={buttons}
-							name='valuta-radio-group'
+			<aside className='aside tickets__aside'>
+				<div className='aside__item'>
+					<Modificator>
+						<Currencies
+							name='currency-radio-group'
 							title='ВАЛЮТА' />
-					</div>
-					<div className='filter__tile filter__tile--nopadding'>
+					</Modificator>
+				</div>
+				<div className='aside__item aside__item--no-padding'>
+					<Filter>
 						<Stops
 							mixin='filter__stop-list'
 							title='КОЛИЧЕСТВО ПЕРЕСАДОК' />
-					</div>
-				</Filter>
+					</Filter>
+				</div>
 			</aside>
 			<main className='tickets__main'>
-				<FilledTicketsList />
+				<TicketsList />
 			</main>
 		</div>
 	)

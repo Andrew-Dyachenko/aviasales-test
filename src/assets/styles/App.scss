@@ -1,5 +1,16 @@
 @import './conf/configs';
 
+%tile {
+	background-color: $white;
+	border-radius: 5px;
+	box-shadow: 0 1px 4px rgba(91, 137, 164, .25);
+	padding: 15px;
+	
+	&--no-padding {
+		padding: 0;
+	}
+}
+
 .App {
 	align-items: center;
 	display: flex;
@@ -29,3 +40,25 @@
 .container {
 	margin: 0 auto;
 }
+
+.aside {
+	&__item {
+		@extend %tile;
+
+		&:not(:first-child) {
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+		}
+
+		&:not(:last-child) {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+
+		&--no-padding {
+			padding: 0;
+		}
+	}
+}
+
+

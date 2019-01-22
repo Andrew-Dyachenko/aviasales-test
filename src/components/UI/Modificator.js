@@ -1,23 +1,24 @@
+/*eslint no-console: 0*/
 import React from 'react'
 import PropTypes from 'prop-types'
-import '../../assets/styles/Filter.scss'
+import '../../assets/styles/Modificator.scss'
 
-const Filter = ({ children }) =>
+const Modificator = ({ children }) =>
 	Array.isArray(children) ?
 		children.map((child, index) =>
-			<div key={index} className='filter__child'>
+			<div key={index} className='modificator__children'>
 				{ child }
 			</div>
 		) :
-		<div className='filter__child'>
+		<div className='modificator__children'>
 			{ children }
 		</div>
 
-Filter.defaultProps = {
+Modificator.defaultProps = {
 	children: null
 }
 
-Filter.propTypes = {
+Modificator.propTypes = {
 	children: PropTypes.oneOfType([
 		PropTypes.arrayOf(PropTypes.node),
 		PropTypes.node,
@@ -25,4 +26,4 @@ Filter.propTypes = {
 	])
 }
 
-export default Filter
+export default Modificator

@@ -6,11 +6,12 @@
 	grid-row-gap: $gutter-width / 2;
 
 	&__title {
+		$lh: 19 / 12;
 		color: $tundora;
 		font-size: 12px;
 		font-weight: 600;
 		letter-spacing: .5px;
-		line-height: 1.583333333;
+		line-height: $lh;
 		margin: 0;
 	}
 
@@ -24,11 +25,13 @@
 		flex-grow: 1;
 		flex-wrap: wrap;
 		min-height: 40px;
+		position: relative;
 
 		&:first-child {
 			#{$buttons-group} {
 				&__label {
-					border-radius: 5px 0 0 5px;
+					border-bottom-left-radius: 5px;
+					border-top-left-radius: 5px;
 				}
 			}
 		}
@@ -36,7 +39,8 @@
 		&:last-child {
 			#{$buttons-group} {
 				&__label {
-					border-radius: 0 5px 5px 0;
+					border-bottom-right-radius: 5px;
+					border-top-right-radius: 5px;
 				}
 			}
 		}
@@ -47,7 +51,15 @@
 	}
 
 	&__input {
-		display: none;
+		@extend %visibility-hidden;
+
+		bottom: 0;
+		height: 100%;
+		left: 1px;
+		position: absolute;
+		right: 0;
+		top: 1px;
+		width: 100%;
 
 		&:checked {
 			+ #{$buttons-group} {
@@ -59,6 +71,48 @@
 					#{$buttons-group} {
 						&__text {
 							color: $white;
+						}
+					}
+				}
+			}
+		}
+
+		&:not(:checked) {
+			+ #{$buttons-group} {
+				&__label {
+					&:hover,
+					&:focus {
+						background-color: $twilight-blue;
+						border-color: $malibu;
+						z-index: 1;
+					}
+				}
+			}
+		}
+
+		&:disabled {
+			+ #{$buttons-group} {
+				&__label {
+					cursor: not-allowed;
+					filter: grayscale($fibo-asymp-xxxl);
+
+					&:hover,
+					&:focus {
+						background-color: $white;
+						border-color: $iron;
+						z-index: auto;
+					}
+				}
+			}
+
+			&:checked {
+				+ #{$buttons-group} {
+					&__label {
+						&:hover,
+						&:focus {
+							background-color: $dodger-blue;
+							border-color: $dodger-blue;
+							z-index: 2;
 						}
 					}
 				}
@@ -91,10 +145,14 @@
 		font-size: 12px;
 		font-weight: 600;
 		letter-spacing: .5px;
-		line-height: 1;
 		margin: 0 auto;
 		max-height: calc(2em * #{$global-line-height});
 		overflow: hidden;
 		text-align: center;
+
+		&:not(*:root) {
+			padding-top: 2 / 12 + em; // WEBKIT FONT FIX: ~ 2px while 12px
+		}
 	}
+
 }

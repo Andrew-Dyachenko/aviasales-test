@@ -1,17 +1,17 @@
 /*eslint no-console: 0*/
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk';
-import { tickets, filters } from './reducers'
+import { tickets, currencies, filters, modificators } from './reducers'
 import stateData from '../data/initialState'
 
-const logger = store => next => action => {
+const logger = (/*store*/) => next => action => {
 	let result
-	console.groupCollapsed('dispatching', action.type)
-	console.log('prev state', store.getState())
-	console.log('action', action)
+	// console.groupCollapsed('dispatching', action.type)
+	// console.log('prev state', store.getState())
+	// console.log('action', action)
 	result = next(action)
-	console.log('next state', store.getState())
-	console.groupEnd()
+	// console.log('next state', store.getState())
+	// console.groupEnd()
 	return result
 }
 
@@ -23,7 +23,7 @@ const saver = store => next => action => {
 
 const storeFactory = (initialState = stateData) =>
 	applyMiddleware(logger, saver, thunk)(createStore)(
-		combineReducers({ tickets, filters }),
+		combineReducers({ tickets, currencies, filters, modificators }),
 		(localStorage['aviasales-store']) ?
 			JSON.parse(localStorage['aviasales-store']) :
 			initialState

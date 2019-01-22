@@ -1,13 +1,19 @@
 /*eslint no-console: 0*/
 import { connect } from 'react-redux'
 import StopList from '../components/UI/StopList'
-import { filterByStops, filterByOnlyStops, filterByAllStops } from '../store/actions'
+import ButtonsGroup from './UI/ButtonsGroup'
+import {
+	filterByStops,
+	filterByOnlyStops,
+	filterByAllStops,
+	setCurrencyModifier } from '../store/actions'
 
 export const Stops = connect(
 	state =>
 		({
 			filters: state.filters.stops,
-			stops: state.tickets.stops
+			stops: state.tickets.stops,
+			fetching: state.tickets.fetch.fetching
 		}),
 	dispatch =>
 		({
@@ -31,3 +37,45 @@ export const Stops = connect(
 			}
 		})
 )(StopList)
+
+const hasRateData = (rates = {}, currency) =>
+	Object.keys(rates).some((rate, index, array) =>
+		array.indexOf(currency) !== -1
+	)
+
+export const Currencies = connect(
+	state => {
+		const { list } = state.modificators.currencies
+		const buttons = list.map(currency => {
+			const text = currency
+			const isBase = currency === state.currencies.base
+			const defaultChecked = currency === state.modificators.currencies.currency
+			// console.log(`currency: ${currency}: `, hasRateData(state.currencies.rates, currency, state.currencies.base))
+			const disabled = isBase
+				? false
+				: (
+					state.currencies.fetch.fetching ||
+					state.currencies.fetch.error ||
+					!hasRateData(state.currencies.rates, currency)
+				)
+					? true
+					: false
+			return ({
+				text,
+				defaultChecked,
+				disabled
+			})
+		})
+		return ({
+			buttons,
+			fetching: state.currencies.fetch.fetching
+		})
+	},
+	dispatch => ({
+		onCheck(event) {
+			const { target } = event
+			const { value } = target
+			dispatch(setCurrencyModifier(value))
+		}
+	})
+)(ButtonsGroup)

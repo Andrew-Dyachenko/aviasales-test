@@ -6,19 +6,22 @@ import { Helmet } from 'react-helmet'
 import '../assets/styles/App.scss'
 import Header from './UI/Header'
 import logo from '../assets/images/logo.png'
-import DataComponent from './DataComponent'
 import Tickets from './UI/Tickets'
-import { fetchTickets } from '../store/actions'
-
-const TicketsWithData =
-	DataComponent(
-		Tickets,
-		'./tickets.json'
-	)
+import {
+	fetchTickets,
+	fetchCurrency } from '../store/actions'
 
 class App extends PureComponent {
 	componentDidMount() {
-		this.props.fetchTickets('./tickets.json');
+		const storage = localStorage['aviasales-store']
+
+		if (!storage || !JSON.parse(storage).tickets.fetch.fetched)
+			this.props.fetchTickets('./tickets.json')
+
+		if (!storage || !JSON.parse(storage).currencies.fetch.fetched)
+			// this.props.fetchCurrency('https://api.exchangeratesapi.io/latest?base=RUB&symbols=USD,EUR')
+			this.props.fetchCurrency('./currency.json')
+
 	}
 	render() {
 		return (
@@ -29,7 +32,7 @@ class App extends PureComponent {
 				</Helmet>
 				<div className='container App__container'>
 					<Header logo={logo} mixin='App__header' />
-					<TicketsWithData mixin='App__tickets' />
+					<Tickets mixin='App__tickets' />
 				</div>
 			</div>
 		)
@@ -37,19 +40,19 @@ class App extends PureComponent {
 }
 
 App.defaultProps = {
+	fetchCurrency: f => f,
 	fetchTickets: f => f
 }
 
 App.propTypes = {
+	fetchCurrency: PropTypes.func,
 	fetchTickets: PropTypes.func
 }
 
-// const mapStateToProps = ({ data = {} }) => ({
-// 	data
-// })
 export default connect(
 	null,
 	{
+		fetchCurrency,
 		fetchTickets
 	}
 )(App)
