@@ -282,3 +282,13 @@ export const modificators = (state = {currencies: currencyModifiers()}, action =
 			return state
 	}
 }
+
+export const measurements = (state = {scrollbarHeight: 0, scrollbarWidth: 0}, action = {}) => {
+	switch (action.type) {
+		case C.SET_MEASUREMENTS:
+			return action.measurements
+
+		default:
+			return state
+	}
+}
