@@ -9,6 +9,12 @@ $twilight-blue: #f2fcff;
 $malibu: #64b5f5;
 $twilight-blue: #f1fcff;
 $tree-poppy: #ff9d1b;
+
+$trinidad: #d64d08;
+$blaze-orange: #ff6d00;
+$ecstasy: #f7661d;
+$pumpkin: #ff8124;
+
 $body-bg: $catskill-white;
 $global-padding: 20px;
 $global-margin: 20px;
@@ -52,4 +58,35 @@ $fibo-asymp-xxxs-percentage: $fibo-asymp-xxxs * 100%; // 0.038693%
 	position: absolute;
 	white-space: nowrap;
 	width: 1px;
+}
+
+%tile {
+	background-color: $white;
+	border-radius: 5px;
+	box-shadow: 0 1px 4px rgba(91, 137, 164, .25);
+	padding: 15px;
+	
+	&--no-padding {
+		padding: 0;
+	}
+}
+
+%btn {
+	background-color: $blaze-orange;
+	border: 1px solid $blaze-orange;
+	border-bottom-color: $trinidad;
+	border-radius: 5px;
+	box-shadow: 0 2px 1px rgba(0, 0, 0, .1);
+	color: $white;
+	cursor: pointer;
+	font-size: 1rem;
+
+	&:hover {
+		background-color: $pumpkin;
+		border-bottom-color: $ecstasy;
+		border-left-color: $pumpkin;
+		border-right-color: $pumpkin;
+		border-top-color: $pumpkin;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, .25);
+	}
 }
