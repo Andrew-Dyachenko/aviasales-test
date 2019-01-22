@@ -1,1 +1,6 @@
 @import './conf/configs';
+
+.tickets-list {
+	display: grid;
+	grid-row-gap: $gutter-width;	
+}
