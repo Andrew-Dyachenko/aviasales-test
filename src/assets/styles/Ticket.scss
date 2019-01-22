@@ -1,0 +1,49 @@
+@import './conf/configs';
+
+.ticket {
+	@extend %tile;
+	max-width: 100%;
+	padding: $global-padding + 5 $global-padding;
+
+	&__buy {
+		@extend %btn;
+		font-size: 1em;
+		font-weight: 600;
+		padding: 6px $global-padding / 2;
+		width: 100%;
+
+		> * {
+			margin: 2px 0;
+		}
+	}
+	&__price {
+		$price: &;
+		display: flex;
+		font-size: 1em;
+		justify-content: center;
+
+		&-inner {
+			max-width: 100%;
+			position: relative;
+		}
+
+		&-value {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		&-currency {
+			bottom: 0;
+			font-weight: 400;
+			position: absolute;
+			right: 0;
+			top: 0;
+
+			~ #{$price} {
+				&-value {
+					padding-right: 14px;
+				}
+			}
+		}
+	}
+}
