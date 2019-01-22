@@ -74,3 +74,8 @@ export const setCurrencyModifier = currency => ({
 	type: C.SET_CURRENCY_MODIFIER,
 	currency
 })
+
+export const setMeasurements = measurements => ({
+	type: C.SET_MEASUREMENTS,
+	measurements
+})
