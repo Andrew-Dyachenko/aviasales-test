@@ -1,4 +1,4 @@
-export const sortArrayByNumeric = (array, direction = 'ascending') => {
+export const sortArrayByNumeric = (array, direction) => {
 	switch(direction) {
 		case 'ascending':
 			return [...array].sort((a, b) => a - b)

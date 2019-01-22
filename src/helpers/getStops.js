@@ -13,8 +13,10 @@ const getUnsortedStops = tickets => {
 	return _stops
 }
 
+const sortArrayByNumericWrapper = direction => array => sortArrayByNumeric(array, direction)
+
 const getStopsFromTickets = compose(
-	sortArrayByNumeric,
+	sortArrayByNumericWrapper('ascending'),
 	getUnsortedStops
 )
 

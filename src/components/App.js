@@ -9,7 +9,7 @@ import logo from '../assets/images/logo.png'
 import Tickets from './UI/Tickets'
 import {
 	fetchTickets,
-	fetchCurrency } from '../store/actions'
+	fetchCurrency } from '../helpers/fetch'
 
 class App extends PureComponent {
 	componentDidMount() {
