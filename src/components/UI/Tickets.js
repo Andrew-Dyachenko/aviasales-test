@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import '../../assets/styles/Tickets.scss'
-import TicketsList from './TicketsList'
 import Filter from './Filter'
 import Modificator from './Modificator'
-import { Stops, Currencies } from '../containers'
+import { Stops, Currencies, TicketsListContainer } from '../containers'
 
 const Tickets = ({ mixin }) => {
 	const className = mixin ?
@@ -29,7 +28,7 @@ const Tickets = ({ mixin }) => {
 				</div>
 			</aside>
 			<main className='tickets__main'>
-				<TicketsList />
+				<TicketsListContainer mixin='tickets__list' />
 			</main>
 		</div>
 	)
