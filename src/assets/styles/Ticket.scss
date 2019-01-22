@@ -1,9 +1,123 @@
 @import './conf/configs';
 
 .ticket {
+	$ticket: &;
 	@extend %tile;
+	display: flex;
 	max-width: 100%;
-	padding: $global-padding + 5 $global-padding;
+	padding: 0;
+
+	&__col {
+		padding: $global-padding + 5 $global-padding;
+
+		&--action {
+			display: grid;
+			grid-row-gap: $gutter-width;
+			min-width: 200px;
+		}
+		
+		&--content {
+			flex-grow: 1;
+		}
+
+		& ~ & {
+			border-left: 1px solid $porcelain;
+		}
+	}
+
+	&__route {
+		align-items: center;
+		display: grid;
+		grid-column-gap: $gutter-width;
+		grid-template-columns: max-content 1fr max-content;
+		justify-content: space-between;
+
+		&--body {
+			grid-column-gap: $gutter-width / 2;
+
+			#{$ticket} {
+				&__origin,
+				&__destination {
+					color: $tundora;
+					font-size: 12 / 16 + rem;
+					font-weight: 600;
+				}
+				&__origin {
+					grid-column: 1 / 2;
+				}
+				&__destination {
+					grid-column: 3 / 4;
+				}
+			}
+		}
+	}
+
+	&__segment {
+		display: grid;
+		grid-row-gap: $gutter-width / 2;
+	}
+
+	&__date {
+		color: $oslo-gray;
+	}
+
+	&__origin,
+	&__destination {
+		color: $tundora;
+		font-size: 2rem;
+		line-height: 1;
+	}
+
+	&__path {
+		display: grid;
+		grid-row-gap: 1px;
+
+		&-stops {
+			color: $oslo-gray;
+			font-size: 10 / 16 + rem;
+			font-weight: 600;
+			min-height: 1em * $global-line-height;
+			text-align: center;
+		}
+
+		&-canvas {
+			height: 13px;
+			position: relative;
+
+			&::before {
+				background-color: #d2d5d6;
+				content: '';
+				height: 1px;
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+
+			&::after {
+				background: $white url(../images/plane.png) center center no-repeat;
+				content: '';
+				height: 15px;
+				position: absolute;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 15px;
+			}
+		}
+	}
+
+	&__media {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__media-img {
+		display: block;
+		margin: 0 auto;
+		max-width: 100%;
+	}
 
 	&__buy {
 		@extend %btn;
@@ -16,6 +130,7 @@
 			margin: 2px 0;
 		}
 	}
+
 	&__price {
 		$price: &;
 		display: flex;
