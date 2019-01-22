@@ -11,7 +11,8 @@ import {
 	modificators,
 	currencyModifiers,
 	currencyModifiersList,
-	currencyModifier } from '../../store/reducers'
+	currencyModifier,
+	measurements } from '../../store/reducers'
 
 import {
 	dafaultFetchState,
@@ -1071,6 +1072,30 @@ describe('Reducers', () => {
 						})
 				})
 			})
+		})
+	})
+	describe('Measurements', () => {
+		it('Should return expected measurements', () => {
+			const state = {
+				scrollbarHeight: 0, scrollbarWidth: 0
+			}
+			const action = {
+				type: C.SET_MEASUREMENTS,
+				measurements: {
+					scrollbarHeight: 15,
+					scrollbarWidth: 15
+				}
+			}
+
+			deepFreeze(state)
+			deepFreeze(action)
+
+			const measurementsResult = measurements(state, action)
+			expect(measurementsResult)
+				.toEqual({
+					scrollbarHeight: 15,
+					scrollbarWidth: 15
+				})
 		})
 	})
 })
