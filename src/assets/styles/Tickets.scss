@@ -6,11 +6,14 @@
 	grid-template-columns: min-content 1fr;
 
 	&__main {
+		align-items: flex-start;
 		display: flex;
 	}
+
 	&__aside {
 		min-width: 232px;
 	}
+
 	&__list {
 		flex-grow: 1;
 		max-width: 100%;
