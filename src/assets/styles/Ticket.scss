@@ -4,24 +4,47 @@
 	$ticket: &;
 	@extend %tile;
 	display: flex;
+	flex-flow: column wrap;
 	max-width: 100%;
 	padding: 0;
+
+	@media (min-width: #{200px + 300px + $global-padding * 2 + $max-scroll-width}) {
+		flex-direction: row;
+		&__col {
+			padding: $global-padding + 5 $global-padding;
+	
+			&--action {
+				padding-top: $global-padding + 5;
+			}
+		}
+	}
 
 	&__col {
 		padding: $global-padding + 5 $global-padding;
 
 		&--action {
+			align-self: flex-end;
 			display: grid;
 			grid-row-gap: $gutter-width;
 			min-width: 200px;
 		}
 		
 		&--content {
+			align-items: center;
+			display: grid;
 			flex-grow: 1;
+			grid-row-gap: $gutter-width;
+
+			#{$ticket} {
+				&__media {
+					display: flex;
+				}
+			}
 		}
 
 		& ~ & {
 			border-left: 1px solid $porcelain;
+			padding-top: 0;
 		}
 	}
 
@@ -39,8 +62,10 @@
 				&__origin,
 				&__destination {
 					color: $tundora;
+					display: grid;
 					font-size: 12 / 16 + rem;
 					font-weight: 600;
+					grid-row-gap: $gutter-width / 4;
 				}
 				&__origin {
 					grid-column: 1 / 2;
@@ -78,6 +103,7 @@
 			font-weight: 600;
 			min-height: 1em * $global-line-height;
 			text-align: center;
+			white-space: nowrap;
 		}
 
 		&-canvas {
@@ -109,7 +135,7 @@
 	}
 
 	&__media {
-		display: flex;
+		display: none;
 		justify-content: center;
 	}
 

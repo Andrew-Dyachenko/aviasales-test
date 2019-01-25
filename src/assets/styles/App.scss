@@ -25,6 +25,42 @@
 		grid-row: 3 / 4;
 		grid-template-columns: min-content minmax(calc(365px + var(--scroll-width)), calc(100vw - #{$global-padding * 3} + var(--scroll-width) - 232px)) !important; /* stylelint-disable-line declaration-no-important */
 	}
+
+	// &__ticket {
+	// 	@media (min-width: 792px) {
+	// 		&__col {
+	// 			// padding: $global-padding + 5 $global-padding;
+		
+	// 			&--action {
+	// 				// display: grid;
+	// 				// grid-row-gap: $gutter-width;
+	// 				// min-width: 200px;
+	// 				.ticket {
+	// 					&__media {
+	// 						display: flex;
+	// 					}
+	// 				}
+	// 			}
+				
+	// 			&--content {
+	// 				display: grid;
+	// 				flex-grow: 1;
+	// 				grid-row-gap: $gutter-width;
+		
+	// 				.ticket {
+	// 					&__media {
+	// 						display: none;
+	// 					}
+	// 				}
+	// 			}
+		
+	// 			& ~ & {
+	// 				// border-left: 1px solid $porcelain;
+	// 				padding-top: $global-padding + 5;
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
 
 .container {
