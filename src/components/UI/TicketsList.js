@@ -29,7 +29,7 @@ const TicketsList = ({
 								.filter(ticket => stops.indexOf(ticket.stops) !== -1)
 								.map((ticket, index) => {
 								return (
-									<Ticket key={index} {...ticket} currency={currency} currencies={currencies} />
+									<Ticket mixin='App__ticket' key={index} {...ticket} currency={currency} currencies={currencies} />
 								)
 							})
 							: null
