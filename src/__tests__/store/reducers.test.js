@@ -1075,6 +1075,15 @@ describe('Reducers', () => {
 		})
 	})
 	describe('Measurements', () => {
+		it('Should return expected deafault state', () => {
+			const defaultMeasurementsResult = measurements()
+			expect(defaultMeasurementsResult)
+				.toEqual({
+					scrollbarHeight: 0,
+					scrollbarWidth: 0
+				})
+
+		})
 		it('Should return expected measurements', () => {
 			const state = {
 				scrollbarHeight: 0, scrollbarWidth: 0
