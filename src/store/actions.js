@@ -1,4 +1,3 @@
-/*eslint no-console: 0*/
 import C from './constants'
 
 // Tickets

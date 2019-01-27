@@ -1,4 +1,3 @@
-// Генератор шрифтов
 @mixin font-face($font-family, $font-local-name1, $font-local-name2, $file-path, $style, $weight) {
 	@font-face {
 		font-family: $font-family;

@@ -149,10 +149,5 @@
 		max-height: calc(2em * #{$global-line-height});
 		overflow: hidden;
 		text-align: center;
-
-		// &:not(*:root) {
-		// 	padding-top: 2 / 12 + em; // WEBKIT FONT FIX: ~ 2px while 12px
-		// }
 	}
-
 }

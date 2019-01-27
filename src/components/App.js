@@ -1,4 +1,3 @@
-/*eslint no-console: 0*/
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -16,10 +15,6 @@ import {
 	setWindowDimensions } from '../store/actions'
 
 class App extends PureComponent {
-	// constructor() {
-	// 	super()
-	// 	this.ticketSListRef = React.createRef()
-	// }
 	componentDidMount() {
 		window.addEventListener('resize', this.props.onResize)
 		const storage = localStorage['aviasales-store']
@@ -29,7 +24,6 @@ class App extends PureComponent {
 
 		if (!storage || !JSON.parse(storage).currencies.fetch.fetched)
 			this.props.fetchCurrency('https://api.exchangeratesapi.io/latest?base=RUB&symbols=RUB,USD,EUR')
-			// this.props.fetchCurrency('./currency.json')
 
 	}
 	componentWillUnmount() {

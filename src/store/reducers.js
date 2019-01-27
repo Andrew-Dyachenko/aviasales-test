@@ -1,4 +1,3 @@
-/*eslint no-console: 0*/
 import C from './constants'
 import { compose } from 'redux'
 import { sortArrayByNumeric } from '../helpers/sort'
@@ -284,7 +283,6 @@ export const modificators = (state = {currencies: currencyModifiers()}, action =
 }
 
 export const dimensions = (state = {scroll: scrollDimensions(), window: windowDimensions()}, action = {}) => {
-	console.log('dimensions reducer', action)
 	switch (action.type) {
 		case C.SET_SCROLL_DIAMENTIONS:
 			return {

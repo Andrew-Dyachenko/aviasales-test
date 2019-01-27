@@ -1,4 +1,3 @@
-/*eslint no-console: 0*/
 import React from 'react'
 import PropTypes from 'prop-types'
 import '../../assets/styles/StopList.scss'
@@ -15,7 +14,6 @@ const StopsList = ({
 	onStop,
 	onOnly
 }) => {
-	// console.log('fetching: ', fetching)
 	const _stops = [Infinity, ...stops]
 	const { length } = stops
 	const className =  mixin ?

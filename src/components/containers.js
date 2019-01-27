@@ -1,4 +1,3 @@
-/*eslint no-console: 0*/
 import { connect } from 'react-redux'
 import StopList from '../components/UI/StopList'
 import ButtonsGroup from './UI/ButtonsGroup'

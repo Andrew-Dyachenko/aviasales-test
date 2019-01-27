@@ -1,4 +1,3 @@
-/*eslint no-console: 0*/
 import React from 'react'
 import PropTypes from 'prop-types'
 import '../../assets/styles/TicketsList.scss'
@@ -47,7 +46,6 @@ const TicketsList = ({
 
 TicketsList.defaultProps = {
 	mixin: '',
-	// children: null,
 	currencies: {},
 	filters: {},
 	modificators: {},
@@ -57,11 +55,6 @@ TicketsList.defaultProps = {
 
 TicketsList.propTypes = {
 	mixin: PropTypes.string,
-	// children: PropTypes.oneOfType([
-	// 	PropTypes.arrayOf(PropTypes.node),
-	// 	PropTypes.node,
-	// 	PropTypes.object
-	// ])
 	currencies: PropTypes.object,
 	filters: PropTypes.object,
 	modificators: PropTypes.object,

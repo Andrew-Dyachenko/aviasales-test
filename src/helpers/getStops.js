@@ -1,4 +1,3 @@
-/*eslint no-console: 0*/
 import { compose } from 'redux'
 import { sortArrayByNumeric } from '../helpers/sort'
 
