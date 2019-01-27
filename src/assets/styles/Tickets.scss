@@ -2,8 +2,7 @@
 
 .tickets {
 	display: grid;
-	grid-column-gap: $gutter-width;
-	grid-template-columns: min-content 1fr;
+	grid-row-gap: $gutter-width;
 
 	&__main {
 		align-items: flex-start;

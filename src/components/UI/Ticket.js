@@ -9,7 +9,7 @@ import 'moment/locale/ru'
 import logo from '../../assets/images/turkish-airlines-logo.svg'
 
 const dddCapitalize = ddd =>
-	ddd.replace(/(пн|вт|ср|чт|пт|сб|вс)$/g, string =>
+	ddd.replace(/(пн|вт|ср|чт|пт|сб|вс)$/gi, string =>
 		string.charAt(0).toUpperCase() + string.slice(1))
 
 const Ticket = ({
@@ -30,9 +30,29 @@ const Ticket = ({
 	const stopsText = isFinite(stops)
 		? pluralize(stops, '', '%d остановка', '%d остановки', '%d остановок')
 		: ''
-	// const dateToFormat = '1976-04-19T12:59-0500'
+
 	return (
-		<div className={mixin ? `ticket ${mixin}` : 'ticket'}>
+		<div className={mixin ? `${mixin} ticket` : `ticket`}>
+			<div className='ticket__col ticket__col--action'>
+				<div className='ticket__media'>
+					<img src={logo} className='ticket__media-img' width='120' height='35' alt='Ticket logo' />
+				</div>
+				<button type='button' className='ticket__buy'>
+					<div className='ticket__buy-text'>
+						Купить
+					</div>
+					<div className='ticket__price'>
+						<div className='ticket__price-inner'>
+							<div className='ticket__price-currency'>
+								<CurrencySymbol currency={currency} />
+							</div>
+							<div className='ticket__price-value'>
+								за { (price * (rates[currency] ? rates[currency] : 1)).toFixed(2) }
+							</div>
+						</div>
+					</div>
+				</button>
+			</div>
 			<div className='ticket__col ticket__col--content'>
 				<div className='ticket__media'>
 					<img src={logo} className='ticket__media-img' width='120' height='35' alt='Ticket logo' />
@@ -87,26 +107,6 @@ const Ticket = ({
 						</div>
 					</div>
 				</div>
-			</div>
-			<div className='ticket__col ticket__col--action'>
-				<div className='ticket__media'>
-					<img src={logo} className='ticket__media-img' width='120' height='35' alt='Ticket logo' />
-				</div>
-				<button type='button' className='ticket__buy'>
-					<div className='ticket__buy-text'>
-						Купить
-					</div>
-					<div className='ticket__price'>
-						<div className='ticket__price-inner'>
-							<div className='ticket__price-currency'>
-								<CurrencySymbol currency={currency} />
-							</div>
-							<div className='ticket__price-value'>
-								за { (price * (rates[currency] ? rates[currency] : 1)).toFixed(2) }
-							</div>
-						</div>
-					</div>
-				</button>
 			</div>
 		</div>
 	)
