@@ -209,6 +209,7 @@
 				}
 
 				& ~ & {
+					border-left: 1px solid $porcelain;
 					&:not(#{$ticket}__col--content) {
 						padding-top: $global-padding + 5;
 					}
