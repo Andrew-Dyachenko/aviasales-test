@@ -17,7 +17,9 @@ import {
 	addCurrencyModifier,
 	removeCurrencyModifiers,
 	setCurrencyModifier,
-	setCurrencyModifiers } from '../../store/actions'
+	setCurrencyModifiers,
+	setScrollDimensions,
+	setWindowDimensions } from '../../store/actions'
 
 import tickets from '../../../public/tickets'
 import { rates } from '../../../public/currency'
@@ -277,6 +279,49 @@ describe('Action Creators', () => {
 							currencies
 						})
 				})
+			})
+		})
+	})
+
+	// Dimensions
+
+	describe('Dimensions', () => {
+		describe('Scroll dimensions', () => {
+			it('Should return action object with correct type', () => {
+				const dimensions = {
+					scroll: {
+						scrollWidth: {
+							scrollbarHeight: 0,
+							scrollbarWidth: 0
+						}
+					}
+				}
+
+				const setScrollDimensionsAction = setScrollDimensions(dimensions)
+					expect(setScrollDimensionsAction)
+						.toEqual({
+							type: C.SET_SCROLL_DIAMENTIONS,
+							dimensions
+						})
+			})
+		})
+
+		describe('Window dimensions', () => {
+			it('Should return action object with correct type', () => {
+				const dimensions = {
+					scroll: {
+						window: {
+							innerWidth: 0
+						}
+					}
+				}
+
+				const setWindowDimensionsAction = setWindowDimensions(dimensions)
+					expect(setWindowDimensionsAction)
+						.toEqual({
+							type: C.SET_WINDOW_DIAMENTIONS,
+							dimensions
+						})
 			})
 		})
 	})

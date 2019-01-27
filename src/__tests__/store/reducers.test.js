@@ -12,7 +12,9 @@ import {
 	currencyModifiers,
 	currencyModifiersList,
 	currencyModifier,
-	measurements } from '../../store/reducers'
+	dimensions,
+	scrollDimensions,
+	windowDimensions } from '../../store/reducers'
 
 import {
 	dafaultFetchState,
@@ -1074,23 +1076,30 @@ describe('Reducers', () => {
 			})
 		})
 	})
-	describe('Measurements', () => {
+	describe('dimensions', () => {
 		it('Should return expected deafault state', () => {
-			const defaultMeasurementsResult = measurements()
-			expect(defaultMeasurementsResult)
+			const defaultDimensionsResult = dimensions()
+			expect(expect.objectContaining(defaultDimensionsResult))
 				.toEqual({
-					scrollbarHeight: 0,
-					scrollbarWidth: 0
+					scroll: scrollDimensions(),
+					window: windowDimensions()
 				})
 
 		})
-		it('Should return expected measurements', () => {
+		it('Should return expected new scroll dimensions', () => {
 			const state = {
-				scrollbarHeight: 0, scrollbarWidth: 0
+				scroll: {
+					scrollbarHeight: 0,
+					scrollbarWidth: 0
+				},
+				window: {
+					foo: 'foo',
+					innerWidth: 0
+				}
 			}
 			const action = {
-				type: C.SET_MEASUREMENTS,
-				measurements: {
+				type: C.SET_SCROLL_DIAMENTIONS,
+				dimensions: {
 					scrollbarHeight: 15,
 					scrollbarWidth: 15
 				}
@@ -1099,11 +1108,51 @@ describe('Reducers', () => {
 			deepFreeze(state)
 			deepFreeze(action)
 
-			const measurementsResult = measurements(state, action)
-			expect(measurementsResult)
+			const dimensionsResult = dimensions(state, action)
+			expect(expect.objectContaining(dimensionsResult))
 				.toEqual({
+					scroll: {
+						scrollbarHeight: 15,
+						scrollbarWidth: 15
+					},
+					window: {
+						innerWidth: 0,
+						foo: 'foo'
+					}
+				})
+		})
+		it('Should return expected new window dimensions', () => {
+			const state = {
+				scroll: {
+					foo: 'foo',
 					scrollbarHeight: 15,
 					scrollbarWidth: 15
+				},
+				window: {
+					innerWidth: 0
+				}
+			}
+			const action = {
+				type: C.SET_WINDOW_DIAMENTIONS,
+				dimensions: {
+					innerWidth: 600
+				}
+			}
+
+			deepFreeze(state)
+			deepFreeze(action)
+
+			const dimensionsResult = dimensions(state, action)
+			expect(expect.objectContaining(dimensionsResult))
+				.toEqual({
+					scroll: {
+						foo: 'foo',
+						scrollbarHeight: 15,
+						scrollbarWidth: 15
+					},
+					window: {
+						innerWidth: 600
+					}
 				})
 		})
 	})
