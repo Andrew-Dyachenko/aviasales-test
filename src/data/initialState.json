@@ -26,8 +26,13 @@
 			"error": false
 		}
 	},
-	"measurements": {
-		"scrollbarHeight": 0,
-		"scrollbarWidth": 0
+	"dimensions": {
+		"scroll": {
+			"scrollbarHeight": 0,
+			"scrollbarWidth": 0
+		},
+		"window": {
+			"innerWidth": 0
+		}
 	}
 }

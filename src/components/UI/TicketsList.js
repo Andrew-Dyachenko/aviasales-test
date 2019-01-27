@@ -10,7 +10,8 @@ const TicketsList = ({
 		currencies,
 		filters,
 		modificators,
-		tickets
+		tickets,
+		dimensions
 	}) => {
 	const { list } = tickets
 	const { fetching } = tickets.fetch
@@ -29,7 +30,13 @@ const TicketsList = ({
 								.filter(ticket => stops.indexOf(ticket.stops) !== -1)
 								.map((ticket, index) => {
 								return (
-									<Ticket mixin='App__ticket' key={index} {...ticket} currency={currency} currencies={currencies} />
+									<Ticket
+										{...ticket}
+										key={index}
+										mixin='App__ticket'
+										currency={currency}
+										currencies={currencies}
+										dimensions={dimensions} />
 								)
 							})
 							: null
@@ -44,8 +51,8 @@ TicketsList.defaultProps = {
 	currencies: {},
 	filters: {},
 	modificators: {},
-	tickets: {}
-	
+	tickets: {},
+	dimensions: {}
 }
 
 TicketsList.propTypes = {
@@ -58,7 +65,8 @@ TicketsList.propTypes = {
 	currencies: PropTypes.object,
 	filters: PropTypes.object,
 	modificators: PropTypes.object,
-	tickets: PropTypes.object
+	tickets: PropTypes.object,
+	dimensions: PropTypes.object
 }
 
 export default TicketsList

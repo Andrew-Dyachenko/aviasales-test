@@ -11,10 +11,17 @@ import Tickets from './UI/Tickets'
 import {
 	fetchTickets,
 	fetchCurrency } from '../helpers/fetch'
-import { setMeasurements } from '../store/actions'
+import {
+	setScrollDimensions,
+	setWindowDimensions } from '../store/actions'
 
 class App extends PureComponent {
+	// constructor() {
+	// 	super()
+	// 	this.ticketSListRef = React.createRef()
+	// }
 	componentDidMount() {
+		window.addEventListener('resize', this.props.onResize)
 		const storage = localStorage['aviasales-store']
 
 		if (!storage || !JSON.parse(storage).tickets.fetch.fetched)
@@ -25,8 +32,11 @@ class App extends PureComponent {
 			// this.props.fetchCurrency('./currency.json')
 
 	}
+	componentWillUnmount() {
+		window.removeEventListener('resize', this.props.onResize)
+	}
 	render() {
-		const { scrollbarWidth } = this.props.measurements
+		const { scrollbarWidth } = this.props.dimensions.scroll
 		return (
 			<div className='App root__App'>
 				<Helmet>
@@ -54,7 +64,15 @@ class App extends PureComponent {
 }
 
 App.defaultProps = {
-	measurements: {scrollbarHeight: 0, scrollbarWidth: 0},
+	dimensions: {
+		scroll: {
+			scrollbarHeight: 0,
+			scrollbarWidth: 0
+		},
+		window: {
+			innerWidth: 0
+		}
+	},
 	fetchCurrency: f => f,
 	fetchTickets: f => f,
 	scrollbarSizeLoad: f => f,
@@ -62,9 +80,11 @@ App.defaultProps = {
 }
 
 App.propTypes = {
-	measurements: PropTypes.object,
+	
+	dimensions: PropTypes.object,
 	fetchCurrency: PropTypes.func,
 	fetchTickets: PropTypes.func,
+	onResize: PropTypes.func,
 	scrollbarSizeLoad: PropTypes.func,
 	scrollbarSizeChange: PropTypes.func
 }
@@ -72,12 +92,13 @@ App.propTypes = {
 export default connect(
 	state =>
 		({
-			measurements: state.measurements
+			dimensions: state.dimensions
 		}),
 	{
 		fetchCurrency,
 		fetchTickets,
-		scrollbarSizeLoad: measurements => dispatch => dispatch(setMeasurements(measurements)),
-		scrollbarSizeChange: measurements => dispatch => dispatch(setMeasurements(measurements))
+		onResize: () => dispatch => dispatch(setWindowDimensions({ innerWidth: window.innerWidth })),
+		scrollbarSizeLoad: dimensions => dispatch => dispatch(setScrollDimensions(dimensions)),
+		scrollbarSizeChange: dimensions => dispatch => dispatch(setScrollDimensions(dimensions))
 	}
 )(App)

@@ -283,10 +283,48 @@ export const modificators = (state = {currencies: currencyModifiers()}, action =
 	}
 }
 
-export const measurements = (state = {scrollbarHeight: 0, scrollbarWidth: 0}, action = {}) => {
+export const dimensions = (state = {scroll: scrollDimensions(), window: windowDimensions()}, action = {}) => {
+	console.log('dimensions reducer', action)
 	switch (action.type) {
-		case C.SET_MEASUREMENTS:
-			return action.measurements
+		case C.SET_SCROLL_DIAMENTIONS:
+			return {
+				...state,
+				scroll: scrollDimensions(action, state.scroll)
+			}
+
+		case C.SET_WINDOW_DIAMENTIONS:
+			return {
+				...state,
+				window: windowDimensions(action, state.window)
+			}
+
+		default:
+			return state
+	}
+}
+
+export const scrollDimensions = (action = {}, state = { scrollbarHeight: 0, scrollbarWidth: 0 }) => {
+	switch (action.type) {
+		case C.SET_SCROLL_DIAMENTIONS: {
+			return {
+				...state,
+				...action.dimensions
+			}
+		}
+
+		default:
+			return state
+	}
+}
+
+export const windowDimensions = (action = {}, state = { innerWidth: 0 }) => {
+	switch (action.type) {
+		case C.SET_WINDOW_DIAMENTIONS: {
+			return {
+				...state,
+				...action.dimensions
+			}
+		}
 
 		default:
 			return state

@@ -1,7 +1,7 @@
 /*eslint no-console: 0*/
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk';
-import { tickets, currencies, filters, modificators, measurements } from './reducers'
+import { tickets, currencies, filters, modificators, dimensions } from './reducers'
 import stateData from '../data/initialState'
 
 const logger = store => next => action => {
@@ -23,7 +23,7 @@ const saver = store => next => action => {
 
 const storeFactory = (initialState = stateData) =>
 	applyMiddleware(logger, saver, thunk)(createStore)(
-		combineReducers({ tickets, currencies, filters, modificators, measurements }),
+		combineReducers({ tickets, currencies, filters, modificators, dimensions }),
 		(localStorage['aviasales-store']) ?
 			JSON.parse(localStorage['aviasales-store']) :
 			initialState

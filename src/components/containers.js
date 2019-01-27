@@ -85,7 +85,8 @@ export const TicketsListContainer = connect(
 		currencies: state.currencies,
 		filters: state.filters,
 		modificators: state.modificators,
-		tickets: state.tickets
+		tickets: state.tickets,
+		dimensions: state.dimensions
 	}),
 	null
 )(TicketsList)
