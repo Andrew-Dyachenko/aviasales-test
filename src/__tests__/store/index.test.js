@@ -6,46 +6,46 @@ describe('Store Factory', () => {
 
 	beforeAll(() => {
 		window.localStorage = {}
-		console.groupCollapsed = jest.fn()
-		console.log = jest.fn()
-		console.groupEnd = jest.fn()
+		// console.groupCollapsed = jest.fn()
+		// console.log = jest.fn()
+		// console.groupEnd = jest.fn()
 	})
 
 	afterEach(() => jest.resetAllMocks())
 
-	describe('Logging', () => {
+	// describe('Logging', () => {
 
-		let store
+	// 	let store
 
-		beforeEach(() => {
-			store = storeFactory({
-				tickets: {
-					list: []
-				}
-			})
-			store.dispatch({
-				type: C.SET_TICKETS,
-				tickets: global.tickets
-			})
-		})
+	// 	beforeEach(() => {
+	// 		store = storeFactory({
+	// 			tickets: {
+	// 				list: []
+	// 			}
+	// 		})
+	// 		store.dispatch({
+	// 			type: C.SET_TICKETS,
+	// 			tickets: global.tickets
+	// 		})
+	// 	})
 
-		it('starts a console group', () =>
-			expect(console.groupCollapsed.mock.calls.length).toBe(1)
-		)
+	// 	it('starts a console group', () =>
+	// 		expect(console.groupCollapsed.mock.calls.length).toBe(1)
+	// 	)
 
-		it('logs state before action and state after', () =>
-			expect(console.log.mock.calls.map(args => args[0]))
-				.toEqual([
-					'prev state',
-					'action',
-					'next state'
-				])
-		)
+	// 	it('logs state before action and state after', () =>
+	// 		expect(console.log.mock.calls.map(args => args[0]))
+	// 			.toEqual([
+	// 				'prev state',
+	// 				'action',
+	// 				'next state'
+	// 			])
+	// 	)
 
-		it('ends the console group', () =>
-			expect(console.groupEnd.mock.calls.length).toBe(1)
-		)
-	})
+	// 	it('ends the console group', () =>
+	// 		expect(console.groupEnd.mock.calls.length).toBe(1)
+	// 	)
+	// })
 
 	describe('Saving', () => {
 
