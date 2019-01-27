@@ -61,7 +61,7 @@ describe('Store Factory', () => {
 		})
 
 		it('saves state to localStorage', () =>
-			expect(JSON.parse(global.localStorage['aviasales-store']).tickets.length).toEqual(10))
+			expect(JSON.parse(global.localStorage['aviasales-store']).tickets.list.length).toEqual(10))
 
 	})
 
