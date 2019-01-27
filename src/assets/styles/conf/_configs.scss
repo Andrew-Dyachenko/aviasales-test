@@ -1,4 +1,5 @@
 @import '../func/functions';
+@import '../mix/mixins';
 
 $white: #fff;
 $catskill-white: #f3f7fa;
@@ -23,7 +24,7 @@ $gutter-width: 20px;
 $font-size-root: 16px;
 $font-family: 'Open Sans', sans-serif;
 $global-line-height: 1.15;
-$max-scroll-width: 20px;
+$max-scroll-width: 17px;
 
 // ---------- Asymptotic Fibonacci numbers  ----------
 
@@ -50,6 +51,30 @@ $fibo-asymp-xs-percentage: $fibo-asymp-xs * 100%; // 0.2649373%
 $fibo-asymp-xxs-percentage: $fibo-asymp-xxs * 100%; // 0.101363%
 $fibo-asymp-xxxs-percentage: $fibo-asymp-xxxs * 100%; // 0.038693%
 
+// ----------  Fonts config  ----------
+
+$font-name: 'Open Sans';
+$font-path: '../fonts/OpenSans/';
+
+// ----------  Open Sans  ----------
+
+@include font-face($font-name, 'Open Sans Light Italic',     'OpenSans-LightItalic',     '#{$font-path}OpenSans-LightItalic',     italic, 300);
+@include font-face($font-name, 'Open Sans Light',            'OpenSans-Light',           '#{$font-path}OpenSans-Light',           normal, 300);
+
+@include font-face($font-name, 'Open Sans Italic',           'OpenSans-Italic',          '#{$font-path}OpenSans-Italic',          italic, 400);
+@include font-face($font-name, 'Open Sans Regular',          'OpenSans-Regular',         '#{$font-path}OpenSans-Regular',         normal, 400);
+
+@include font-face($font-name, 'Open Sans SemiBold Italic',  'OpenSans-SemiBoldItalic',  '#{$font-path}OpenSans-SemiBoldItalic',  italic, 600);
+@include font-face($font-name, 'Open Sans SemiBold',         'OpenSans-SemiBold',        '#{$font-path}OpenSans-SemiBold',        normal, 600);
+
+@include font-face($font-name, 'Open Sans Bold Italic',      'OpenSans-BoldItalic',      '#{$font-path}OpenSans-BoldItalic',      italic, 700);
+@include font-face($font-name, 'Open Sans Bold',             'OpenSans-Bold',            '#{$font-path}OpenSans-Bold',            normal, 700);
+
+@include font-face($font-name, 'Open Sans ExtraBold Italic', 'OpenSans-ExtraBoldItalic', '#{$font-path}OpenSans-ExtraBoldItalic', italic, 900);
+@include font-face($font-name, 'Open Sans ExtraBold',        'OpenSans-ExtraBold',       '#{$font-path}OpenSans-ExtraBold',       normal, 900);
+
+// ----------  Custom font  ----------
+
 %visibility-hidden {
 	border: 0;
 	clip: rect(0 0 0 0);
@@ -66,7 +91,7 @@ $fibo-asymp-xxxs-percentage: $fibo-asymp-xxxs * 100%; // 0.038693%
 	background-color: $white;
 	border-radius: 5px;
 	box-shadow: 0 1px 4px rgba(91, 137, 164, .25);
-	padding: 15px;
+	padding: $global-padding - 5;
 	
 	&--no-padding {
 		padding: 0;
