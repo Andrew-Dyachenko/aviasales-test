@@ -27,6 +27,7 @@ const TicketsList = ({
 						: list
 							? list
 								.filter(ticket => stops.indexOf(ticket.stops) !== -1)
+								.sort((a, b) => a.price - b.price)
 								.map((ticket, index) => {
 								return (
 									<Ticket
