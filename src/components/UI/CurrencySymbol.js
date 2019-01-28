@@ -1,11 +1,8 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-const char = ({ currency }) => {
+const char = currency => {
 	switch(currency) {
-		case 'RUB':
-			return '₽'
-
 		case 'USD':
 			return '$'
 
@@ -16,13 +13,11 @@ const char = ({ currency }) => {
 			return '₽'
 	}
 }
-const CurrencySymbol = currency => {
+const CurrencySymbol = ({ currency }) => {
 	const charSymbol = char(currency)
 	return (
 		<Fragment>
-			{
-				charSymbol
-			}
+			{ charSymbol }
 		</Fragment>
 	)
 }
