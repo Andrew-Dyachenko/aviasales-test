@@ -1,5 +1,5 @@
 import CurrencySymbol from '../../components/UI/CurrencySymbol'
-const { shallow } = Enzyme
+const { shallow } = global.Enzyme
 
 describe('<CurrencySymbol /> UI Component', () => {
 	it('Should return RUB symbol by default', () => {
