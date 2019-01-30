@@ -1,4 +1,6 @@
 import Filter from '../../components/UI/Filter'
+
+const { React } = global
 const { shallow } = global.Enzyme
 
 describe('<Filter /> UI Component', () => {
