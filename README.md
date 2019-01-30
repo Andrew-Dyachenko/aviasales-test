@@ -2,7 +2,9 @@
 
 > Demo tickets list of real App
 
-[![NPM](https://img.shields.io/npm/v/react-range-gallery.svg)](https://www.npmjs.com/package/react-range-gallery) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-range-gallery.svg)](https://www.npmjs.com/package/react-range-gallery)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+![](https://img.shields.io/github/license/Andrew-Dyachenko/aviasales-test.svg)
 
 ## Test task
 
