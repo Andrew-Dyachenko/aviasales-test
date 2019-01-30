@@ -1,6 +1,6 @@
 # Aviasales performed test
 
-> Demo aviasales tickets list - inpired by real app
+> Aviasales demo tickets list - inpired by real [app](https://www.aviasales.ru/)
 
 [![http://aviasales-test.tech/](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=aviasales-test.tech)](http://aviasales-test.tech/)
 
@@ -10,13 +10,12 @@
 [![Code Coverage](https://scrutinizer-ci.com/g/Andrew-Dyachenko/aviasales-test/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Andrew-Dyachenko/aviasales-test/?branch=master)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 ![](https://img.shields.io/github/issues/Andrew-Dyachenko/aviasales-test.svg)
+![](https://img.shields.io/github/repo-size/andrew-dyachenko/aviasales-test.svg?style=flat)
 ![](https://img.shields.io/github/stars/Andrew-Dyachenko/aviasales-test.svg)
 ![](https://img.shields.io/github/forks/Andrew-Dyachenko/aviasales-test.svg)
-![](https://img.shields.io/github/repo-size/andrew-dyachenko/aviasales-test.svg?style=flat)
-
 
 ## Test task
-
+Test task were taken from [here](https://github.com/KosyanMedia/test-tasks/tree/master/aviasales)
 
 ## Demo
 [http://aviasales-test.tech](http://aviasales-test.tech)
