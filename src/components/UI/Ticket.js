@@ -6,10 +6,7 @@ import pluralize from 'pluralize-ru'
 import Moment from 'react-moment'
 import 'moment/locale/ru'
 import logo from '../../assets/images/turkish-airlines-logo.svg'
-
-const dddCapitalize = ddd =>
-	ddd.replace(/(пн|вт|ср|чт|пт|сб|вс)$/gi, string =>
-		string.charAt(0).toUpperCase() + string.slice(1))
+import dddCapitalize from '../../helpers/dddCapitalize'
 
 const Ticket = ({
 	mixin,
