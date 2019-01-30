@@ -1,4 +1,5 @@
 // import { render } from 'react-dom'
+/** global: jest */
 
 jest.mock('react-dom')
 jest.mock('../../src/store/index', () => () => ({
