@@ -1,5 +1,6 @@
 import CurrencySymbol from '../../components/UI/CurrencySymbol'
 
+const { React } = global
 const { shallow } = global.Enzyme
 
 describe('<CurrencySymbol /> UI Component', () => {
