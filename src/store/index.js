@@ -1,4 +1,5 @@
 /*eslint no-console: 0*/
+/** global: localStorage */
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk';
 import { tickets, currencies, filters, modificators, dimensions } from './reducers'

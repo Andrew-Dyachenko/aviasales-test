@@ -1,4 +1,5 @@
 /*eslint no-console: 0*/
+/** global: jest */
 import C from '../../store/constants'
 import storeFactory from '../../store'
 
