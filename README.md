@@ -1,6 +1,6 @@
 # Aviasales performed test
 
-> Demo avia tickets
+> Demo aviasales tickets list - inpired by real app
 
 [![http://aviasales-test.tech/](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=aviasales-test.tech)](http://aviasales-test.tech/)
 
