@@ -755,7 +755,6 @@ describe('Reducers', () => {
 	})
 	describe('Modificators', () => {
 		it('Should return expected default state', () => {
-			// state = {currencies: currencyModifiers()}, action
 			const currency = currencyModifier()
 			const list = currencyModifiersList()
 			const state = {
