@@ -1,7 +1,6 @@
 {
   "name": "aviasales-test",
   "version": "v1.0.0",
-  "engines" : { "node" : ">=8" },
   "dependencies": {
     "@babel/core": "7.1.0",
     "@svgr/webpack": "2.4.1",
