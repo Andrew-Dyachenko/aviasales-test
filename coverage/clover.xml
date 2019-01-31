@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1548831234675" clover="3.2.0">
-  <project timestamp="1548831234675" name="All files">
+<coverage generated="1548918286006" clover="3.2.0">
+  <project timestamp="1548918286006" name="All files">
     <metrics statements="284" coveredstatements="242" conditionals="166" coveredconditionals="139" methods="110" coveredmethods="87" elements="560" coveredelements="468" complexity="0" loc="284" ncloc="284" packages="5" files="22" classes="22">
       <package name="src">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -263,12 +263,12 @@
         </file>
         <file name="index.js" path="/var/www/aviasales-test/src/store/index.js">
           <metrics statements="6" coveredstatements="6" conditionals="3" coveredconditionals="3" methods="4" coveredmethods="4"/>
-          <line num="18" count="3" type="stmt"/>
-          <line num="19" count="7" type="stmt"/>
+          <line num="19" count="3" type="stmt"/>
           <line num="20" count="7" type="stmt"/>
           <line num="21" count="7" type="stmt"/>
-          <line num="24" count="2" type="cond" truecount="1" falsecount="0"/>
-          <line num="25" count="3" type="stmt"/>
+          <line num="22" count="7" type="stmt"/>
+          <line num="25" count="2" type="cond" truecount="1" falsecount="0"/>
+          <line num="26" count="3" type="stmt"/>
         </file>
         <file name="reducers.js" path="/var/www/aviasales-test/src/store/reducers.js">
           <metrics statements="93" coveredstatements="93" conditionals="93" coveredconditionals="93" methods="19" coveredmethods="19"/>
