@@ -1,6 +1,6 @@
 {
   "name": "aviasales-test",
-  "version": "1.0.0",
+  "version": "v1.0.0",
   "engines" : { "node" : ">=8" },
   "dependencies": {
     "@babel/core": "7.1.0",

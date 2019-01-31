@@ -4,6 +4,7 @@
 
 [![http://aviasales-test.tech/](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=aviasales-test.tech)](http://aviasales-test.tech/)
 
+![](https://img.shields.io/github/package-json/v/Andrew-Dyachenko/aviasales-test.svg?style=flat)
 ![MIT License](https://img.shields.io/github/license/Andrew-Dyachenko/aviasales-test.svg)
 [![Build Status](https://scrutinizer-ci.com/g/Andrew-Dyachenko/aviasales-test/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Andrew-Dyachenko/aviasales-test/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Andrew-Dyachenko/aviasales-test/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Andrew-Dyachenko/aviasales-test/?branch=master)
