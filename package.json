@@ -94,6 +94,7 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/*.d.ts",
+      "!src/components/CanvasAirplane.js",
       "!src/serviceWorker.js"
     ],
     "resolver": "jest-pnp-resolver",
