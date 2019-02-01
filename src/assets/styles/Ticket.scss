@@ -104,26 +104,33 @@
 			height: 13px;
 			position: relative;
 
-			&::before {
-				background-color: #d2d5d6;
-				content: '';
-				height: 1px;
-				left: 0;
-				position: absolute;
-				right: 0;
-				top: 50%;
-				transform: translateY(-50%);
+			&:empty {
+				&::before {
+					background-color: #d2d5d6;
+					content: '';
+					height: 1px;
+					left: 0;
+					position: absolute;
+					right: 0;
+					top: 50%;
+					transform: translateY(-50%);
+				}
+
+				&::after {
+					background: $white url(../images/plane.png) center center no-repeat;
+					content: '';
+					height: 15px;
+					position: absolute;
+					right: 0;
+					top: 50%;
+					transform: translateY(-50%);
+					width: 15px;
+				}
 			}
 
-			&::after {
-				background: $white url(../images/plane.png) center center no-repeat;
-				content: '';
-				height: 15px;
-				position: absolute;
-				right: 0;
-				top: 50%;
-				transform: translateY(-50%);
-				width: 15px;
+			canvas {
+				display: block;
+				width: 100% !important; /* stylelint-disable-line declaration-no-important */
 			}
 		}
 	}

@@ -7,6 +7,7 @@ import Moment from 'react-moment'
 import 'moment/locale/ru'
 import logo from '../../assets/images/turkish-airlines-logo.svg'
 import dddCapitalize from '../../helpers/dddCapitalize'
+import CanvasAirplane from '../CanvasAirplane'
 
 const Ticket = ({
 	mixin,
@@ -64,7 +65,9 @@ const Ticket = ({
 							<div className='ticket__path-stops'>
 								{ stopsText }
 							</div>
-							<div className='ticket__path-canvas'></div>
+							<div className='ticket__path-canvas'>
+								<CanvasAirplane planeScaleOnGroundKof={1} />
+							</div>
 						</div>
 						<div className='ticket__destination'>
 							<div className='ticket__time'>

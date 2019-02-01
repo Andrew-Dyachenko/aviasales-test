@@ -24,6 +24,7 @@ This is mainly bootstrapping and builded with next libraries
 - [create-react-app](https://github.com/facebook/create-react-app)
 
 ## Changelog
+- v1.1.0 Ticket canvas plane plume animation
 - v1.0.0 The main planned functionality
 
 ## License
