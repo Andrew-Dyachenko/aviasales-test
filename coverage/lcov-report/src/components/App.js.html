@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">63.64% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>14/22</span>
+        <span class='fraction'>12/18</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">75% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>6/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">42.86% </span>
+        <span class="strong">45.45% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>6/14</span>
+        <span class='fraction'>5/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">68.42% </span>
+        <span class="strong">68.75% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>13/19</span>
+        <span class='fraction'>11/16</span>
       </div>
     </div>
   </div>
@@ -134,15 +134,7 @@
 89
 90
 91
-92
-93
-94
-95
-96
-97
-98
-99</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+92</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -160,7 +152,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -168,9 +159,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
@@ -227,14 +215,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -252,12 +238,10 @@ import {
 	fetchTickets,
 	fetchCurrency } from '../helpers/fetch'
 import {
-	setScrollDimensions,
-	setWindowDimensions } from '../store/actions'
+	setScrollDimensions } from '../store/actions'
 &nbsp;
 class App extends PureComponent {
 	componentDidMount() {
-		window.addEventListener('resize', this.props.onResize)
 		const storage = localStorage['aviasales-store']
 &nbsp;
 		<span class="missing-if-branch" title="else path not taken" >E</span>if (!storage || !JSON.parse(storage).tickets.fetch.fetched)
@@ -266,9 +250,6 @@ class App extends PureComponent {
 		<span class="missing-if-branch" title="else path not taken" >E</span>if (!storage || !JSON.parse(storage).currencies.fetch.fetched)
 			this.props.fetchCurrency('https://api.exchangeratesapi.io/latest?base=RUB&amp;symbols=RUB,USD,EUR')
 &nbsp;
-	}
-	componentWillUnmount() {
-		window.removeEventListener('resize', this.props.onResize)
 	}
 	render() {
 		const { scrollbarWidth } = this.props.dimensions.scroll
@@ -319,7 +300,6 @@ App.propTypes = {
 	dimensions: PropTypes.object,
 	fetchCurrency: PropTypes.func,
 	fetchTickets: PropTypes.func,
-	onResize: PropTypes.func,
 	scrollbarSizeLoad: PropTypes.func,
 	scrollbarSizeChange: PropTypes.func
 }
@@ -332,7 +312,6 @@ export default connect(
 	{
 		fetchCurrency,
 		fetchTickets,
-		onResize: <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >di</span>spatch =&gt; <span class="cstat-no" title="statement not covered" >dispatch(setWindowDimensions({ innerWidth: window.innerWidth })),</span></span>
 		scrollbarSizeLoad: dimensions =&gt; dispatch =&gt; dispatch(setScrollDimensions(dimensions)),
 		scrollbarSizeChange: <span class="fstat-no" title="function not covered" >di</span>mensions =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >di</span>spatch =&gt; <span class="cstat-no" title="statement not covered" >dispatch(setScrollDimensions(dimensions))</span></span>
 	}
@@ -343,7 +322,7 @@ export default connect(
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Feb 01 2019 15:01:05 GMT+0300 (MSK)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Feb 02 2019 17:11:25 GMT+0300 (MSK)
 </div>
 </div>
 <script src="../../prettify.js"></script>
