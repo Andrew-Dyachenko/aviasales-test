@@ -1,9 +1,9 @@
 /*eslint no-console: 0*/
 import React from 'react'
-import { Component } from 'react'
+import { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-export default class CanvasAirplane extends Component {
+export default class CanvasAirplane extends PureComponent {
 	constructor({
 		height = 13,
 		width = 156,

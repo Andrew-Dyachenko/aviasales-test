@@ -78,8 +78,3 @@ export const setScrollDimensions = dimensions => ({
 	type: C.SET_SCROLL_DIAMENTIONS,
 	dimensions
 })
-
-export const setWindowDimensions = dimensions => ({
-	type: C.SET_WINDOW_DIAMENTIONS,
-	dimensions
-})

@@ -13,8 +13,7 @@ import {
 	currencyModifiersList,
 	currencyModifier,
 	dimensions,
-	scrollDimensions,
-	windowDimensions } from '../../store/reducers'
+	scrollDimensions } from '../../store/reducers'
 
 import {
 	dafaultFetchState,
@@ -1080,8 +1079,7 @@ describe('Reducers', () => {
 			const defaultDimensionsResult = dimensions()
 			expect(expect.objectContaining(defaultDimensionsResult))
 				.toEqual({
-					scroll: scrollDimensions(),
-					window: windowDimensions()
+					scroll: scrollDimensions()
 				})
 
 		})
@@ -1090,10 +1088,6 @@ describe('Reducers', () => {
 				scroll: {
 					scrollbarHeight: 0,
 					scrollbarWidth: 0
-				},
-				window: {
-					foo: 'foo',
-					innerWidth: 0
 				}
 			}
 			const action = {
@@ -1113,44 +1107,6 @@ describe('Reducers', () => {
 					scroll: {
 						scrollbarHeight: 15,
 						scrollbarWidth: 15
-					},
-					window: {
-						innerWidth: 0,
-						foo: 'foo'
-					}
-				})
-		})
-		it('Should return expected new window dimensions', () => {
-			const state = {
-				scroll: {
-					foo: 'foo',
-					scrollbarHeight: 15,
-					scrollbarWidth: 15
-				},
-				window: {
-					innerWidth: 0
-				}
-			}
-			const action = {
-				type: C.SET_WINDOW_DIAMENTIONS,
-				dimensions: {
-					innerWidth: 600
-				}
-			}
-
-			deepFreeze(state)
-			deepFreeze(action)
-
-			const dimensionsResult = dimensions(state, action)
-			expect(expect.objectContaining(dimensionsResult))
-				.toEqual({
-					scroll: {
-						foo: 'foo',
-						scrollbarHeight: 15,
-						scrollbarWidth: 15
-					},
-					window: {
-						innerWidth: 600
 					}
 				})
 		})

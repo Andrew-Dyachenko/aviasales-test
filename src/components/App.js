@@ -11,12 +11,10 @@ import {
 	fetchTickets,
 	fetchCurrency } from '../helpers/fetch'
 import {
-	setScrollDimensions,
-	setWindowDimensions } from '../store/actions'
+	setScrollDimensions } from '../store/actions'
 
 class App extends PureComponent {
 	componentDidMount() {
-		window.addEventListener('resize', this.props.onResize)
 		const storage = localStorage['aviasales-store']
 
 		if (!storage || !JSON.parse(storage).tickets.fetch.fetched)
@@ -25,9 +23,6 @@ class App extends PureComponent {
 		if (!storage || !JSON.parse(storage).currencies.fetch.fetched)
 			this.props.fetchCurrency('https://api.exchangeratesapi.io/latest?base=RUB&symbols=RUB,USD,EUR')
 
-	}
-	componentWillUnmount() {
-		window.removeEventListener('resize', this.props.onResize)
 	}
 	render() {
 		const { scrollbarWidth } = this.props.dimensions.scroll
@@ -78,7 +73,6 @@ App.propTypes = {
 	dimensions: PropTypes.object,
 	fetchCurrency: PropTypes.func,
 	fetchTickets: PropTypes.func,
-	onResize: PropTypes.func,
 	scrollbarSizeLoad: PropTypes.func,
 	scrollbarSizeChange: PropTypes.func
 }
@@ -91,7 +85,6 @@ export default connect(
 	{
 		fetchCurrency,
 		fetchTickets,
-		onResize: () => dispatch => dispatch(setWindowDimensions({ innerWidth: window.innerWidth })),
 		scrollbarSizeLoad: dimensions => dispatch => dispatch(setScrollDimensions(dimensions)),
 		scrollbarSizeChange: dimensions => dispatch => dispatch(setScrollDimensions(dimensions))
 	}

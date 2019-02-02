@@ -24,7 +24,7 @@ This is mainly bootstrapping and builded with next libraries
 - [create-react-app](https://github.com/facebook/create-react-app)
 
 ## Changelog
-- v1.1.1 (PROMISE) Canvas Maximum call stack size exceeded - bugfix (coming soon!)...
+- v1.1.1 Maximum call stack size exceeded - invokes on w.resize bugfix
 - v1.1.0 Canvas plane plume animation
 - v1.0.0 The main planned functionality
 
