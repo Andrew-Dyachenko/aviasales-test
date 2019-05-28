@@ -2,7 +2,7 @@
 
 > Aviasales demo tickets list - inpired by real [app](https://www.aviasales.ru/)
 
-[![http://aviasales-test.tech/](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=aviasales-test.tech)](http://aviasales-test.tech/)
+[![https://andrew-dyachenko.github.io/aviasales-test//](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=aviasales-test.tech)](https://andrew-dyachenko.github.io/aviasales-test//)
 
 ![MIT License](https://img.shields.io/github/license/Andrew-Dyachenko/aviasales-test.svg)
 [![Build Status](https://scrutinizer-ci.com/g/Andrew-Dyachenko/aviasales-test/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Andrew-Dyachenko/aviasales-test/build-status/master)
@@ -17,13 +17,14 @@
 Test task were taken from [here](https://github.com/KosyanMedia/test-tasks/tree/master/aviasales)
 
 ## Demo
-[http://aviasales-test.tech](http://aviasales-test.tech)
+[https://andrew-dyachenko.github.io/aviasales-test/](https://andrew-dyachenko.github.io/aviasales-test/)
 
 ## Libraries
 This is mainly bootstrapping and builded with next libraries
 - [create-react-app](https://github.com/facebook/create-react-app)
 
 ## Changelog
+- v1.1.2 Move hosting to gh-pages
 - v1.1.1 Maximum call stack size exceeded - invokes on w.resize bugfix
 - v1.1.0 Canvas plane plume animation
 - v1.0.0 The main planned functionality
