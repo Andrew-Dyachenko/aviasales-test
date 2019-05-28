@@ -24,6 +24,7 @@ This is mainly bootstrapping and builded with next libraries
 - [create-react-app](https://github.com/facebook/create-react-app)
 
 ## Changelog
+- v1.1.3 Ticket action block sliding while page loading fix. Added homepage in the `package.json` to match dev and deploy paths.
 - v1.1.2 Move hosting to gh-pages
 - v1.1.1 Maximum call stack size exceeded - invokes on w.resize bugfix
 - v1.1.0 Canvas plane plume animation
