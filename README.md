@@ -2,7 +2,7 @@
 
 > Aviasales demo tickets list - inpired by real [app](https://www.aviasales.ru/)
 
-[![https://andrew-dyachenko.github.io/aviasales-test//](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=aviasales-test.tech)](https://andrew-dyachenko.github.io/aviasales-test//)
+[![https://andrew-dyachenko.github.io/aviasales-test//](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=live+demo)](https://andrew-dyachenko.github.io/aviasales-test//)
 
 ![MIT License](https://img.shields.io/github/license/Andrew-Dyachenko/aviasales-test.svg)
 [![Build Status](https://scrutinizer-ci.com/g/Andrew-Dyachenko/aviasales-test/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Andrew-Dyachenko/aviasales-test/build-status/master)
