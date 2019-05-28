@@ -127,6 +127,7 @@
 			.ticket {
 				&__col {
 					&--action {
+						flex-shrink: 0;
 						order: 1;
 						padding-top: $global-padding + 5;
 						width: 200px;
