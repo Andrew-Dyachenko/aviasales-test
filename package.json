@@ -1,5 +1,6 @@
 {
   "name": "aviasales-test",
+  "homepage": "./",
   "version": "v1.1.2",
   "dependencies": {
     "@babel/core": "7.1.0",
