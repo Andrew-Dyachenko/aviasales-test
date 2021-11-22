@@ -8,7 +8,7 @@
       "type": "image/x-icon"
     }
   ],
-  "start_url": "http://aviasales-test.tech/",
+  "start_url": "https://andrew-dyachenko.github.io/aviasales-test/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
