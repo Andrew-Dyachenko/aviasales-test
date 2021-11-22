@@ -20,9 +20,35 @@ class App extends PureComponent {
 		if (!storage || !JSON.parse(storage).tickets.fetch.fetched)
 			this.props.fetchTickets('./tickets.json')
 
-		if (!storage || !JSON.parse(storage).currencies.fetch.fetched)
-			this.props.fetchCurrency('https://api.exchangeratesapi.io/latest?base=RUB&symbols=RUB,USD,EUR')
 
+		if (!storage || !JSON.parse(storage).currencies.fetch.fetched)
+			this.props.fetchCurrency('http://api.exchangeratesapi.io/v1/latest?access_key=b24955df857d615830fa8b0bbacf58f8&format=1')
+
+			/*
+			* We can specify the base symbol as well as the exact list
+			* of symbols - at the Basic Payment Plan,
+			* currently we are using Free Payment Plan
+			*/
+			// this.props.fetchCurrency('http://api.exchangeratesapi.io/v1/latest?access_key=b24955df857d615830fa8b0bbacf58f8&base=RUB&symbols=RUB,USD,EUR&format=1')
+
+		/*
+		---------------------
+		Example of an answer:
+		---------------------
+		{
+			"success":true,
+			"timestamp":1637589243,
+			"base":"EUR",
+			"date":"2021-11-22",
+			"rates":{
+				"USD":1.127548,
+				"AUD":1.551387,
+				"CAD":1.425317,
+				"PLN":4.691678,
+				"MXN":23.548957
+			}
+		}
+		*/
 	}
 	render() {
 		const { scrollbarWidth } = this.props.dimensions.scroll

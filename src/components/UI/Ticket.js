@@ -28,6 +28,25 @@ const Ticket = ({
 		? pluralize(stops, '', '%d остановка', '%d остановки', '%d остановок')
 		: ''
 
+	let adaptedPrice = 0
+
+	/*
+	* We need this adapter-crutch, since the LogoExchangeratesapi.io
+	* free plan does not imply theability to specify the base currency,
+	* in our case it is the ruble
+	*/
+	if (currency === 'RUB')
+		adaptedPrice = price
+
+	else if (currency === 'EUR')
+		adaptedPrice = price / (rates['RUB'] ? rates['RUB'] : 1)
+
+	else
+		adaptedPrice = (price / (rates['RUB'] ? rates['RUB'] : 1)) * rates[currency]
+
+	adaptedPrice = adaptedPrice.toFixed(2)
+	/********/
+
 	return (
 		<div className={mixin ? `${mixin} ticket` : `ticket`}>
 			<div className='ticket__col ticket__col--action'>
@@ -44,7 +63,7 @@ const Ticket = ({
 								<CurrencySymbol currency={currency} />
 							</div>
 							<div className='ticket__price-value'>
-								за { (price * (rates[currency] ? rates[currency] : 1)).toFixed(2) }
+								за { adaptedPrice }
 							</div>
 						</div>
 					</div>

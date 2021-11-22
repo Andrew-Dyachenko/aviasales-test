@@ -19,7 +19,7 @@
 	},
 	"currencies": {
 		"rates": [],
-		"base": "RUB",
+		"base": "EUR",
 		"fetch": {
 			"fetching": false,
 			"fetched": false,
