@@ -53,7 +53,7 @@ describe('Store Factory', () => {
 		let store
 
 		beforeEach(() => {
-			global.localStorage['aviasales-store'] = false
+			global.localStorage['aviasales-store'] = JSON.stringify({})
 			store = storeFactory({})
 			store.dispatch({
 				type: C.SET_TICKETS,
