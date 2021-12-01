@@ -19,8 +19,7 @@ Test task were taken from [here](https://github.com/Andrew-Dyachenko/test-tasks/
 ## Demo
 [https://andrew-dyachenko.github.io/aviasales-test/](https://andrew-dyachenko.github.io/aviasales-test/)
 
-![enter image description here](### Preview
-![Authentica love desktop preview](./aviasales-test-app-preview.gif))
+![Preview of the application made according to the test task from the Aviasales company](https://github.com/Andrew-Dyachenko/aviasales-test/blob/gh-pages/aviasales-test-app-preview.gif?raw=true)
 
 ## Libraries
 This is mainly bootstrapping and builded with next libraries
