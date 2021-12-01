@@ -14,16 +14,23 @@
 ![](https://img.shields.io/github/repo-size/andrew-dyachenko/aviasales-test.svg?style=flat)
 
 ## Test task
-Test task were taken from [here](https://github.com/KosyanMedia/test-tasks/tree/master/aviasales)
+Test task were taken from [here](https://github.com/Andrew-Dyachenko/test-tasks/tree/master/DEPRECATED_aviasales)
 
 ## Demo
 [https://andrew-dyachenko.github.io/aviasales-test/](https://andrew-dyachenko.github.io/aviasales-test/)
+
+![enter image description here](### Preview
+![Authentica love desktop preview](./aviasales-test-app-preview.gif))
 
 ## Libraries
 This is mainly bootstrapping and builded with next libraries
 - [create-react-app](https://github.com/facebook/create-react-app)
 
 ## Changelog
+- v1.1.4
+  - Updating outdated NPM packages to the latest minor / patch versions
+  - After updating NPM packages, a bug in the tests was fixed
+  - Fixes aimed at changes in the api.exchangeratesapi.io API. Now it's need to pass an unique key when requesting data. In the free version of the subscription plan, the request for a list of specific symbols and base symbol is no longer available. To walkaround that issue special static adapter were added.
 - v1.1.3 Ticket action block sliding while page loading fix. Added homepage in the `package.json` to match dev and deploy paths.
 - v1.1.2 Move hosting to gh-pages
 - v1.1.1 Maximum call stack size exceeded - invokes on w.resize bugfix
