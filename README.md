@@ -26,6 +26,10 @@ This is mainly bootstrapping and builded with next libraries
 - [create-react-app](https://github.com/facebook/create-react-app)
 
 ## Changelog
+- v1.1.5
+  - Fix(start): Invalid property 'align' fixed
+  - Fix(start): the "path" argument must be of type string
+  - Fix(start): webpack is not a function
 - v1.1.4
   - Updating outdated NPM packages to the latest minor / patch versions
   - After updating NPM packages, a bug in the tests was fixed
