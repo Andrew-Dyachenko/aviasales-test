@@ -84,7 +84,7 @@
 		"jest-css-modules": "^2.1.0",
 		"jest-pnp-resolver": "^1.2.2",
 		"jest-resolve": "^27.4.2",
-		"node-sass": "^6.0.1",
+		"node-sass": "^8.0.0",
 		"react-app-polyfill": "^2.0.0",
 		"sass-loader": "^10.2.0",
 		"stylelint": "^9.9.0",
