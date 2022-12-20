@@ -87,8 +87,8 @@
 		"node-sass": "^6.0.1",
 		"react-app-polyfill": "^2.0.0",
 		"sass-loader": "^10.2.0",
-		"stylelint": "^9.9.0",
-		"stylelint-config-sass-guidelines": "^5.3.0",
+		"stylelint": "^14.16.0",
+		"stylelint-config-sass-guidelines": "^9.0.1",
 		"stylelint-selector-bem-pattern": "^2.0.0",
 		"stylelint-webpack-plugin": "^1.2.3"
 	},
