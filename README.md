@@ -26,6 +26,7 @@ This is mainly bootstrapping and builded with next libraries
 - [create-react-app](https://github.com/facebook/create-react-app)
 
 ## Changelog
+- v1.1.6 Fix(fallback): "Mixed Content Security Policy" - Error due http/https mix while fetch fresh rates
 - v1.1.5
   - Fix(start): Invalid property 'align' fixed
   - Fix(start): the "path" argument must be of type string

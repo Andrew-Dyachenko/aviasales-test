@@ -6,27 +6,28 @@ import {
 	fetchCurrencySuccess,
 	fetchCurrencyError,
 	setCurrencyRates,
-	setTickets } from '../store/actions'
+	setTickets,
+} from "../store/actions";
 
-export const fetchTickets = url => dispatch => {
-	dispatch(fetchTicketsStart())
+export const fetchTickets = (url) => (dispatch) => {
+	dispatch(fetchTicketsStart());
 	fetch(url)
-		.then(response => response.json())
-		.then(tickets => {
-			dispatch(fetchTicketsSuccess())
-			dispatch(setTickets(tickets))
+		.then((response) => response.json())
+		.then((tickets) => {
+			dispatch(fetchTicketsSuccess());
+			dispatch(setTickets(tickets));
 		})
-		.catch(() => dispatch(fetchTicketsError()))
-}
+		.catch(() => dispatch(fetchTicketsError()));
+};
 
-export const fetchCurrency = url => dispatch => {
-	dispatch(fetchCurrencyStart())
+export const fetchCurrency = (url) => (dispatch) => {
+	dispatch(fetchCurrencyStart());
 	fetch(url)
-		.then(response => response.json())
-		.then(response => {
-			const { rates } = response
-			dispatch(fetchCurrencySuccess())
-			dispatch(setCurrencyRates(rates))
+		.then((response) => response.json())
+		.then((response) => {
+			const { rates } = response;
+			dispatch(fetchCurrencySuccess());
+			dispatch(setCurrencyRates(rates));
 		})
-		.catch(() => dispatch(fetchCurrencyError()))
-}
+		.catch(() => dispatch(fetchCurrencyError()));
+};

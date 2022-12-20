@@ -1,7 +1,7 @@
 {
 	"name": "aviasales-test",
 	"homepage": "./",
-	"version": "v1.1.5",
+	"version": "v1.1.6",
 	"engines": {
 		"node": "~16",
 		"npm": "~8"
